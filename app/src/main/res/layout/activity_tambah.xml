@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".TambahActivity">
+
+
+    <EditText
+        android:id="@+id/edt_namaSiswa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape3"
+        android:paddingLeft="10dp"
+        android:hint="Nama Siswa" />
+
+    <EditText
+        android:id="@+id/edt_kelas"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape3"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:hint="Kelas"/>
+
+    <EditText
+        android:id="@+id/edt_pelanggaran"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape3"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:hint="Kategori Pelanggaran" />
+
+    <EditText
+        android:id="@+id/edt_poin"
+        android:layout_width="match_parent"
+        android:background="@drawable/shape3"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:hint="Poin Pelanggaran"
+        android:inputType="number"/>
+
+   <EditText
+       android:id="@+id/edt_tanggal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp"
+       android:paddingLeft="10dp"
+       android:background="@drawable/shape3"
+       android:hint="Tanggal (dd-mm-yyyy)"
+       android:inputType="date"/>
+
+    <EditText
+        android:id="@+id/edt_namaGuru"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:background="@drawable/shape3"
+        android:hint="Nama Guru"/>
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:background="@drawable/shape2"
+        android:text="SEND"/>
+
+</LinearLayout>

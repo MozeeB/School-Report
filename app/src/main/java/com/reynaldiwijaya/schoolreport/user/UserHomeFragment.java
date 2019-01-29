@@ -1,4 +1,4 @@
-package com.reynaldiwijaya.hacktonidn;
+package com.reynaldiwijaya.schoolreport.user;
 
 
 import android.app.ProgressDialog;
@@ -16,10 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.reynaldiwijaya.hacktonidn.adapter.AdapterSiswa;
-import com.reynaldiwijaya.hacktonidn.model.view.ResponseSiswa;
-import com.reynaldiwijaya.hacktonidn.model.view.SiswaItem;
-import com.reynaldiwijaya.hacktonidn.network.ConfigRetrofit;
+import com.reynaldiwijaya.schoolreport.R;
+import com.reynaldiwijaya.schoolreport.adapter.AdapterSiswa;
+import com.reynaldiwijaya.schoolreport.model.view.ResponseSiswa;
+import com.reynaldiwijaya.schoolreport.model.view.SiswaItem;
+import com.reynaldiwijaya.schoolreport.network.ConfigRetrofit;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class UserHomeFragment extends Fragment {
 
     @BindView(R.id.rv_main)
     RecyclerView rvMain;
@@ -44,7 +45,7 @@ public class HomeFragment extends Fragment {
 
     private List<SiswaItem> siswaItemList;
 
-    public HomeFragment() {
+    public UserHomeFragment() {
         // Required empty public constructor
     }
 
@@ -68,7 +69,7 @@ public class HomeFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplication(), TambahActivity.class));
+                startActivity(new Intent(getActivity().getApplication(), UserTambahActivity.class));
             }
         });
     }
@@ -92,7 +93,7 @@ public class HomeFragment extends Fragment {
                     if (status) setUpList(siswaItemList);
                     else Toast.makeText(getActivity(), "Tidak Ada data " + response.message() , Toast.LENGTH_SHORT).show();
 
-                    Log.d("HomeFragment", response.message());
+                    Log.d("UserHomeFragment", response.message());
                 }
             }
 

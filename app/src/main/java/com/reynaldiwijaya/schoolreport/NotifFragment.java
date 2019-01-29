@@ -1,4 +1,4 @@
-package com.reynaldiwijaya.hacktonidn;
+package com.reynaldiwijaya.schoolreport;
 
 import android.content.Context;
 import android.net.Uri;

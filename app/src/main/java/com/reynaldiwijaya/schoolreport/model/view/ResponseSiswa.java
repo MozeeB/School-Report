@@ -1,4 +1,4 @@
-package com.reynaldiwijaya.hacktonidn.model.view;
+package com.reynaldiwijaya.schoolreport.model.view;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;

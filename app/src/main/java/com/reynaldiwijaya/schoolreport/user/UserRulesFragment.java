@@ -1,4 +1,4 @@
-package com.reynaldiwijaya.hacktonidn;
+package com.reynaldiwijaya.schoolreport.user;
 
 
 import android.os.Bundle;
@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.reynaldiwijaya.schoolreport.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RulesFragment extends Fragment {
+public class UserRulesFragment extends Fragment {
 
 
-    public RulesFragment() {
+    public UserRulesFragment() {
         // Required empty public constructor
     }
 

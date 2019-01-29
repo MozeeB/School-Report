@@ -1,4 +1,4 @@
-package com.reynaldiwijaya.hacktonidn.adapter;
+package com.reynaldiwijaya.schoolreport.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.reynaldiwijaya.hacktonidn.R;
-import com.reynaldiwijaya.hacktonidn.model.view.SiswaItem;
+import com.reynaldiwijaya.schoolreport.R;
+import com.reynaldiwijaya.schoolreport.model.view.SiswaItem;
 
 import java.util.List;
 

@@ -1,6 +1,5 @@
-package com.reynaldiwijaya.hacktonidn;
+package com.reynaldiwijaya.schoolreport.user;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -10,8 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.reynaldiwijaya.hacktonidn.model.insert.ResponseInsertData;
-import com.reynaldiwijaya.hacktonidn.network.ConfigRetrofit;
+import com.reynaldiwijaya.schoolreport.R;
+import com.reynaldiwijaya.schoolreport.model.insert.ResponseInsertData;
+import com.reynaldiwijaya.schoolreport.network.ConfigRetrofit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TambahActivity extends AppCompatActivity {
+public class UserTambahActivity extends AppCompatActivity {
 
 
     @BindView(R.id.edt_namaSiswa)
@@ -99,9 +99,9 @@ public class TambahActivity extends AppCompatActivity {
                     String msg = response.body().getMessage();
                     String result = String.valueOf(response.body().getCode());
 
-                    Log.d("TambahActivity", msg);
+                    Log.d("UserTambahActivity", msg);
 
-                    Toast.makeText(TambahActivity.this, "Success To Add " + msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserTambahActivity.this, "Success To Add " + msg, Toast.LENGTH_SHORT).show();
 
                     finish();
                 }
@@ -109,7 +109,7 @@ public class TambahActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseInsertData> call, Throwable t) {
-                Toast.makeText(TambahActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserTambahActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                 finish();
 

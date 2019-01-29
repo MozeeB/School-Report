@@ -1,7 +1,7 @@
-package com.reynaldiwijaya.hacktonidn.network;
+package com.reynaldiwijaya.schoolreport.network;
 
-import com.reynaldiwijaya.hacktonidn.model.insert.ResponseInsertData;
-import com.reynaldiwijaya.hacktonidn.model.view.ResponseSiswa;
+import com.reynaldiwijaya.schoolreport.model.insert.ResponseInsertData;
+import com.reynaldiwijaya.schoolreport.model.view.ResponseSiswa;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

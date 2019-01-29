@@ -1,9 +1,11 @@
-package com.reynaldiwijaya.hacktonidn;
+package com.reynaldiwijaya.schoolreport.user;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.reynaldiwijaya.schoolreport.R;
 
 public class Splashscreen extends AppCompatActivity {
 
@@ -19,7 +21,7 @@ public class Splashscreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(Splashscreen.this, MainActivity.class));
+                startActivity(new Intent(Splashscreen.this, UserMainActivity.class));
             }
         }, 4000);
     }

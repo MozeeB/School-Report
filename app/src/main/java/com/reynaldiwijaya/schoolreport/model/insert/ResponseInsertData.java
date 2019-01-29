@@ -1,4 +1,4 @@
-package com.reynaldiwijaya.hacktonidn.model.insert;
+package com.reynaldiwijaya.schoolreport.model.insert;
 
 public class ResponseInsertData{
 	private int code;

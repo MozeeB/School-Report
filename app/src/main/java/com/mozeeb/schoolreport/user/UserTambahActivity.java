@@ -92,7 +92,9 @@ public class UserTambahActivity extends AppCompatActivity {
     }
 
     private void sendData() {
-        ConfigRetrofit.getInstance().insertData(namaSiswa, kelas, pelanggaran, tanggal, poin, namaGuru).enqueue(new Callback<ResponseInsertData>() {
+        ConfigRetrofit.getInstance()
+                .insertData(namaSiswa, kelas, pelanggaran, tanggal, poin, namaGuru)
+                .enqueue(new Callback<ResponseInsertData>() {
             @Override
             public void onResponse(Call<ResponseInsertData> call, Response<ResponseInsertData> response) {
                 if (response != null && response.isSuccessful()) {

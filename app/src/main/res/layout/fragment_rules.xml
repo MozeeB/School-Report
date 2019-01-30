@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,48 +11,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <TextView
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Peraturan Sekolah"
+            android:textSize="24dp"
+            android:textStyle="bold"/>
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Pelanggaran Yang Tidak Bisa Di Tolerir , Berat (70 Poin)
-- Pornografi
-- Merokok
-- Mencuri
-- Penyimpangan Seksual
-
-Pelanggaran Sedang (40 poin)
-- Bermain Game
-- Memakai clean isbal
-- Tidak shoat berjamaah di Masjid
-- Tidak Mandi
-- Berbicara Kotor
-
-Pelanggaran Ringan (10 poin)
-- Berbicara Bahasa daerah
-- Goshob
-
-Macam macam hukuman
-- Lari keliling lapangan
-- Push up
-- Mengambil sampan (dalam jumlah yang ditentukan)
-- Menghapal surah al quran
-- Menulis kalimat
-- Menggunakan label hukuman
-- Denda 10k sampai 100k
-
-Peraturan di asrama
-- Jadwal tidur pukul 22.00 sampai 22.30
-- Bangun tidur ranjang Sudan rapih
-- Siswa dilarang membawa laptop di kamar
-- Siswa dilarang makan di asrama
-- Bantal guling wajib menggunakan spray
-- Wajib mematikan lampu dan kipas angin jika sudah tidak dipakai
-- Pakaian tidak boleh berantakan
-- Tidur harus menggunakan pakaian yang mentupi aurat
-- Dilarang tidiur di balkon
-- Pukul 21.15 dilarang kelar
-- Dilarang berbahasa daerah
-- Piket kelas dan asrama sampai pukul 6.30" />
+        android:text="@string/Rules" />
 
     </LinearLayout>
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

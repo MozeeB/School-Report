@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.user.NewsFragment;
+import com.mozeeb.schoolreport.user.UserAgendaFragment;
+import com.mozeeb.schoolreport.user.UserDaftarFragment;
 import com.mozeeb.schoolreport.user.UserHomeFragment;
 import com.mozeeb.schoolreport.user.UserRulesFragment;
 
@@ -35,14 +37,20 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
 
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    selectedFragment = new UserHomeFragment();
-                    break;
                 case R.id.navigation_rules:
                     selectedFragment = new UserRulesFragment();
                     break;
+                case R.id.navigation_home:
+                    selectedFragment = new UserHomeFragment();
+                    break;
                 case R.id.navigation_news:
                     selectedFragment = new NewsFragment();
+                    break;
+                case R.id.navigation_agenda:
+                    selectedFragment = new UserAgendaFragment();
+                    break;
+                case R.id.navigation_daftar:
+                    selectedFragment = new UserDaftarFragment();
                     break;
             }
             FragmentManager mFragmentManager = getSupportFragmentManager();

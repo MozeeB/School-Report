@@ -42,7 +42,7 @@ public class AdapterSiswa extends RecyclerView.Adapter<AdapterSiswa.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-       TextView tvNamaSiswa, tvKelas, tvJenisPelanggaran;
+       TextView tvNamaSiswa, tvKelas;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNamaSiswa = itemView.findViewById(R.id.tv_namaSiswa);

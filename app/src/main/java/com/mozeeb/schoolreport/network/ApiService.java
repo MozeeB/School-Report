@@ -1,6 +1,6 @@
 package com.mozeeb.schoolreport.network;
 
-import com.mozeeb.schoolreport.model.siswa.insert.ResponseInsertData;
+import com.mozeeb.schoolreport.model.login.ResponseLogin;
 import com.mozeeb.schoolreport.model.siswa.view.ResponseSiswa;
 
 import retrofit2.Call;
@@ -12,15 +12,10 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     @FormUrlEncoded
-    @POST("create.php")
-    Call<ResponseInsertData> insertData (
-            @Field("nama") String nama,
-            @Field("kelas") String kelas,
-            @Field("pelanggaran") String pelanggaran,
-            @Field("tanggal") String tanggal,
-            @Field("poin") String poin,
-            @Field("ustad") String ustad
-    );
+    @POST("api/login")
+    Call<ResponseLogin> postLogin(@Field("email") String email,
+                                  @Field("password") String password);
+
 
     @GET("view.php")
     Call<ResponseSiswa> getAllData();

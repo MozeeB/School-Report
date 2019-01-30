@@ -27,13 +27,24 @@
         android:hint="Kelas"/>
 
     <EditText
+        android:id="@+id/edt_wali_murid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:background="@drawable/shape3"
+        android:layout_marginTop="10dp"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:hint="Wali Murid" />
+
+    <EditText
         android:id="@+id/edt_pelanggaran"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:background="@drawable/shape3"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:hint="Kategori Pelanggaran" />
+        android:hint="Melanggar apa?" />
 
     <EditText
         android:id="@+id/edt_poin"
@@ -42,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
-        android:hint="Poin Pelanggaran"
+        android:hint="Poin melanggar"
         android:inputType="number"/>
 
    <EditText
@@ -62,7 +73,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
         android:background="@drawable/shape3"
-        android:hint="Nama Guru"/>
+        android:hint="Nama Pelapor"/>
 
     <Button
         android:id="@+id/btn_send"

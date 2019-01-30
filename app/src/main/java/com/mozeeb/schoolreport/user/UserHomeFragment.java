@@ -78,7 +78,7 @@ public class UserHomeFragment extends Fragment {
     private void getData() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Loading..");
-        progressDialog.setMessage("Get Data");
+        progressDialog.setMessage("Get DataLogin");
         progressDialog.show();
 
         ConfigRetrofit.getInstance().getAllData().enqueue(new Callback<ResponseSiswa>() {

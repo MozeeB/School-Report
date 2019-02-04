@@ -5,20 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 import com.mozeeb.schoolreport.SPreferenced.SPref;
 import com.mozeeb.schoolreport.model.login.Data;
-import com.mozeeb.schoolreport.model.login.LoginBody;
 import com.mozeeb.schoolreport.model.login.ResponseLogin;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 import com.mozeeb.schoolreport.user.Splashscreen;
+import com.mozeeb.schoolreport.utils.Validate;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import butterknife.BindView;
@@ -34,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.textView)
     TextView textView;
     @BindView(R.id.edt_username_login)
-    EditText edtUsernameLogin;
+    EditText edtUsername;
     @BindView(R.id.edt_password_login)
     EditText edtPasswordLogin;
     @BindView(R.id.btn_login)
@@ -45,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     //TODO 1 Membuat vaiabel yang dibutuhkan
     //membuat variable untuk animasi loading menggunkan progress dialog
     private ProgressDialog progressDialog;
-    private LoginBody loginBody;
+    private Data loginBody;
     private ApiService apiInterface;
     private Data dataUser;
     private Context mContext;
@@ -62,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_login:
                 showProgress();
+                getData();
+                if (validateLogin())
                 LoginUser();
                 break;
             case R.id.tv_register:
@@ -69,37 +70,46 @@ public class LoginActivity extends AppCompatActivity {
                 break;
         }
     }
+    public boolean validateLogin(){
+        return (!Validate.cek(edtUsername)&&!Validate.cek(edtPasswordLogin)) ? true : false;
+    }
 
     private void LoginUser() {
-        apiInterface = ConfigRetrofit.getInstance();
-        Call<ResponseLogin> call = apiInterface.postLogin(edtUsernameLogin.getText().toString(), edtPasswordLogin.getText().toString());
+        apiInterface = ConfigRetrofit.getClient().create(ApiService.class);
+        Call<ResponseLogin> call = apiInterface.postLogin(loginBody);
         call.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()){
-                    if (response.body().getSukses()){
-                        dataUser = response.body().getData();
-                        Toasty.success(mContext,"Login berhasil!!!",Toasty.LENGTH_LONG).show();
-                        Log.d("Data User",dataUser.toString());
-                        setPreference(dataUser);
-                        startActivity(new Intent(LoginActivity.this, Splashscreen.class));
-                        finish();
-                    }else {
-                        Toasty.error(mContext,"Username dan password salah",Toasty.LENGTH_LONG).show();
-                    }
+                    //menampilkan response api berupa pesan ke dalam toast
+                    Toasty.success(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                    dataUser=response.body().getData();
+                    //berpindah halaman ke mainactivity
+                    startActivity(new Intent(LoginActivity.this, Splashscreen.class));
+                    finish();
                 }else {
-                    Toasty.error(mContext,"Username dan password salah",Toasty.LENGTH_LONG).show();
+                    //menampilkan response api berupa pesan ke dalam toast
+                    Toasty.success(LoginActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
                 }
+
+                //menampil respon message
+                Toasty.success(LoginActivity.this, "Gagal Login", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                progressDialog.dismiss();
-
+                Toasty.error(LoginActivity.this,"Koneksi tidak ada",Toast.LENGTH_LONG).show();
             }
         });
 
+    }
+    private void getData() {
+        //membuat object LoginBody
+        loginBody = new Data();
+        //mengisi LoginBody
+        loginBody.setUsername(edtUsername.getText().toString());
+        loginBody.setPassword(edtPasswordLogin.getText().toString());
     }
 
     private void showProgress() {
@@ -117,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         Prefs.putString(SPref.getUsername(),du.getUsername());
         Prefs.putInt(SPref.getNo_telp(), Integer.parseInt(du.getNoTelp()));
         Prefs.putString(SPref.getAlamat(),du.getAlamat());
+        Prefs.putString(SPref.getEmail(), du.getEmail());
         Prefs.putString(SPref.getJenis_kelamin(), du.getJenisKelamin().toString());
         Prefs.putString(SPref.getPassword(), du.getPassword().toString());
         Prefs.putString(SPref.getFoto(), du.getFoto());

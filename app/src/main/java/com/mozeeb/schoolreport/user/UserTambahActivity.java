@@ -3,22 +3,15 @@ package com.mozeeb.schoolreport.user;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.siswa.insert.ResponseInsertData;
-import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class UserTambahActivity extends AppCompatActivity {
 
@@ -76,7 +69,7 @@ public class UserTambahActivity extends AppCompatActivity {
                     edtPoin.setError(getString(R.string.error_message));
                     edtPoin.requestFocus();
                 } else {
-                    sendData();
+//                    sendData();
                 }
                 break;
         }
@@ -91,31 +84,31 @@ public class UserTambahActivity extends AppCompatActivity {
         poin = edtPoin.getText().toString();
     }
 
-    private void sendData() {
-        ConfigRetrofit.getInstance()
-                .insertData(namaSiswa, kelas, pelanggaran, tanggal, poin, namaGuru)
-                .enqueue(new Callback<ResponseInsertData>() {
-            @Override
-            public void onResponse(Call<ResponseInsertData> call, Response<ResponseInsertData> response) {
-                if (response != null && response.isSuccessful()) {
-                    String msg = response.body().getMessage();
-                    String result = String.valueOf(response.body().getCode());
-
-                    Log.d("UserTambahActivity", msg);
-
-                    Toast.makeText(UserTambahActivity.this, "Success To Add " + msg, Toast.LENGTH_SHORT).show();
-
-                    finish();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseInsertData> call, Throwable t) {
-                Toast.makeText(UserTambahActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
-                finish();
-
-            }
-        });
-    }
+//    private void sendData() {
+//        ConfigRetrofit.getInstance()
+////                .postRegister(null)
+////                .enqueue(new Callback<ResponseInsertData>() {
+//            @Override
+//            public void onResponse(Call<ResponseInsertData> call, Response<ResponseInsertData> response) {
+//                if (response != null && response.isSuccessful()) {
+//                    String msg = response.body().getMessage();
+//                    String result = String.valueOf(response.body().getCode());
+//
+//                    Log.d("UserTambahActivity", msg);
+//
+//                    Toast.makeText(UserTambahActivity.this, "Success To Add " + msg, Toast.LENGTH_SHORT).show();
+//
+//                    finish();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseInsertData> call, Throwable t) {
+//                Toast.makeText(UserTambahActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                finish();
+//
+//            }
+//        });
+//    }
 }

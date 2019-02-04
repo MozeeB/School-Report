@@ -5,17 +5,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ConfigRetrofit {
 
-    public static final String BASE_URL = "https://inveterate-rubbish.000webhostapp.com/";
+        private static Retrofit retrofit = null;
+        private static final String BASE_URL = "http://192.168.71.254/server_sekolah/index.php/";
 
-    public static Retrofit setInit(){
-        return new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        //membuat metdod return getClient
+        public static Retrofit getClient() {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            return retrofit;
+
     }
-
     public static ApiService getInstance() {
-        return setInit().create(ApiService.class);
+        return getClient().create(ApiService.class);
 
     }
 }

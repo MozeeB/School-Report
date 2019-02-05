@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
             FragmentManager mFragmentManager = getSupportFragmentManager();
             FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
-            mFragmentTransaction.replace(R.id.fragment_container,selectedFragment).commit();
+            mFragmentTransaction.replace(R.id.fragment_container, selectedFragment).commit();
 
             return true;
         }

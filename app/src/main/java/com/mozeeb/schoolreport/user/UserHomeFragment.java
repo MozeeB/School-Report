@@ -24,7 +24,6 @@ import com.mozeeb.schoolreport.network.ConfigRetrofit;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import es.dmoral.toasty.Toasty;
@@ -38,11 +37,13 @@ import retrofit2.Response;
  */
 public class UserHomeFragment extends Fragment {
 
-    @BindView(R.id.rv_main)
+//    @BindView(R.id.rv_main)
     RecyclerView rvMain;
     Unbinder unbinder;
     ApiService apiService;
+
     private AdapterLapor adapterLaporan;
+    private AdapterLapor adapter;
 
     private List<DataItemLapor> dataItemsLaporanLapor;
 
@@ -50,12 +51,14 @@ public class UserHomeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    String[] nama = {"juminten", "naryo"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        rvMain  = view.findViewById(R.id.rv_main);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -89,11 +92,15 @@ public class UserHomeFragment extends Fragment {
             public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
-                    Toasty.success(getActivity(), response.message(), Toasty.LENGTH_LONG).show();
+                    Toasty.success(getActivity(), response.toString(), Toasty.LENGTH_LONG).show();
 
                     ResponseLaporan responseNews = response.body();
                     dataItemsLaporanLapor = responseNews.getData();
-                    setUpList(dataItemsLaporanLapor);
+//                    setUpList(dataItemsLaporanLapor);
+                    rvMain.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true));
+                    adapter = new AdapterLapor(dataItemsLaporanLapor, getActivity());
+//                    adapterLaporan = new AdapterLapor(responseNews.getData(), getActivity());
+                    rvMain.setAdapter(adapter);
                 }
 
             }
@@ -108,11 +115,10 @@ public class UserHomeFragment extends Fragment {
     }
 
 
-
     private void setUpList(List<DataItemLapor> dataItemsLaporanLapor) {
         rvMain.setHasFixedSize(true);
         rvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapterLaporan = new AdapterLapor(getActivity(), dataItemsLaporanLapor);
+        adapterLaporan = new AdapterLapor(dataItemsLaporanLapor, getActivity());
         rvMain.setAdapter(adapterLaporan);
     }
 

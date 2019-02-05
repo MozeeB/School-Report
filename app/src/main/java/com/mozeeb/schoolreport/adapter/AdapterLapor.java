@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.laporan.read.DataItemLapor;
 
@@ -17,50 +18,55 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.ViewHolder> {
+public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder> {
+
 
     @BindView(R.id.btn_overFlof)
     ImageButton btnOverFlof;
-
+    private List<DataItemLapor> dataLaporan;
     private Context context;
-    private List<DataItemLapor> dataItemLapors;
 
-    public AdapterLapor(Context context, List<DataItemLapor> dataItemLapors) {
+    public AdapterLapor(List<DataItemLapor> dataLaporan, Context context) {
+        this.dataLaporan = dataLaporan;
         this.context = context;
-        this.dataItemLapors = dataItemLapors;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_laporan, viewGroup, false));
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_laporan, viewGroup, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        viewHolder.tvNamaSiswa.setText(dataItemLapors.get(i).getNama());
-        viewHolder.tvKelas.setText(dataItemLapors.get(i).getKelas());
-        viewHolder.tvPoin.setText(dataItemLapors.get(i).getPoin());
-
+        Glide.with(context).load(dataLaporan.get(i).getFoto()).into(myViewHolder.ivLapor);
+        myViewHolder.tvNamaSiswa.setText(dataLaporan.get(i).getNama());
+        myViewHolder.tvKelas.setText(dataLaporan.get(i).getKelas());
+        myViewHolder.tv_melanggar.setText(dataLaporan.get(i).getMelanggar());
     }
 
     @Override
     public int getItemCount() {
-        return dataItemLapors.size();
+        return dataLaporan.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    @OnClick(R.id.btn_overFlof)
+    public void onViewClicked() {
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_lapor)
         ImageView ivLapor;
         @BindView(R.id.tv_namaSiswa)
         TextView tvNamaSiswa;
         @BindView(R.id.tv_kelas)
         TextView tvKelas;
-        @BindView(R.id.tv_poin)
-        TextView tvPoin;
-        public ViewHolder(@NonNull View itemView) {
+        @BindView(R.id.tv_melanggar)
+        TextView tv_melanggar;
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

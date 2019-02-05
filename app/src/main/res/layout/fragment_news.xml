@@ -3,13 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.mozeeb.schoolreport.user.NewsFragment">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
+
+    </ScrollView>
 
 
 </FrameLayout>

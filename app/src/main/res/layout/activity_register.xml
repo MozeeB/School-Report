@@ -1,117 +1,253 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="10dp"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="#6DB34E">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/judulsignup"
+        android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:background="#fff"
+            >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_light"
+                android:lineSpacingExtra="-15sp"
+                android:text="Sign Up!"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="33dp"
+                android:textColor="#6DB34E"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:text="Welcome To Register" />
-
-            <EditText
-                android:id="@+id/edt_nama_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Nama" />
-
-            <EditText
-                android:id="@+id/edt_username_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Username" />
-
-            <EditText
-                android:id="@+id/edt_notelp_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone"
-                android:hint="No Telp"/>
-
-            <EditText
-                android:id="@+id/edt_alamat_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Alamat" />
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
 
             <EditText
                 android:id="@+id/edt_email_register"
                 android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="29dp"
+                android:hint="Email"
+                android:paddingLeft="10dp"
+                android:background="@drawable/kotakedittext"
+                android:fontFamily="@font/open_sans_light"
+                android:inputType="textWebEmailAddress"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/edt_username_register"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:hint="Username"
+                android:paddingLeft="10dp"
+                android:background="@drawable/kotakedittext"
+                android:fontFamily="@font/open_sans_light"
+                android:inputType="textPersonName"
+                android:textSize="15sp"/>
+
+            <EditText
+                android:id="@+id/edt_nama_register"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:hint="Nama"
+                android:paddingLeft="10dp"
+                android:background="@drawable/kotakedittext"
+                android:fontFamily="@font/open_sans_light"
+                android:inputType="textPersonName"
+                android:textSize="15sp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:hint="Email"/>
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="16dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:hintEnabled="false">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edt_password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/kotakedittext"
+                    android:hint="Password"
+                    android:textSize="15sp"
+                    android:layout_gravity="center"
+                    android:inputType="textPassword"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="16dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:hintEnabled="false">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edt_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/kotakedittext"
+                    android:hint="Confirm Password"
+                    android:textSize="15sp"
+                    android:layout_gravity="center"
+                    android:inputType="textPassword"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <EditText
+                android:id="@+id/edt_alamat_register"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:hint="Alamat"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="15sp"
+                android:background="@drawable/kotakedittext" />
+
+            <EditText
+                android:id="@+id/edt_notelp_register"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:hint="No telpon"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="15sp"
+                android:background="@drawable/kotakedittext" />
 
             <Spinner
                 android:id="@+id/spinner_kelamin_register"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/kotakedittext">
 
-            <EditText
-                android:id="@+id/edt_password_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Password"/>
-
-            <EditText
-                android:id="@+id/edt_confirm_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:hint="Confirm password"/>
+            </Spinner>
 
             <Spinner
                 android:id="@+id/spinner_level"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/kotakedittext">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_upload"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="10dp"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
+                android:layout_marginTop="74dp"
+                android:background="#fff"/>
 
-            <Button
-                android:id="@+id/btn_upload"
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="167dp"
+                android:layout_height="164dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="14dp"
+                android:background="#fff"/>
+
+            <RelativeLayout
+                android:layout_width="163dp"
                 android:layout_height="wrap_content"
-                android:text="Choose photo" />
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="18dp">
+
+                <ImageView
+                    android:id="@+id/imgfotoprofile"
+                    android:layout_width="163dp"
+                    android:layout_height="163dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile" />
+
+                <Button
+                    android:id="@+id/btn_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imgfotoprofile"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/tombolhijaumuda"
+                    android:fontFamily="@font/open_sans"
+                    android:text="Upload foto profil"
+                    android:textAllCaps="false"
+                    android:textColor="#fff" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="168dp"
+            android:layout_height="36dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            >
 
             <Button
                 android:id="@+id/btn_register"
-                android:layout_width="match_parent"
+                android:layout_width="168dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Register" />
-        </LinearLayout>
-    </ScrollView>
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/open_sans_extrabold"
+                android:lineSpacingExtra="-4dp"
+                android:textAllCaps="false"
+                android:text="Sign Up!"
+                android:background="@drawable/tombolhijautua"
 
-</android.support.v4.widget.NestedScrollView>
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

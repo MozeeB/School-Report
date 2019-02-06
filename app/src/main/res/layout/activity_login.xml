@@ -1,54 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="5dp"
     tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="0dp"
+        android:fontFamily="@font/open_sans_light"
+        android:lineSpacingExtra="-15sp"
+        android:text="School\nReport"
+        android:textColor="#6DB34E"
+        android:textSize="36sp" />
+    <!--Logo schoolreport-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="254dp"
+        android:layout_alignParentBottom="true"
+        android:background="#508C46"
+        android:id="@+id/backgroundhijau">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/segitigakuning"
+        android:layout_above="@id/backgroundhijau"/>
+    <!-- gambar segitiga kuning-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativelogin"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="155dp">
+
+        <TextView
+            android:layout_width="309dp"
+            android:layout_height="336dp"
+            android:background="@drawable/loginhijau" />
+
+        <LinearLayout
+            android:layout_width="268dp"
+            android:layout_height="274dp"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="33dp"
+                android:fontFamily="@font/open_sans_light"
+                android:text="Selamat Datang!"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edt_username_login"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/kotakedittext"
+                android:hint="Username"
+                android:textSize="15sp"
+                android:layout_marginTop="28dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/open_sans_light"
+                android:inputType="textPersonName"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                android:layout_marginTop="17dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:hintEnabled="false">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edt_password_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/open_sans_light"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/kotakedittext"
+                    android:hint="Password"
+                    android:textSize="15sp"
+                    android:layout_gravity="center"
+                    android:inputType="textPassword"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <RelativeLayout
+                android:layout_width="104dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/tombolhijautua"
+                >
+
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/open_sans_extrabold"
+                    android:lineSpacingExtra="-4dp"
+                    android:textAllCaps="false"
+                    android:text="Sign in!"
+                    android:background="@drawable/tombolhijautua"
+                    android:textColor="#fff"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <!-- gambar background tempat login -->
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:id="@+id/btnMenujuSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="Welcome To Login" />
+            android:text="Belum punya akun?"
+            android:textColor="#fff"
+            android:fontFamily="@font/open_sans_light"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15sp"/>
 
-        <EditText
-            android:id="@+id/edt_username_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Username"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/edt_password_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword" />
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login" />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="1dp"
+            android:background="#fff"
+            android:layout_marginTop="15dp"/>
 
         <TextView
             android:id="@+id/tv_register"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Have you have account? Register" />
+            android:text="Sign up sekarang!"
+            android:textColor="#fff"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/open_sans_extrabold"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15sp"/>
 
     </LinearLayout>
+    <!-- belumpunya akun?  -->
+
+
+    <RelativeLayout
+        android:id="@+id/aksenbawah"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:background="#BADC58"
+            android:id="@+id/aksenbawah1"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#6DB34E"
+            android:layout_toRightOf="@id/aksenbawah1"/>
+
+    </RelativeLayout>
+    <!-- aksen bawah -->
+
+
+
+
 </RelativeLayout>

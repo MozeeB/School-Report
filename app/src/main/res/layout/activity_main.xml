@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp"
         android:layout_above="@id/bottom_navigation"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:background="#F4F4F4">
 
     </FrameLayout>
 

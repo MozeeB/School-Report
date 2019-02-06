@@ -37,13 +37,19 @@
         android:hint="Poin"
         android:inputType="number" />
 
+    <Spinner
+        android:id="@+id/edt_jenis_pelanggarannya"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Jenis Pelanggaran" />
+
     <EditText
-        android:id="@+id/edt_nama_pelanggarannya"
+        android:id="@+id/edt_keterangan_pelanggar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Nama Pelanggaran"
-        android:inputType="textPersonName" />
+        android:hint="Keterangan"
+        android:inputType="textLongMessage" />
 
     <EditText
         android:id="@+id/edt_tanggal_pelanggar"

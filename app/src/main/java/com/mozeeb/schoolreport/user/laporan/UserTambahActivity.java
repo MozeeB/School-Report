@@ -37,8 +37,6 @@ public class UserTambahActivity extends AppCompatActivity {
     EditText edtWaliMuridPelanggar;
     @BindView(R.id.edt_poin_pelanggar)
     EditText edtPoinPelanggar;
-    @BindView(R.id.edt_nama_pelanggarannya)
-    EditText edtNamaPelanggarannya;
     @BindView(R.id.edt_tanggal_pelanggar)
     EditText edtTanggalPelanggar;
     @BindView(R.id.edt_pelapor)
@@ -51,6 +49,8 @@ public class UserTambahActivity extends AppCompatActivity {
     Button btnKirimLporan;
 
     DatePickerDialog datePickerDialog;
+    @BindView(R.id.edt_jenis_pelanggarannya)
+    Spinner edtJenisPelanggarannya;
     private String namaSiswa, kelas, pelanggaran, namaGuru, tanggal;
     private String poin;
 
@@ -60,11 +60,12 @@ public class UserTambahActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tambah);
         ButterKnife.bind(this);
 
-        spinnerKelamin();
+        spinnerKelas();
+        spinnerJenis();
 
     }
 
-    public void spinnerKelamin() {
+    public void spinnerKelas() {
 
         List<String> adapter = new ArrayList<>();
         adapter.add("X RPL A");
@@ -76,6 +77,16 @@ public class UserTambahActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adapter);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKelasPelanggar.setAdapter(dataAdapter);
+    }
+    public void spinnerJenis() {
+
+        List<String> adapter = new ArrayList<>();
+        adapter.add("Ringan");
+        adapter.add("Sedang");
+        adapter.add("Berat");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adapter);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        edtJenisPelanggarannya.setAdapter(dataAdapter);
     }
 
 
@@ -110,7 +121,7 @@ public class UserTambahActivity extends AppCompatActivity {
         kelas.toString();
         edtWaliMuridPelanggar.getText().toString();
         edtPoinPelanggar.getText().toString();
-        edtNamaPelanggarannya.getText().toString();
+        edtJenisPelanggarannya.toString();
         edtTanggalPelanggar.getText().toString();
         edtPelapor.getText().toString();
         ivLaporanTambah.toString();
@@ -127,9 +138,9 @@ public class UserTambahActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 // set day of month , month and year value in the edit text
-                edtTanggalPelanggar.setText(year + "-" + (month + 1) +  "-" + dayOfMonth);
+                edtTanggalPelanggar.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
             }
-        },mYear,mMonth, mDay);
+        }, mYear, mMonth, mDay);
         datePickerDialog.show();
     }
 }

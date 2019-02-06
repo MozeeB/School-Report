@@ -78,8 +78,6 @@ public class NewsFragment extends Fragment {
             public void onResponse(Call<ResponseBerita> call, Response<ResponseBerita> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
-                    Toasty.success(getActivity(), response.message(), Toasty.LENGTH_LONG).show();
-
                     ResponseBerita responseNews = response.body();
                     dataItemsNewBeritas = responseNews.getData();
                     setUplist2(dataItemsNewBeritas);

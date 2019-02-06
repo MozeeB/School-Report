@@ -3,85 +3,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".user.UserTambahActivity">
+    tools:context=".user.laporan.UserTambahActivity">
 
 
     <EditText
-        android:id="@+id/edt_namaSiswa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape3"
-        android:paddingLeft="10dp"
-        android:hint="Nama Siswa" />
-
-    <EditText
-        android:id="@+id/edt_kelas"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/shape3"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:hint="Kelas"/>
-
-    <EditText
-        android:id="@+id/edt_wali_murid"
+        android:id="@+id/edt_nama_pelanggar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:background="@drawable/shape3"
-        android:layout_marginTop="10dp"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:hint="Wali Murid" />
+        android:hint="Nama"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinner_kelas_pelanggar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/edt_pelanggaran"
+        android:id="@+id/edt_wali_murid_pelanggar"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/shape3"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:hint="Melanggar apa?" />
+        android:ems="10"
+        android:hint="Wali Murid"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/edt_poin"
+        android:id="@+id/edt_poin_pelanggar"
         android:layout_width="match_parent"
-        android:background="@drawable/shape3"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:hint="Poin melanggar"
-        android:inputType="number"/>
-
-   <EditText
-       android:id="@+id/edt_tanggal"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:paddingLeft="10dp"
-       android:background="@drawable/shape3"
-       android:hint="Tanggal (dd-mm-yyyy)"
-       android:inputType="date"/>
+        android:ems="10"
+        android:hint="Poin"
+        android:inputType="number" />
 
     <EditText
-        android:id="@+id/edt_namaGuru"
+        android:id="@+id/edt_nama_pelanggarannya"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:background="@drawable/shape3"
-        android:hint="Nama Pelapor"/>
+        android:ems="10"
+        android:hint="Nama Pelanggaran"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edt_tanggal_pelanggar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Tanggal"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/edt_pelapor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Pelapor"
+        android:inputType="textPersonName" />
+
+    <ImageView
+        android:id="@+id/iv_laporan_tambah"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[4]" />
 
     <Button
-        android:id="@+id/btn_send"
+        android:id="@+id/btn_pilih_foto_pelanggar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Photo" />
+
+    <Button
+        android:id="@+id/btn_kirim_lporan"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:background="@drawable/shape2"
-        android:text="SEND"/>
+        android:text="Kirim"/>
 
 </LinearLayout>

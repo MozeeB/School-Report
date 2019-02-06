@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.tabDaftar.siswa.InsertSiswa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/edt_nama_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nama"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edt_kelas_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Kelas"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edt_alamat_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Alamat"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/edt_umur_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Umur"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edt_tgl_lahir_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tanggal Lahir"
+                android:inputType="date" />
+
+            <ImageView
+                android:id="@+id/img_siswa_upload"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
+
+            <Button
+                android:id="@+id/btn_simpan_siswa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Simpan" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

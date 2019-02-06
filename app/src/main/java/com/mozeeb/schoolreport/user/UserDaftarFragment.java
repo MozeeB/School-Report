@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.TabLayoutAdapter;
-import com.mozeeb.schoolreport.tabDaftar.DaftarGuru;
-import com.mozeeb.schoolreport.tabDaftar.DaftarSiswa;
+import com.mozeeb.schoolreport.user.tabDaftar.guru.DaftarGuru;
+import com.mozeeb.schoolreport.user.tabDaftar.siswa.DaftarSiswa;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,9 +58,10 @@ public class UserDaftarFragment extends Fragment {
     }
     private void setupViewPager(ViewPager viewPager) {
         tabLayoutAdapter = new TabLayoutAdapter(getChildFragmentManager());
-        tabLayoutAdapter.addFragment(DaftarSiswa.newInstance(fragmentManager), "Guru");
-        tabLayoutAdapter.addFragment(DaftarGuru.newInstance(fragmentManager), "Siswa");
+        tabLayoutAdapter.addFragment(DaftarGuru.newInstance(fragmentManager), "Guru");
+        tabLayoutAdapter.addFragment(DaftarSiswa.newInstance(fragmentManager), "Siswa");
         viewPager.setAdapter(tabLayoutAdapter);
     }
+
 
 }

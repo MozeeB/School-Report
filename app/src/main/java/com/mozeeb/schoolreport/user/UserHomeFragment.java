@@ -20,6 +20,7 @@ import com.mozeeb.schoolreport.model.laporan.read.DataItemLapor;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
+import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,8 +93,6 @@ public class UserHomeFragment extends Fragment {
             public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
-                    Toasty.success(getActivity(), response.toString(), Toasty.LENGTH_LONG).show();
-
                     ResponseLaporan responseNews = response.body();
                     dataItemsLaporanLapor = responseNews.getData();
 //                    setUpList(dataItemsLaporanLapor);

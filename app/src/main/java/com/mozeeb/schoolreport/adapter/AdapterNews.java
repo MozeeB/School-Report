@@ -1,6 +1,7 @@
 package com.mozeeb.schoolreport.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.berita.read.DataItemBerita;
+import com.mozeeb.schoolreport.user.berita.UserDetailNewsActivity;
 
 import java.util.List;
 
@@ -36,13 +38,22 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         DataItemBerita dataItemBerita = dataItemsNewBeritas.get(i);
         Glide.with(context).load(dataItemBerita.getGambar()).into(myViewHolder.ivNews);
         myViewHolder.tvJudul.setText(dataItemBerita.getJudul());
         myViewHolder.tvTglTerbit.setText(dataItemBerita.getTglTerbit());
         myViewHolder.tvPenerbit.setText(dataItemBerita.getPenerbit());
 
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(context, UserDetailNewsActivity.class);
+                in.putExtra("img", dataItemsNewBeritas.get(i).getGambar());
+                in.putExtra("konten", dataItemsNewBeritas.get(i).getKonten());
+                context.startActivity(in);
+            }
+        });
 
     }
 

@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="309dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="0dp"
         android:fontFamily="@font/open_sans_light"
@@ -23,7 +23,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="254dp"
         android:layout_alignParentBottom="true"
         android:background="#508C46"
         android:id="@+id/backgroundhijau">
@@ -43,7 +43,7 @@
         android:id="@+id/relativelogin"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="200dp">
+        android:layout_marginBottom="155dp">
 
         <TextView
             android:layout_width="309dp"
@@ -140,7 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="60dp"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
         android:layout_marginTop="10dp">

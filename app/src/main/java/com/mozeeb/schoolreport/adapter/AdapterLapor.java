@@ -1,6 +1,7 @@
 package com.mozeeb.schoolreport.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.laporan.read.DataItemLapor;
+import com.mozeeb.schoolreport.user.laporan.UserDetailsLaporan;
 
 import java.util.List;
 
@@ -40,12 +42,27 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 
         Glide.with(context).load(dataLaporan.get(i).getFoto()).into(myViewHolder.ivLapor);
         myViewHolder.tvNamaSiswa.setText(dataLaporan.get(i).getNama());
         myViewHolder.tvKelas.setText(dataLaporan.get(i).getKelas());
         myViewHolder.tv_melanggar.setText(dataLaporan.get(i).getMelanggar());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lap = new Intent(context, UserDetailsLaporan.class);
+                lap.putExtra("nama", dataLaporan.get(i).getNama());
+                lap.putExtra("kelas", dataLaporan.get(i).getKelas());
+                lap.putExtra("melanggar", dataLaporan.get(i).getMelanggar());
+                lap.putExtra("tgl", dataLaporan.get(i).getTglLapor());
+                lap.putExtra("poin", dataLaporan.get(i).getPoin());
+                lap.putExtra("pelapor", dataLaporan.get(i).getPelapor());
+                lap.putExtra("wali", dataLaporan.get(i).getWali());
+                lap.putExtra("img" ,dataLaporan.get(i).getFoto());
+            }
+        });
     }
 
     @Override

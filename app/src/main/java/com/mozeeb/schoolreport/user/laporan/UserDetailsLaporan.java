@@ -12,4 +12,6 @@ public class UserDetailsLaporan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details_laporan);
     }
+
+
 }

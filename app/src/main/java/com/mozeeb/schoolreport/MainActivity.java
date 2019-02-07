@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.mozeeb.schoolreport.user.NewsFragment;
-import com.mozeeb.schoolreport.user.UserAgendaFragment;
+import com.mozeeb.schoolreport.user.kegiatan.UserAgendaFragment;
 import com.mozeeb.schoolreport.user.UserDaftarFragment;
 import com.mozeeb.schoolreport.user.UserHomeFragment;
 import com.mozeeb.schoolreport.user.UserRulesFragment;

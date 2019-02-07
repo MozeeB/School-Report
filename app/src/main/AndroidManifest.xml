@@ -5,7 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -16,7 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".user.tabDaftar.guru.InsertGuru"></activity>
+        <activity android:name=".user.kegiatan.DetailKegiatan"></activity>
+        <activity android:name=".user.tabDaftar.guru.DetailGuru" />
+        <activity android:name=".user.tabDaftar.siswa.DetailSiswa" />
+        <activity android:name=".user.tabDaftar.guru.InsertGuru" />
         <activity android:name=".user.berita.UserTambahBerita" />
         <activity android:name=".user.tabDaftar.siswa.InsertSiswa" />
         <activity android:name=".user.laporan.UserDetailsLaporan" />

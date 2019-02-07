@@ -1,6 +1,7 @@
 package com.mozeeb.schoolreport.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.kegiatan.read.DataItemKegiatan;
+import com.mozeeb.schoolreport.user.kegiatan.DetailKegiatan;
 
 import java.util.List;
 
@@ -36,13 +38,25 @@ public class AdapterKegiatan extends RecyclerView.Adapter<AdapterKegiatan.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 
 
         Glide.with(context).load(dataItemKegiatans.get(i).getFoto()).into(myViewHolder.ivKegiatan);
         myViewHolder.tvJudulKegiatan.setText(dataItemKegiatans.get(i).getNamaKegiatan());
         myViewHolder.tvJamKegiatan.setText(dataItemKegiatans.get(i).getJam());
         myViewHolder.tvLokasiKegiatan.setText(dataItemKegiatans.get(i).getLokasi());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent keg = new Intent(context, DetailKegiatan.class);
+                keg.putExtra("judul", dataItemKegiatans.get(i).getNamaKegiatan());
+                keg.putExtra("jam", dataItemKegiatans.get(i).getJam());
+                keg.putExtra("lokasi", dataItemKegiatans.get(i).getLokasi());
+                keg.putExtra("tujuan", dataItemKegiatans.get(i).getTujuan());
+                context.startActivity(keg);
+            }
+        });
 
     }
 

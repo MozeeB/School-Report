@@ -1,6 +1,7 @@
 package com.mozeeb.schoolreport.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.siswa.read.DataItemSiswa;
+import com.mozeeb.schoolreport.user.tabDaftar.siswa.DetailSiswa;
 
 import java.util.List;
 
@@ -40,11 +42,20 @@ public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 
         myViewHolder.tvDaftarnamaSiswa.setText(dataItemSiswas.get(i).getNama());
         myViewHolder.tvDaftarkelas.setText(dataItemSiswas.get(i).getKelas());
         myViewHolder.tvDaftaralamat.setText(dataItemSiswas.get(i).getAlamat());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sis = new Intent(context, DetailSiswa.class);
+                sis.putExtra("nama", dataItemSiswas.get(i).getNama());
+                context.startActivity(sis);
+            }
+        });
 
     }
 

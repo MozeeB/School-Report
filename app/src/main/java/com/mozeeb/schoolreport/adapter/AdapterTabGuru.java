@@ -1,6 +1,7 @@
 package com.mozeeb.schoolreport.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.guru.read.DataItemGuru;
+import com.mozeeb.schoolreport.user.tabDaftar.guru.DetailGuru;
 
 import java.util.List;
 
@@ -40,10 +42,21 @@ public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder,final int i) {
         myViewHolder.tvNamaGuru.setText(dataItemGurus.get(i).getNama());
         myViewHolder.tvNotelpGuru.setText(dataItemGurus.get(i).getNoTelp());
         myViewHolder.tvAlamatGuru.setText(dataItemGurus.get(i).getAlamat());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gur = new Intent(context, DetailGuru.class);
+                gur.putExtra("nama", dataItemGurus.get(i).getNama());
+                gur.putExtra("notelp", dataItemGurus.get(i).getNoTelp());
+                gur.putExtra("alamat", dataItemGurus.get(i).getAlamat());
+                context.startActivity(gur);
+            }
+        });
 
     }
 

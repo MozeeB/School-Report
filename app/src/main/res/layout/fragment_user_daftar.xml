@@ -17,10 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            app:tabBackground="@drawable/tab_custom_color"
-            app:tabTextColor="@color/satursky"
-            app:tabSelectedTextColor="@color/black"
-            app:layout_scrollFlags="scroll" />
+            android:background="#fff"
+            app:tabTextColor="#8B8B8B"
+            app:tabTextAppearance="@style/coba2"
+            app:tabSelectedTextColor="#000"
+            app:tabIndicatorColor="#BADC58"
+            app:layout_scrollFlags="scroll"
+            />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager

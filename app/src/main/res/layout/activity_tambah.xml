@@ -1,92 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:orientation="vertical"
     tools:context=".user.laporan.UserTambahActivity">
 
-
-    <EditText
-        android:id="@+id/edt_nama_pelanggar"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nama"
-        android:inputType="textPersonName" />
+        android:orientation="vertical"
+        android:layout_marginLeft="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginTop="31dp">
 
-    <Spinner
-        android:id="@+id/spinner_kelas_pelanggar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Laporan\nbaru"
+            android:textSize="24sp"
+            android:fontFamily="@font/open_sans_extrabold"
+            android:textColor="#6AB04C"
+            android:lineSpacingExtra="-10dp"
 
-    <EditText
-        android:id="@+id/edt_wali_murid_pelanggar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Wali Murid"
-        android:inputType="textPersonName" />
+            />
 
-    <EditText
-        android:id="@+id/edt_poin_pelanggar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Poin"
-        android:inputType="number" />
+        <EditText
+            android:id="@+id/edt_nama_pelanggar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="31dp"
+            android:hint="Nama pelanggar"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp"
+            android:inputType="textPersonName"/>
 
-    <Spinner
-        android:id="@+id/edt_jenis_pelanggarannya"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Jenis Pelanggaran" />
+        <Spinner
+            android:id="@+id/spinner_kelas_pelanggar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="Kelas pelanggar"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp" />
 
-    <EditText
-        android:id="@+id/edt_keterangan_pelanggar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Keterangan"
-        android:inputType="textLongMessage" />
+        <EditText
+            android:id="@+id/edt_wali_murid_pelanggar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="Wali murid"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp"
+            android:inputType="textPersonName"/>
 
-    <EditText
-        android:id="@+id/edt_tanggal_pelanggar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Tanggal"
-        android:inputType="date" />
+        <EditText
+            android:id="@+id/edt_poin_pelanggar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="Poin"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp"
+            android:inputType="number"/>
 
-    <EditText
-        android:id="@+id/edt_pelapor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Pelapor"
-        android:inputType="textPersonName" />
+        <Spinner
+            android:id="@+id/edt_jenis_pelanggarannya"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="jenis pelanggaran"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp"/>
 
-    <ImageView
-        android:id="@+id/iv_laporan_tambah"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[4]" />
+        <EditText
+            android:id="@+id/edt_keterangan_pelanggar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Keterangan"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textAlignment="viewStart"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:inputType="textLongMessage"/>
 
-    <Button
-        android:id="@+id/btn_pilih_foto_pelanggar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Choose Photo" />
+        <EditText
+            android:id="@+id/edt_tanggal_pelanggar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="Tanggal"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp"
+            android:inputType="date"/>
 
-    <Button
-        android:id="@+id/btn_kirim_lporan"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:background="@drawable/shape2"
-        android:text="Kirim"/>
+        <EditText
+            android:id="@+id/edt_pelapor"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="Pelapor"
+            android:textSize="14sp"
+            android:background="@drawable/kotakedittext_abumuda"
+            android:textColor="#000"
+            android:fontFamily="@font/open_sans_light"
+            android:paddingLeft="15dp"
+            android:inputType="textPersonName"/>
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_height="1dp"
+            android:background="#6AB04C"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="129dp"
+            android:layout_height="129dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="#F2F2F2"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/iv_laporan_tambah"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile"/>
+
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_pilih_foto_pelanggar"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/open_sans"
+            android:lineSpacingExtra="-4dp"
+            android:textAllCaps="false"
+            android:text="upload image"
+            android:background="@drawable/tombolhijaumuda"
+            android:textColor="#fff"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_height="1dp"
+            android:background="#6AB04C"/>
+
+        <Button
+
+            android:id="@+id/btn_kirim_lporan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/open_sans"
+            android:lineSpacingExtra="-4dp"
+            android:layout_marginBottom="48dp"
+            android:textAllCaps="false"
+            android:text="Kirim laporan"
+            android:background="@drawable/tombolhijaumuda"
+            android:textColor="#fff"/>
+
+
+
+    </LinearLayout>
+
+</ScrollView>

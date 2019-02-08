@@ -31,6 +31,17 @@ public class DataItemLapor {
 	@SerializedName("melanggar")
 	private String melanggar;
 
+	@SerializedName("keterangan")
+	private String keterangan;
+
+	public String getKeterangan() {
+		return keterangan;
+	}
+
+	public void setKeterangan(String keterangan) {
+		this.keterangan = keterangan;
+	}
+
 	public void setWali(String wali){
 		this.wali = wali;
 	}

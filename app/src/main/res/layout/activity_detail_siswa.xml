@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.tabDaftar.siswa.DetailSiswa">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/img_siswa_details"
+        android:layout_width="300dp"
+        android:layout_marginLeft="55dp"
+        android:layout_height="200dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
+
+    <RelativeLayout
+        android:layout_below="@+id/img_siswa_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_kelas_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="20dp"
+            android:text="X RPL A" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Kelas" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama " />
+
+        <TextView
+            android:id="@+id/tv_nama_siswa_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:text="Mujiburrohman" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Alamat" />
+
+        <TextView
+            android:id="@+id/tv_detail_alamat_siswa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="150dp"
+            android:text="Jepara" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Umur" />
+
+        <TextView
+            android:id="@+id/tv_details_umur_siswa"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:text="18" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Tanggal Lahir" />
+
+        <TextView
+            android:id="@+id/tv_tgl_lahirdetail_siswa"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:text="2000-11-05" />
+    </RelativeLayout>
+
+</RelativeLayout>

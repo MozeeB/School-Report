@@ -11,12 +11,15 @@ import com.mozeeb.schoolreport.model.register.ResponseRegister;
 import com.mozeeb.schoolreport.model.siswa.insert.ResponseDataSiswa;
 import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface ApiService {
 
@@ -26,16 +29,17 @@ public interface ApiService {
 
     //Insert siswa pelanggar
     @FormUrlEncoded
+    @Multipart
     @POST("api/register")
     Call<ResponseRegister> postRegister(@Field("nama") String nama,
-                                     @Field("username") String username,
-                                     @Field("no_telp") String no_telp,
-                                     @Field("alamat") String alamat,
-                                     @Field("email") String email,
-                                     @Field("jenis_kelamin") String jenis_kelamin,
-                                     @Field("password") String password,
-                                     @Field("foto") String foto,
-                                     @Field("level") String level);
+                                        @Field("username") String username,
+                                        @Field("no_telp") String no_telp,
+                                        @Field("alamat") String alamat,
+                                        @Field("email") String email,
+                                        @Field("jenis_kelamin") String jenis_kelamin,
+                                        @Field("password") String password,
+                                        @Part MultipartBody.Part foto,
+                                        @Field("level") String level);
     //getdata laporan
     @GET("api/get_laporan")
     Call<ResponseLaporan> getLaporan();

@@ -52,8 +52,11 @@ public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHo
             public void onClick(View v) {
                 Intent gur = new Intent(context, DetailGuru.class);
                 gur.putExtra("nama", dataItemGurus.get(i).getNama());
+                gur.putExtra("umur", dataItemGurus.get(i).getUmur());
+                gur.putExtra("tgl", dataItemGurus.get(i).getTglLahir());
                 gur.putExtra("notelp", dataItemGurus.get(i).getNoTelp());
                 gur.putExtra("alamat", dataItemGurus.get(i).getAlamat());
+                gur.putExtra("img", dataItemGurus.get(i).getFoto());
                 context.startActivity(gur);
             }
         });

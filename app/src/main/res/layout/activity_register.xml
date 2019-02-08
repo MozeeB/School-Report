@@ -42,15 +42,15 @@
             android:layout_marginRight="15dp">
 
             <EditText
-                android:id="@+id/edt_email_register"
+                android:id="@+id/edt_nama_register"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="29dp"
-                android:hint="Email"
+                android:layout_marginTop="16dp"
+                android:hint="Nama"
                 android:paddingLeft="10dp"
                 android:background="@drawable/kotakedittext"
                 android:fontFamily="@font/open_sans_light"
-                android:inputType="textWebEmailAddress"
+                android:inputType="textPersonName"
                 android:textSize="15sp"/>
 
             <EditText
@@ -66,16 +66,48 @@
                 android:textSize="15sp"/>
 
             <EditText
-                android:id="@+id/edt_nama_register"
+                android:id="@+id/edt_notelp_register"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="16dp"
-                android:hint="Nama"
+                android:hint="No telpon"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="15sp"
+                android:background="@drawable/kotakedittext" />
+
+            <EditText
+                android:id="@+id/edt_alamat_register"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:hint="Alamat"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="15sp"
+                android:background="@drawable/kotakedittext" />
+            <EditText
+                android:id="@+id/edt_email_register"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="29dp"
+                android:hint="Email"
                 android:paddingLeft="10dp"
                 android:background="@drawable/kotakedittext"
                 android:fontFamily="@font/open_sans_light"
-                android:inputType="textPersonName"
+                android:inputType="textWebEmailAddress"
                 android:textSize="15sp"/>
+            <Spinner
+                android:id="@+id/spinner_kelamin_register"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/kotakedittext">
+
+            </Spinner>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -129,38 +161,6 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/edt_alamat_register"
-                android:inputType="textPersonName"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:hint="Alamat"
-                android:paddingLeft="10dp"
-                android:fontFamily="@font/open_sans_light"
-                android:textSize="15sp"
-                android:background="@drawable/kotakedittext" />
-
-            <EditText
-                android:id="@+id/edt_notelp_register"
-                android:inputType="phone"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:hint="No telpon"
-                android:paddingLeft="10dp"
-                android:fontFamily="@font/open_sans_light"
-                android:textSize="15sp"
-                android:background="@drawable/kotakedittext" />
-
-            <Spinner
-                android:id="@+id/spinner_kelamin_register"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/kotakedittext">
-
-            </Spinner>
 
             <Spinner
                 android:id="@+id/spinner_level"
@@ -202,7 +202,7 @@
                     android:layout_width="163dp"
                     android:layout_height="163dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/profile" />
+                    android:background="@drawable/profile"/>
 
                 <Button
                     android:id="@+id/btn_upload"

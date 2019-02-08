@@ -2,9 +2,11 @@ package com.mozeeb.schoolreport.user;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +20,10 @@ import com.mozeeb.schoolreport.model.berita.read.DataItemBerita;
 import com.mozeeb.schoolreport.model.berita.read.ResponseBerita;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
+import com.mozeeb.schoolreport.user.berita.UserTambahBerita;
+import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,6 +66,15 @@ public class NewsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        dataItemsNewBeritas = new ArrayList<>();
+
+        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_berita);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity().getApplication(), UserTambahBerita.class));
+            }
+        });
 
 
     }

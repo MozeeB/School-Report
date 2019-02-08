@@ -22,6 +22,17 @@ public class DataItemSiswa {
 	@SerializedName("alamat")
 	private String alamat;
 
+	@SerializedName("foto")
+	private String foto;
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	public void setUmur(String umur){
 		this.umur = umur;
 	}

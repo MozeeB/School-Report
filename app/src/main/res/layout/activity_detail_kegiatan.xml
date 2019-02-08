@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.kegiatan.DetailKegiatan">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/img_kegiatan_detail"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="55dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[3]" />
+
+    <RelativeLayout
+        android:layout_below="@+id/img_kegiatan_detail"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Kegiatan" />
+
+        <TextView
+            android:id="@+id/tv_nama_kegiatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:text="Belajar Pemograman HTML" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Tujuan" />
+
+        <TextView
+            android:id="@+id/tv_tujuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="150dp"
+            android:text="Meningkatkan Skill Programming" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_height="wrap_content"
+            android:text="Jam" />
+
+        <TextView
+            android:id="@+id/tv_jam_kegiatan_detail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:text="9" />
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Tanggal" />
+
+        <TextView
+            android:id="@+id/tv_tanggal_kegiatan_detail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:text="2019-11-7" />
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_height="wrap_content"
+            android:text="Lokasi" />
+
+        <TextView
+            android:id="@+id/tv_lokasi_kegiatan_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="80dp"
+            android:text="Bogor" />
+    </RelativeLayout>
+
+</RelativeLayout>

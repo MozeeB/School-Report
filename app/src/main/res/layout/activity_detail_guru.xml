@@ -1,9 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.tabDaftar.guru.DetailGuru">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/img_detail_guru"
+        android:layout_width="300dp"
+        android:layout_marginLeft="55dp"
+        android:layout_height="200dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
+
+    <RelativeLayout
+        android:layout_below="@+id/img_detail_guru"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama" />
+
+        <TextView
+            android:id="@+id/tv_nama_guru_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:text="Pak mujib" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Umur" />
+
+        <TextView
+            android:id="@+id/tv_detail_umur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="150dp"
+            android:text="18" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Tanggal lahir" />
+
+        <TextView
+            android:id="@+id/tv_tgl_lahir_detail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:text="2000-11-05" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="No Telp" />
+
+        <TextView
+            android:id="@+id/tv_detail_notelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="150dp"
+            android:text="085225156657" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Alamat" />
+
+        <TextView
+            android:id="@+id/tv_detail_alamat"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:text="Jepara" />
+    </RelativeLayout>
+</RelativeLayout>

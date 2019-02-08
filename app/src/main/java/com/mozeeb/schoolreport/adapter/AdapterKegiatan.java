@@ -54,6 +54,8 @@ public class AdapterKegiatan extends RecyclerView.Adapter<AdapterKegiatan.MyView
                 keg.putExtra("jam", dataItemKegiatans.get(i).getJam());
                 keg.putExtra("lokasi", dataItemKegiatans.get(i).getLokasi());
                 keg.putExtra("tujuan", dataItemKegiatans.get(i).getTujuan());
+                keg.putExtra("tgl", dataItemKegiatans.get(i).getTgl());
+                keg.putExtra("img", dataItemKegiatans.get(i).getFoto());
                 context.startActivity(keg);
             }
         });

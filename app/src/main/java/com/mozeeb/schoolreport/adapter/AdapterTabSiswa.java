@@ -53,6 +53,11 @@ public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyView
             public void onClick(View v) {
                 Intent sis = new Intent(context, DetailSiswa.class);
                 sis.putExtra("nama", dataItemSiswas.get(i).getNama());
+                sis.putExtra("kelas", dataItemSiswas.get(i).getKelas());
+                sis.putExtra("alamat",dataItemSiswas.get(i).getAlamat());
+                sis.putExtra("umur", dataItemSiswas.get(i).getUmur());
+                sis.putExtra("tgl", dataItemSiswas.get(i).getTglLahir());
+                sis.putExtra("img", dataItemSiswas.get(i).getFoto());
                 context.startActivity(sis);
             }
         });

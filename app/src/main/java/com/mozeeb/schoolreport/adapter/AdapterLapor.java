@@ -56,15 +56,16 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
                 lap.putExtra("nama", dataLaporan.get(i).getNama());
                 lap.putExtra("kelas", dataLaporan.get(i).getKelas());
                 lap.putExtra("melanggar", dataLaporan.get(i).getMelanggar());
+                lap.putExtra("keterangan", dataLaporan.get(i).getKeterangan());
                 lap.putExtra("tgl", dataLaporan.get(i).getTglLapor());
                 lap.putExtra("poin", dataLaporan.get(i).getPoin());
                 lap.putExtra("pelapor", dataLaporan.get(i).getPelapor());
                 lap.putExtra("wali", dataLaporan.get(i).getWali());
                 lap.putExtra("img" ,dataLaporan.get(i).getFoto());
+                context.startActivity(lap);
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return dataLaporan.size();

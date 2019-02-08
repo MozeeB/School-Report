@@ -14,7 +14,7 @@ public class DataItemBerita {
 	private String tglTerbit;
 
 	@SerializedName("id")
-	private String id;
+	private int id;
 
 	@SerializedName("judul")
 	private String judul;
@@ -46,11 +46,11 @@ public class DataItemBerita {
 		return tglTerbit;
 	}
 
-	public void setId(String id){
+	public void setId(int id){
 		this.id = id;
 	}
 
-	public String getId(){
+	public int getId(){
 		return id;
 	}
 

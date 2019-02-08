@@ -14,7 +14,7 @@ public class DataItemSiswa {
 	private String kelas;
 
 	@SerializedName("id")
-	private String id;
+	private int id;
 
 	@SerializedName("tgl_lahir")
 	private String tglLahir;
@@ -57,11 +57,11 @@ public class DataItemSiswa {
 		return kelas;
 	}
 
-	public void setId(String id){
+	public void setId(int id){
 		this.id = id;
 	}
 
-	public String getId(){
+	public int getId(){
 		return id;
 	}
 

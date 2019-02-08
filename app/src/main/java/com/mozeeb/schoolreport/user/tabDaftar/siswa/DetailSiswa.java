@@ -7,9 +7,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
+import com.mozeeb.schoolreport.model.siswa.read.DataItemSiswa;
+import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
+import com.mozeeb.schoolreport.network.ConfigRetrofit;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailSiswa extends AppCompatActivity {
 
@@ -26,11 +34,16 @@ public class DetailSiswa extends AppCompatActivity {
     @BindView(R.id.tv_tgl_lahirdetail_siswa)
     TextView tvTglLahirdetailSiswa;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_siswa);
         ButterKnife.bind(this);
+
+
+
+
 
         Glide.with(this).load(getIntent().getIntExtra("img", 1)).into(imgSiswaDetails);
         tvNamaSiswaDetail.setText(getIntent().getStringExtra("nama"));
@@ -38,6 +51,6 @@ public class DetailSiswa extends AppCompatActivity {
         tvDetailAlamatSiswa.setText(getIntent().getStringExtra("alamat"));
         tvDetailsUmurSiswa.setText(getIntent().getStringExtra("umur"));
         tvTglLahirdetailSiswa.setText(getIntent().getStringExtra("tgl"));
-
     }
+
 }

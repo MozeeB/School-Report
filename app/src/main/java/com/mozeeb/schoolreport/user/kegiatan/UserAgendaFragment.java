@@ -2,7 +2,11 @@ package com.mozeeb.schoolreport.user.kegiatan;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +19,9 @@ import com.mozeeb.schoolreport.adapter.AdapterKegiatan;
 import com.mozeeb.schoolreport.model.kegiatan.read.DataItemKegiatan;
 import com.mozeeb.schoolreport.model.kegiatan.read.ResponseKegiatan;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
+import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -51,6 +57,21 @@ public class UserAgendaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_agenda, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        dataItemKegiatans = new ArrayList<>();
+
+        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_kegiatan);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity().getApplication(), UserTambahKegiatan.class));
+            }
+        });
     }
 
     public void getKeiatanData() {

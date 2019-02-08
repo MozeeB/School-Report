@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("School Report");
-        toolbar.setSubtitle("IDN Boarding School");
         toolbar.setLogo(R.drawable.ic_sign_out);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);

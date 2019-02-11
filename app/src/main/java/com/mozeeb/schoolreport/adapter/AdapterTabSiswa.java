@@ -85,8 +85,6 @@ public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_daftarsiswa)
         ImageView ivDaftarsiswa;
-        @BindView(R.id.lin_lapor)
-        LinearLayout linLapor;
         @BindView(R.id.tv_DaftarnamaSiswa)
         TextView tvDaftarnamaSiswa;
         @BindView(R.id.tv_daftarkelas)

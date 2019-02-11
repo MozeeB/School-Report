@@ -21,7 +21,7 @@
             app:tabTextColor="#8B8B8B"
             app:tabTextAppearance="@style/coba2"
             app:tabSelectedTextColor="#000"
-            app:tabIndicatorColor="#BADC58"
+            app:tabIndicatorColor="#6DB34E"
             app:layout_scrollFlags="scroll"
             />
     </android.support.design.widget.AppBarLayout>

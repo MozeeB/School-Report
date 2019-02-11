@@ -75,8 +75,6 @@ public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_daftarguru)
         ImageView ivDaftarguru;
-        @BindView(R.id.lin_lapor)
-        LinearLayout linLapor;
         @BindView(R.id.tv_nama_guru)
         TextView tvNamaGuru;
         @BindView(R.id.tv_notelp_guru)

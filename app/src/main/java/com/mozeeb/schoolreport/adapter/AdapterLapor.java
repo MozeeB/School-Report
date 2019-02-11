@@ -78,7 +78,7 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_lapor)
         ImageView ivLapor;
-        @BindView(R.id.tv_namaSiswa)
+        @BindView(R.id.tv_nama_Siswa)
         TextView tvNamaSiswa;
         @BindView(R.id.tv_kelas)
         TextView tvKelas;

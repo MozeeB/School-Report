@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
-        android:layout_marginTop="19dp">
+        android:layout_marginTop="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,22 +24,29 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20sp">
 
-                <ImageView
-                    android:id="@+id/iv_lapor"
+                <android.support.v7.widget.CardView
                     android:layout_width="78dp"
                     android:layout_height="78dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/profile"/>
+                    app:cardCornerRadius="5dp">
+
+                    <ImageView
+                        android:id="@+id/iv_lapor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/profile"/>
+
+                </android.support.v7.widget.CardView>
+
+
 
                 <TextView
-                    android:id="@+id/tv_namaSiswa"
+                    android:id="@+id/tv_nama_Siswa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fulan si pelaku"
-                    android:layout_toRightOf="@+id/iv_lapor"
                     android:textSize="18sp"
                     android:fontFamily="@font/open_sans_light"
-                    android:layout_marginLeft="16dp"/>
+                    android:layout_marginLeft="95dp"/>
 
                 <TextView
                     android:id="@+id/tv_kelas"
@@ -47,9 +54,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-3dp"
                     android:textAllCaps="true"
-                    android:layout_below="@+id/tv_namaSiswa"
-                    android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@+id/iv_lapor"
+                    android:layout_below="@+id/tv_nama_Siswa"
+                    android:layout_marginLeft="95dp"
                     android:fontFamily="@font/open_sans"
                     android:text="KELAS 12 A"
                     android:textSize="13sp" />
@@ -58,12 +64,12 @@
                     android:id="@+id/tv_melanggar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Berat"
+                    android:text="Mencontek"
                     android:fontFamily="@font/open_sans_light"
                     android:textColor="#FF7979"
                     android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
                     android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@id/btn_overFlof"
                     android:textSize="18sp"/>
 
                 <ImageButton
@@ -72,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_more_vert_black_24dp"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"/>
+                    android:layout_alignParentBottom="false"/>
 
             </RelativeLayout>
 

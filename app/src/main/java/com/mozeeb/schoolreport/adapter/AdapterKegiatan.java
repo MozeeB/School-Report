@@ -72,12 +72,8 @@ public class AdapterKegiatan extends RecyclerView.Adapter<AdapterKegiatan.MyView
         ImageView ivKegiatan;
         @BindView(R.id.tv_judul_kegiatan)
         TextView tvJudulKegiatan;
-        @BindView(R.id.textview)
-        TextView textview;
         @BindView(R.id.tv_jam_kegiatan)
         TextView tvJamKegiatan;
-        @BindView(R.id.textView8)
-        TextView textView8;
         @BindView(R.id.tv_lokasi_kegiatan)
         TextView tvLokasiKegiatan;
 

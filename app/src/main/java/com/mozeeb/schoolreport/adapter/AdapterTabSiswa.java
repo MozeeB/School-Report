@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.siswa.read.DataItemSiswa;
 import com.mozeeb.schoolreport.user.tabDaftar.siswa.DetailSiswa;
@@ -46,11 +48,14 @@ public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 
-        final DataItemSiswa dataItemSiswa = dataItemSiswas.get(i);
+        DataItemSiswa dataItemSiswa = dataItemSiswas.get(i);
 
         myViewHolder.tvDaftarnamaSiswa.setText(dataItemSiswa.getNama());
         myViewHolder.tvDaftarkelas.setText(dataItemSiswa.getKelas());
         myViewHolder.tvDaftaralamat.setText(dataItemSiswa.getAlamat());
+        Glide.with(context).load(dataItemSiswa.getFoto()).into(myViewHolder.ivDaftarsiswa);
+
+        Log.e("foto", dataItemSiswa.getFoto());
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

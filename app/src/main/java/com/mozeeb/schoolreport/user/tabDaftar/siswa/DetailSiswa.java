@@ -2,6 +2,7 @@ package com.mozeeb.schoolreport.user.tabDaftar.siswa;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,11 +42,11 @@ public class DetailSiswa extends AppCompatActivity {
         setContentView(R.layout.activity_detail_siswa);
         ButterKnife.bind(this);
 
+        Log.e("img", getIntent().getStringExtra("img"));
 
 
 
-
-        Glide.with(this).load(getIntent().getIntExtra("img", 1)).into(imgSiswaDetails);
+        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgSiswaDetails);
         tvNamaSiswaDetail.setText(getIntent().getStringExtra("nama"));
         tvKelasDetails.setText(getIntent().getStringExtra("kelas"));
         tvDetailAlamatSiswa.setText(getIntent().getStringExtra("alamat"));

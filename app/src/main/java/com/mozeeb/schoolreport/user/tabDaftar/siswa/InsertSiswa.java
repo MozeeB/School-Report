@@ -22,7 +22,7 @@ public class InsertSiswa extends AppCompatActivity {
 
     @BindView(R.id.edt_nama_siswa)
     EditText edtNamaSiswa;
-    @BindView(R.id.edt_kelas_siswa)
+    @BindView(R.id._kelas_siswa)
     EditText edtKelasSiswa;
     @BindView(R.id.edt_alamat_siswa)
     EditText edtAlamatSiswa;

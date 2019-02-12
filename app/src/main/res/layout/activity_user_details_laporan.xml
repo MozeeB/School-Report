@@ -54,7 +54,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#000"/>
+            android:background="#EEEEEE"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -147,7 +147,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#000"/>
+            android:background="#EEEEEE"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -190,7 +190,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="#000"/>
+            android:background="#EEEEEE"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

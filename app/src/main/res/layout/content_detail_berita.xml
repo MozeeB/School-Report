@@ -1,18 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".user.berita.UserDetailNewsActivity"
-    tools:showIn="@layout/activity_detail_berita">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/konten_berita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
 
-</android.support.v4.widget.NestedScrollView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="0dp">
+
+            <ImageView
+                android:id="@+id/img_lapor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/testimage"/>
+
+        </android.support.v7.widget.CardView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:background="#6AB04C"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keseharian di Idn"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="28sp"
+            android:layout_marginTop="22dp"
+            android:textColor="#000"/>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal :"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/tv_wali_lapor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/open_sans_light"
+                android:text="2019-12-03"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:textColor="#8B8B8B"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dari :"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/tv_poin_lapor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/open_sans_light"
+                android:text="Ustadz Fulan"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:textColor="#8B8B8B"/>
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#EEEEEE"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="0dp">
+
+            <TextView
+                android:id="@+id/konten_berita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:text="Hari yang indah diawali dengan bangun subuh dilanjut tilawah sampai syuruq.. begitulah kegitan di smk idn
+anak anak idn belajar ilmu IT komputer pemograman atau jaringan namun juga mempelajari agama.. jago it pinter ngaji adalah slogan dari idn.."/>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#EEEEEE"/>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

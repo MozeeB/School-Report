@@ -6,10 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".user.UserProfilActivity">
 
-    <TextView
-        android:id="@+id/textView20"
+
+    <ImageView
+        android:id="@+id/img_profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="100dp"
-        android:text="Welcome to Profil" />
+        android:layout_marginLeft="135dp"
+        tools:srcCompat="@tools:sample/avatars[2]" />
+
+    <LinearLayout
+        android:layout_below="@+id/img_profil"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_nama_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mujiburrohman" />
+
+        <TextView
+            android:id="@+id/tv_username_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MozeeB" />
+
+        <TextView
+            android:id="@+id/tv_notelp_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="085225156657" />
+
+        <TextView
+            android:id="@+id/tv_alamat_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jepara" />
+
+        <TextView
+            android:id="@+id/tv_email_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mujiburr741@gmail.com" />
+
+        <TextView
+            android:id="@+id/tv_kelamin_profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laki - Laki" />
+    </LinearLayout>
 </RelativeLayout>

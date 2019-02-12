@@ -11,9 +11,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterLapor;
@@ -46,16 +49,11 @@ public class UserHomeFragment extends Fragment {
     Unbinder unbinder;
     ApiService apiService;
 
-    FrameLayout rootlayout;
-
-    int _xDelta;
-    int _yDelta;
     @BindView(R.id.fabMain)
     MovableFloatingActionButton fabMain;
     @BindView(R.id.rootlyout)
     FrameLayout rootlyout;
 
-    private AdapterLapor adapterLaporan;
     private AdapterLapor adapter;
 
     private List<DataItemLapor> dataItemsLaporanLapor;
@@ -63,8 +61,6 @@ public class UserHomeFragment extends Fragment {
     public UserHomeFragment() {
         // Required empty public constructor
     }
-
-    String[] nama = {"juminten", "naryo"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,6 +71,8 @@ public class UserHomeFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         return view;
+
+
     }
 
     @Override
@@ -128,12 +126,13 @@ public class UserHomeFragment extends Fragment {
     }
 
 
-    private void setUpList(List<DataItemLapor> dataItemsLaporanLapor) {
-        rvMain.setHasFixedSize(true);
-        rvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapterLaporan = new AdapterLapor(dataItemsLaporanLapor, getActivity());
-        rvMain.setAdapter(adapterLaporan);
-    }
+
+//    private void setUpList(List<DataItemLapor> dataItemsLaporanLapor) {
+//        rvMain.setHasFixedSize(true);
+//        rvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        adapterLaporan = new AdapterLapor(dataItemsLaporanLapor, getActivity());
+//        rvMain.setAdapter(adapterLaporan);
+//    }
 
     @Override
     public void onResume() {

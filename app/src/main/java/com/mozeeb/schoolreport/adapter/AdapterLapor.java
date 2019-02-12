@@ -73,6 +73,7 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
 
     @OnClick(R.id.btn_overFlof)
     public void onViewClicked() {
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

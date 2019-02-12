@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="@dimen/padd_10"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+
+        <TextView
+            android:id="@+id/tv_nama_peraturan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:text="Peraturan Di Musholla" />
+
+        <TextView
+            android:id="@+id/tv_penulis_peraturan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:text="Mujiburrohman" />
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -4,6 +4,7 @@ import com.mozeeb.schoolreport.model.berita.read.ResponseBerita;
 import com.mozeeb.schoolreport.model.guru.insert.ResponseGuru;
 import com.mozeeb.schoolreport.model.guru.read.ResponseDaftarGuru;
 import com.mozeeb.schoolreport.model.kegiatan.read.ResponseKegiatan;
+import com.mozeeb.schoolreport.model.laporan.delete.ResponseLapor;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.model.login.Data;
 import com.mozeeb.schoolreport.model.login.ResponseLogin;
@@ -14,6 +15,7 @@ import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -53,6 +55,8 @@ public interface ApiService {
                                       @Field("melanggar") String melanggar,
                                       @Field("tgl_lapor") String tgl_laporan,
                                       @Field("foto") String foto);
+    @DELETE("api/hapus_laporan")
+    Call<ResponseLapor> delLapo(@Field("id") Integer id);
 
     //getData berita
     @GET("api/get_berita")

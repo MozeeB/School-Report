@@ -12,7 +12,8 @@
         android:id="@+id/logout"
         android:orderInCategory="100"
         android:title="Log Out"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_sign_out_white"
+        app:showAsAction="always" />
 
 
 </menu>

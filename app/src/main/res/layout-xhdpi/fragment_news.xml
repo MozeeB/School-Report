@@ -5,12 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.mozeeb.schoolreport.user.NewsFragment">
 
-    <android.support.design.widget.FloatingActionButton
+    <com.mozeeb.schoolreport.helper.MovableFloatingActionButton
         android:id="@+id/fabMain_tambah_berita"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="340dp"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="340dp"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="true"
         android:backgroundTint="@color/colorPrimaryDark"

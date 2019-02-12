@@ -13,9 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterLapor;
+import com.mozeeb.schoolreport.helper.MovableFloatingActionButton;
 import com.mozeeb.schoolreport.model.laporan.read.DataItemLapor;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.network.ApiService;
@@ -25,6 +27,7 @@ import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import es.dmoral.toasty.Toasty;
@@ -38,10 +41,19 @@ import retrofit2.Response;
  */
 public class UserHomeFragment extends Fragment {
 
-//    @BindView(R.id.rv_main)
+    //    @BindView(R.id.rv_main)
     RecyclerView rvMain;
     Unbinder unbinder;
     ApiService apiService;
+
+    FrameLayout rootlayout;
+
+    int _xDelta;
+    int _yDelta;
+    @BindView(R.id.fabMain)
+    MovableFloatingActionButton fabMain;
+    @BindView(R.id.rootlyout)
+    FrameLayout rootlyout;
 
     private AdapterLapor adapterLaporan;
     private AdapterLapor adapter;
@@ -59,8 +71,9 @@ public class UserHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        rvMain  = view.findViewById(R.id.rv_main);
+        rvMain = view.findViewById(R.id.rv_main);
         unbinder = ButterKnife.bind(this, view);
+
         return view;
     }
 
@@ -77,6 +90,7 @@ public class UserHomeFragment extends Fragment {
                 startActivity(new Intent(getActivity().getApplication(), UserTambahActivity.class));
             }
         });
+
     }
 
 

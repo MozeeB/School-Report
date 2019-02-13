@@ -32,7 +32,7 @@ public class DetailKegiatan extends AppCompatActivity {
         setContentView(R.layout.activity_detail_kegiatan);
         ButterKnife.bind(this);
 
-        Glide.with(this).load(getIntent().getIntExtra("img",1)).into(imgKegiatanDetail);
+        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgKegiatanDetail);
         tvNamaKegiatan.setText(getIntent().getStringExtra("judul"));
         tvTujuan.setText(getIntent().getStringExtra("tujuan"));
         tvJamKegiatanDetail.setText(getIntent().getStringExtra("jam"));

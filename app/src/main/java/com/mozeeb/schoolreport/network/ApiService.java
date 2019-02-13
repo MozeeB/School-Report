@@ -8,6 +8,7 @@ import com.mozeeb.schoolreport.model.laporan.delete.ResponseLapor;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.model.login.Data;
 import com.mozeeb.schoolreport.model.login.ResponseLogin;
+import com.mozeeb.schoolreport.model.peraturan.read.ResponsePeraturan;
 import com.mozeeb.schoolreport.model.register.ResponseRegister;
 import com.mozeeb.schoolreport.model.siswa.insert.ResponseDataSiswa;
 import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
@@ -91,4 +92,8 @@ public interface ApiService {
                                       @Field("no_telp") String no_telp,
                                       @Field("alamat") String alamat,
                                       @Field("foto") String foto);
+    //getPeraturan
+    @GET("api/get_peraturan")
+    Call<ResponsePeraturan> getPeraturan();
 }
+

@@ -8,15 +8,17 @@
     <com.mozeeb.schoolreport.helper.MovableFloatingActionButton
         android:id="@+id/fabMain_tambah_berita"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="335dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
-        android:layout_marginLeft="340dp"
-        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="450dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:backgroundTint="@color/colorPrimaryDark"
         app:srcCompat="@drawable/ic_add_black_24dp"
         android:tint="@android:color/white"
         app:useCompatPadding="true" />
+
 
     <ScrollView
         android:layout_width="match_parent"

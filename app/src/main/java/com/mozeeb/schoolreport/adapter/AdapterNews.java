@@ -51,6 +51,8 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.MyViewHolder> 
                 Intent in = new Intent(context, UserDetailNewsActivity.class);
                 in.putExtra("img", dataItemsNewBeritas.get(i).getGambar());
                 in.putExtra("konten", dataItemsNewBeritas.get(i).getKonten());
+                in.putExtra("tgl", dataItemsNewBeritas.get(i).getTglTerbit());
+                in.putExtra("penerbit",dataItemsNewBeritas.get(i).getPenerbit());
                 context.startActivity(in);
             }
         });

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.guru.read.DataItemGuru;
 import com.mozeeb.schoolreport.user.tabDaftar.guru.DetailGuru;
@@ -43,6 +44,7 @@ public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder,final int i) {
+        Glide.with(context).load(dataItemGurus.get(i).getFoto()).into(myViewHolder.ivDaftarguru);
         myViewHolder.tvNamaGuru.setText(dataItemGurus.get(i).getNama());
         myViewHolder.tvNotelpGuru.setText(dataItemGurus.get(i).getNoTelp());
         myViewHolder.tvAlamatGuru.setText(dataItemGurus.get(i).getAlamat());

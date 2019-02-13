@@ -18,7 +18,7 @@ import com.mozeeb.schoolreport.user.UserProfilActivity;
 import com.mozeeb.schoolreport.user.kegiatan.UserAgendaFragment;
 import com.mozeeb.schoolreport.user.UserDaftarFragment;
 import com.mozeeb.schoolreport.user.UserHomeFragment;
-import com.mozeeb.schoolreport.user.UserRulesFragment;
+import com.mozeeb.schoolreport.user.peraturan.UserRulesFragment;
 
 public class MainActivity extends AppCompatActivity {
 

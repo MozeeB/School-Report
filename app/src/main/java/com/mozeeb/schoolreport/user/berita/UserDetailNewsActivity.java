@@ -1,11 +1,8 @@
 package com.mozeeb.schoolreport.user.berita;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +18,12 @@ public class UserDetailNewsActivity extends AppCompatActivity {
     ImageView ivDetailsBerita;
     @BindView(R.id.konten_berita)
     TextView kontenBerita;
+    @BindView(R.id.tgl_detailberita)
+    TextView tglDetailberita;
+    @BindView(R.id.tv_detailberita_penertbit)
+    TextView tvDetailberitaPenertbit;
+    @BindView(R.id.img_detailberita)
+    ImageView imgDetailberita;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +34,11 @@ public class UserDetailNewsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        Glide.with(this).load(getIntent().getIntExtra("img", 1)).into(ivDetailsBerita);
+        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgDetailberita);
         kontenBerita.setText(getIntent().getStringExtra("konten"));
+        tglDetailberita.setText(getIntent().getStringExtra("tgl"));
+        tvDetailberitaPenertbit.setText(getIntent().getStringExtra("penerbit"));
     }
-
 
 
 }

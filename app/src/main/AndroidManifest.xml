@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".user.UserProfilActivity"></activity>
+        <activity android:name=".user.peraturan.DetailPeraturan"></activity>
+        <activity android:name=".user.UserProfilActivity" />
         <activity android:name=".user.kegiatan.UserTambahKegiatan" />
         <activity android:name=".user.kegiatan.DetailKegiatan" />
         <activity android:name=".user.tabDaftar.guru.DetailGuru" />

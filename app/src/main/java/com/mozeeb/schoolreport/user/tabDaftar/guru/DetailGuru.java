@@ -32,7 +32,7 @@ public class DetailGuru extends AppCompatActivity {
         setContentView(R.layout.activity_detail_guru);
         ButterKnife.bind(this);
 
-        Glide.with(this).load(getIntent().getIntExtra("img", 1)).into(imgDetailGuru);
+        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgDetailGuru);
         tvNamaGuruDetail.setText(getIntent().getStringExtra("nama"));
         tvDetailUmur.setText(getIntent().getStringExtra("umur"));
         tvTglLahirDetail.setText(getIntent().getStringExtra("tgl"));

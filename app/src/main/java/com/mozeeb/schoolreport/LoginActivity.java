@@ -95,9 +95,9 @@ public class LoginActivity extends AppCompatActivity {
                     //menampilkan response api berupa pesan ke dalam toast
                     Toasty.success(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
                     dataUser=response.body().getData();
-                    SPereference sPereference = new SPereference(LoginActivity.this);
-                    sPereference.saveSPString("spUser", dataUser.getUsername());
-                    sPereference.saveSPString("spPass", dataUser.getPassword());
+//                    SPereference sPereference = new SPereference(LoginActivity.this);
+//                    sPereference.saveSPString("spUser", dataUser.getUsername());
+//                    sPereference.saveSPString("spPass", dataUser.getPassword());
                     //berpindah halaman ke mainactivity
                     startActivity(new Intent(LoginActivity.this, Splashscreen.class));
                     finish();

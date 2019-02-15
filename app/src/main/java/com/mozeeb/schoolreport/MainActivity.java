@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.mozeeb.schoolreport.user.NewsFragment;
+import com.mozeeb.schoolreport.user.UserAboutActivity;
 import com.mozeeb.schoolreport.user.UserProfilActivity;
 import com.mozeeb.schoolreport.user.kegiatan.UserAgendaFragment;
 import com.mozeeb.schoolreport.user.UserDaftarFragment;
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
             break;
+            case R.id.about:
+                startActivity(new Intent(this, UserAboutActivity.class));
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -86,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
             FragmentManager mFragmentManager = getSupportFragmentManager();
             FragmentTransaction mFragmentTransaction = mFragmentManager.beginTransaction();
             mFragmentTransaction.replace(R.id.fragment_container, selectedFragment).commit();
-
             return true;
         }
     };

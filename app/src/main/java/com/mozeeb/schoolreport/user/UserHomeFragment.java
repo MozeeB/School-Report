@@ -2,6 +2,8 @@ package com.mozeeb.schoolreport.user;
 
 
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,13 +12,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterLapor;
@@ -37,6 +39,7 @@ import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 
 /**
@@ -126,8 +129,7 @@ public class UserHomeFragment extends Fragment {
     }
 
 
-
-//    private void setUpList(List<DataItemLapor> dataItemsLaporanLapor) {
+    //    private void setUpList(List<DataItemLapor> dataItemsLaporanLapor) {
 //        rvMain.setHasFixedSize(true);
 //        rvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        adapterLaporan = new AdapterLapor(dataItemsLaporanLapor, getActivity());

@@ -58,12 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        sharedPrefManager = new SPereference(this);
-        if (sharedPrefManager.getSpSudahLogin()){
-            startActivity(new Intent(LoginActivity.this, Splashscreen.class)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-            finish();
-        }
+
     }
 
     @OnClick({R.id.btn_login, R.id.tv_register})

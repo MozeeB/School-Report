@@ -171,10 +171,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_GALLERY) {
-
-                Uri selectedImageURI = data.getData();
+                Uri dataimage = data.getData();
                 String[] imageprojection = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(selectedImageURI, imageprojection, null, null, null);
+                Cursor cursor = getContentResolver().query(dataimage, imageprojection, null, null, null);
+
                 if (cursor != null) {
                     cursor.moveToFirst();
                     int indexImage = cursor.getColumnIndex(imageprojection[0]);
@@ -183,15 +183,40 @@ public class RegisterActivity extends AppCompatActivity {
                     if (part_image != null) {
                         File image = new File(part_image);
                         imgfotoprofile.setImageBitmap(BitmapFactory.decodeFile(image.getAbsolutePath()));
-                        Picasso.with(RegisterActivity.this).load(selectedImageURI).noPlaceholder().centerCrop().fit()
-                                .into((ImageView) findViewById(R.id.imgfotoprofile));
-                    } else {
-                        Log.d("img", "gambar tidak ada");
+                        getMimeTypeFromUri(this, dataimage);
+                        try {
+                            convertFileToContentUri(this, image);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
-
         }
+
+//        if (resultCode == RESULT_OK) {
+//            if (requestCode == REQUEST_GALLERY) {
+//
+//                Uri selectedImageURI = data.getData();
+//                String[] imageprojection = {MediaStore.Images.Media.DATA};
+//                Cursor cursor = getContentResolver().query(selectedImageURI, imageprojection, null, null, null);
+//                if (cursor != null) {
+//                    cursor.moveToFirst();
+//                    int indexImage = cursor.getColumnIndex(imageprojection[0]);
+//                    part_image = cursor.getString(indexImage);
+//
+//                    if (part_image != null) {
+//                        File image = new File(part_image);
+//                        imgfotoprofile.setImageBitmap(BitmapFactory.decodeFile(image.getAbsolutePath()));
+//                        Picasso.with(RegisterActivity.this).load(selectedImageURI).noPlaceholder().centerCrop().fit()
+//                                .into((ImageView) findViewById(R.id.imgfotoprofile));
+//                    } else {
+//                        Log.d("img", "gambar tidak ada");
+//                    }
+//                }
+//            }
+//
+//        }
     }
 
     ///----------------//////----------////
@@ -264,9 +289,9 @@ public class RegisterActivity extends AppCompatActivity {
 //            pictures.mkdir();
 //        }
 //    }
-    //
-
-
+//
+//
+//
 //    public static File compressFoto(Context context, File actualImage) {
 //        final String path = imagesPath;
 //

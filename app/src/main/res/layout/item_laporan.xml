@@ -73,14 +73,6 @@
                     android:layout_marginRight="5dp"
                     android:textSize="18sp"/>
 
-                <ImageButton
-                    android:id="@+id/btn_overFlof"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_more_vert_black_24dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="false"/>
-
             </RelativeLayout>
 
 

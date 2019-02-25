@@ -1,61 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.UserProfilActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <ImageView
-        android:id="@+id/img_profil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        tools:srcCompat="@tools:sample/avatars[2]" />
-
-    <LinearLayout
-        android:layout_below="@+id/img_profil"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="match_parent"
+        android:layout_height="match_parent">
 
-        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="199dp"
+            android:layout_marginTop="80dp"
+            android:background="#6AB04C"/>
 
-        <TextView
-            android:id="@+id/tv_nama_profil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mujiburrohman" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_username_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MozeeB" />
+            <android.support.v7.widget.CardView
+                android:layout_width="290dp"
+                android:layout_height="290dp"
+                app:cardCornerRadius="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="43dp">
 
-        <TextView
-            android:id="@+id/tv_notelp_profil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="085225156657" />
+                <ImageView
+                    android:id="@+id/img_profil"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/testimage"
+                    android:scaleType="centerCrop"/>
 
-        <TextView
-            android:id="@+id/tv_alamat_profil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jepara" />
+            </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/tv_email_profil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mujiburr741@gmail.com" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_kelamin_profil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Laki - Laki" />
-    </LinearLayout>
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/tv_nama_profil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:text="Fulan bin fulan"
+                    android:textSize="28sp"
+                    android:textColor="#000"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#6AB04C"/>
+
+                <TextView
+                    android:id="@+id/tv_username_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="fulann"
+                    android:fontFamily="@font/open_sans_light"
+                    android:textSize="24sp"
+                    android:layout_marginTop="2dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/place"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/shapetumpul_profile"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_alamat_profil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cimanggis, Depok, Jawa barat"
+                            android:layout_marginLeft="25dp"
+                            android:layout_centerInParent="false"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/open_sans_light"
+                            android:textSize="20sp"
+                            android:textColor="#616161"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/email"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/shapetumpul_profile"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_email_profil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="fulankeren123@fulan.com"
+                            android:layout_marginLeft="25dp"
+                            android:layout_centerInParent="false"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/open_sans_light"
+                            android:textSize="20sp"
+                            android:textColor="#616161"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:id="@+id/pengenal1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/phone"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/shapetumpul_profile"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_notelp_profil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="08124294924999"
+                            android:layout_marginLeft="25dp"
+                            android:layout_centerInParent="false"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/open_sans_light"
+                            android:textSize="20sp"
+                            android:textColor="#616161"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/gender"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/shapetumpul_profile"
+
+                        >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_kelamin_profil"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Laki Laki"
+                            android:layout_marginLeft="25dp"
+                            android:layout_centerInParent="false"
+                            android:layout_marginRight="20dp"
+                            android:fontFamily="@font/open_sans_light"
+                            android:textSize="20sp"
+                            android:textColor="#616161"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#F2F2F2"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

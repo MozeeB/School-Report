@@ -25,8 +25,7 @@ import butterknife.OnClick;
 public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder> {
 
 
-    @BindView(R.id.btn_overFlof)
-    ImageButton btnOverFlof;
+
     private List<DataItemLapor> dataLaporan;
     private Context context;
 
@@ -71,10 +70,6 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
         return dataLaporan.size();
     }
 
-    @OnClick(R.id.btn_overFlof)
-    public void onViewClicked() {
-
-    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_lapor)

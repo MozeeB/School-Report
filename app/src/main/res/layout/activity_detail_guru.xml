@@ -1,95 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     tools:context=".user.tabDaftar.guru.DetailGuru">
 
-    <ImageView
-        android:id="@+id/img_detail_guru"
-        android:layout_width="300dp"
-        android:layout_marginLeft="55dp"
-        android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
-
-    <RelativeLayout
-        android:layout_below="@+id/img_detail_guru"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="360dp"
+            android:layout_height="360dp"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp">
+
+            <ImageView
+                android:id="@+id/img_detail_guru"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C4C4C4" />
+
+        </android.support.v7.widget.CardView>
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:background="#6AB04C"
+            android:layout_gravity="center_horizontal"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F6F6F6"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/tv_nama_guru_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ust Fulan.Lc"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="-5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/open_sans"
+                android:layout_centerVertical="true"
+                android:textSize="28sp"
+                android:textColor="#508C46"/>
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="36dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telp :"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/tv_detail_notelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/open_sans_light"
+                android:text="0123232131241"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:textColor="#ADADAD"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Umur :"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/tv_detail_umur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/open_sans_light"
+                android:text="55"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:textColor="#ADADAD"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Lahir :"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/tv_tgl_lahir_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:fontFamily="@font/open_sans_light"
+                android:text="1939-01-12"
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
+                android:textColor="#ADADAD"/>
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="20dp"
+            android:background="#EEEEEE"/>
 
         <TextView
-            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama" />
+            android:text="Alamat :"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="18sp"
+            android:layout_marginLeft="40dp"
+            android:textColor="#000"
+            />
 
-        <TextView
-            android:id="@+id/tv_nama_guru_detail"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:text="Pak mujib" />
+            android:background="@drawable/shapetumpulabuabu"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Umur" />
+            <TextView
+                android:id="@+id/tv_detail_alamat"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/open_sans_light"
+                android:textSize="14sp"
+                android:text="Sukamakmur, Jonggol, Bogor, JawaBarat"/>
 
-        <TextView
-            android:id="@+id/tv_detail_umur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="150dp"
-            android:text="18" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Tanggal lahir" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_tgl_lahir_detail"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="150dp"
-            android:layout_height="wrap_content"
-            android:text="2000-11-05" />
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="No Telp" />
 
-        <TextView
-            android:id="@+id/tv_detail_notelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="150dp"
-            android:text="085225156657" />
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="Alamat" />
 
-        <TextView
-            android:id="@+id/tv_detail_alamat"
-            android:layout_width="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginLeft="150dp"
-            android:layout_height="wrap_content"
-            android:text="Jepara" />
-    </RelativeLayout>
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

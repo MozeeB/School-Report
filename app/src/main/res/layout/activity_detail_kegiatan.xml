@@ -26,11 +26,6 @@
 
         </android.support.v7.widget.CardView>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="12dp"
-            android:background="#6AB04C"/>
-
         <TextView
             android:id="@+id/tv_nama_kegiatan"
             android:layout_width="match_parent"

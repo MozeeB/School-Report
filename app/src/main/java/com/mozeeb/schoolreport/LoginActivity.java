@@ -100,9 +100,6 @@ public class LoginActivity extends AppCompatActivity {
                     //menampilkan response api berupa pesan ke dalam toast
                     Toasty.success(LoginActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
                 }
-
-                //menampil respon message
-                Toasty.success(LoginActivity.this, "Gagal Login", Toast.LENGTH_SHORT).show();
             }
 
             @Override

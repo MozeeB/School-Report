@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ConfigRetrofit {
 
         private static Retrofit retrofit = null;
-        private static final String BASE_URL = "http://192.168.100.225/server_sekolah/index.php/";
+        private static final String BASE_URL = "http://192.168.100.64/server_sekolah/index.php/";
 
         //membuat metdod return getClient
         public static Retrofit getClient() {

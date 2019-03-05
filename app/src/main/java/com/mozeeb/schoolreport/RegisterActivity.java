@@ -183,16 +183,11 @@ public class RegisterActivity extends AppCompatActivity {
                     if (part_image != null) {
                         File image = new File(part_image);
                         imgfotoprofile.setImageBitmap(BitmapFactory.decodeFile(image.getAbsolutePath()));
-                        getMimeTypeFromUri(this, dataimage);
-                        try {
-                            convertFileToContentUri(this, image);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
                     }
                 }
             }
         }
+
 
 //        if (resultCode == RESULT_OK) {
 //            if (requestCode == REQUEST_GALLERY) {
@@ -272,42 +267,42 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-//    //create folder
-//    public static void createFolder() {
-//        File folder = new File(BASE_DIR + EXTERNAL_DIR_FILES);
-//        File pictures = new File(BASE_DIR + PICTURES_DIR_FILES);
-//        File imageFolder = new File(imagesPath);
-//        if (!folder.exists()) {
-//            folder.mkdir();
-//        }
-//
-//        if (!imageFolder.exists()) {
-//            imageFolder.mkdir();
-//        }
-//
-//        if (!pictures.exists()) {
-//            pictures.mkdir();
-//        }
-//    }
-//
-//
-//
-//    public static File compressFoto(Context context, File actualImage) {
-//        final String path = imagesPath;
-//
-//        File compressedImage = new Compressor.Builder(context)
-//                .setMaxWidth(1280)
-//                .setMaxHeight(1024)
-//                .setQuality(85)
-//                .setCompressFormat(Bitmap.CompressFormat.JPEG)
-//                .setDestinationDirectoryPath(path)
-//                .build()
-//                .compressToFile(actualImage);
-//
-//        deleteRecursive(actualImage);
-//
-//        return compressedImage;
-//    }
+    //create folder
+    public static void createFolder() {
+        File folder = new File(BASE_DIR + EXTERNAL_DIR_FILES);
+        File pictures = new File(BASE_DIR + PICTURES_DIR_FILES);
+        File imageFolder = new File(imagesPath);
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+
+        if (!imageFolder.exists()) {
+            imageFolder.mkdir();
+        }
+
+        if (!pictures.exists()) {
+            pictures.mkdir();
+        }
+    }
+
+
+
+    public static File compressFoto(Context context, File actualImage) {
+        final String path = imagesPath;
+
+        File compressedImage = new Compressor.Builder(context)
+                .setMaxWidth(1280)
+                .setMaxHeight(1024)
+                .setQuality(85)
+                .setCompressFormat(Bitmap.CompressFormat.JPEG)
+                .setDestinationDirectoryPath(path)
+                .build()
+                .compressToFile(actualImage);
+
+        deleteRecursive(actualImage);
+
+        return compressedImage;
+    }
 
     public static void deleteRecursive(File fileOrDirectory) {
         if (fileOrDirectory.isDirectory())

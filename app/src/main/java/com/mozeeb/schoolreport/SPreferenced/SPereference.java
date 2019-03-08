@@ -11,6 +11,12 @@ public class SPereference {
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
     private static final String KEY_USERNAME = "username";
+    private static final String KEY_NO_TELEPON = "no_tlp";
+    private static final String KEY_ALAMAT = "alamat";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_JENIS_KELAMIN = "jenis_kelamin";
+    private static final String KEY_FOTO = "foto";
+    private static final String KEY_LEVEL = "level";
     private static final String is_login = "loginstatus";
     private final String SHARED_NAME = "loginsesion";
     private final int MODE_PRIVATE = 0;
@@ -31,5 +37,9 @@ public class SPereference {
     public void setIdUser(String idUser){
         editor.putBoolean(is_login, true);
         editor.putString(KEY_USERNAME, idUser);
+        editor.commit();
+    }
+    public String getIdUser() {
+        return sp.getString(KEY_USERNAME, "");
     }
 }

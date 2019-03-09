@@ -26,8 +26,7 @@ import butterknife.OnClick;
 public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHolder> {
 
 
-    @BindView(R.id.btn_overFlof_guru)
-    ImageButton btnOverFlofGuru;
+
     private Context context;
     private List<DataItemGuru> dataItemGurus;
 
@@ -70,9 +69,7 @@ public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHo
         return dataItemGurus.size();
     }
 
-    @OnClick(R.id.btn_overFlof_guru)
-    public void onViewClicked() {
-    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_daftarguru)

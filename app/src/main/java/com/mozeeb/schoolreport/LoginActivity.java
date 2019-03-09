@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -91,8 +92,14 @@ public class LoginActivity extends AppCompatActivity {
                     Toasty.success(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
                     dataUser=response.body().getData();
 //                    SPereference sPereference = new SPereference(LoginActivity.this);
-//                    sPereference.setIdUser(dataUser.getId());
-//                    sPereference.saveSPString("spPass", dataUser.getPassword());
+////                    sPereference.setIdUser(dataUser.getId());
+////                    Log.d("errnya diinsi",dataUser.getId());
+//                    sPereference.set_telp(dataUser.getNoTelp());
+//                    sPereference.setAlamatPref(dataUser.getAlamat());
+//                    sPereference.setEmailPref(dataUser.getEmail());
+//                    sPereference.setKelamin(dataUser.getJenisKelamin());
+//                    sPereference.setFotoPref(dataUser.getFoto());
+//                    sPereference.storeLogin(dataUser.getUsername());
                     //berpindah halaman ke mainactivity
                     startActivity(new Intent(LoginActivity.this, Splashscreen.class));
                     finish();

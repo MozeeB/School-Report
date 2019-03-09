@@ -28,8 +28,7 @@ import butterknife.OnClick;
 public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyViewHolder> {
 
 
-    @BindView(R.id.btn_daftaroverFlof_siswa)
-    ImageButton btnDaftaroverFlof;
+
     private Context context;
     private List<DataItemSiswa> dataItemSiswas;
 
@@ -78,9 +77,7 @@ public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyView
         return dataItemSiswas.size();
     }
 
-    @OnClick(R.id.btn_daftaroverFlof_siswa)
-    public void onViewClicked() {
-    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.iv_daftarsiswa)

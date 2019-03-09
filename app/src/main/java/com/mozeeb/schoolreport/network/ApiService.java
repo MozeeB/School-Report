@@ -31,11 +31,11 @@ public interface ApiService {
 
 
     //Insert siswa pelanggar
-    @FormUrlEncoded
+//    @FormUrlEncoded
     @Multipart
     @POST("api/register")
-    Call<ResponseRegister> postRegister(@Field("nama") String nama,
-                                        @Field("username") String username,
+    Call<ResponseRegister> postRegister(@Part("nama") String nama,
+                                        @Part("username") String username,
                                         @Field("no_telp") String no_telp,
                                         @Field("alamat") String alamat,
                                         @Field("email") String email,

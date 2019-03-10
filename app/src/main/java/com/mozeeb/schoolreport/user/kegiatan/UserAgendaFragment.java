@@ -65,13 +65,13 @@ public class UserAgendaFragment extends Fragment {
 
         dataItemKegiatans = new ArrayList<>();
 
-        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_kegiatan);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplication(), UserTambahKegiatan.class));
-            }
-        });
+//        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_kegiatan);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity().getApplication(), UserTambahKegiatan.class));
+//            }
+//        });
     }
 
     public void getKeiatanData() {

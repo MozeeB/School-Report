@@ -5,19 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.mozeeb.schoolreport.user.NewsFragment">
 
-    <com.mozeeb.schoolreport.helper.MovableFloatingActionButton
-        android:id="@+id/fabMain_tambah_berita"
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="330dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="false"
-        android:layout_marginTop="420dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:backgroundTint="@color/colorPrimaryDark"
-        app:srcCompat="@drawable/ic_add_black_24dp"
-        android:tint="@android:color/white"
-        app:useCompatPadding="true" />
+    <!--<com.mozeeb.schoolreport.helper.MovableFloatingActionButton-->
+        <!--android:id="@+id/fabMain_tambah_berita"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_marginLeft="330dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="false"-->
+        <!--android:layout_marginTop="420dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:backgroundTint="@color/colorPrimaryDark"-->
+        <!--app:srcCompat="@drawable/ic_add_black_24dp"-->
+        <!--android:tint="@android:color/white"-->
+        <!--app:useCompatPadding="true" />-->
 
     <ScrollView
         android:layout_width="match_parent"

@@ -68,13 +68,13 @@ public class NewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         dataItemsNewBeritas = new ArrayList<>();
 
-        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_berita);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplication(), UserTambahBerita.class));
-            }
-        });
+//        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_berita);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity().getApplication(), UserTambahBerita.class));
+//            }
+//        });
 
 
     }

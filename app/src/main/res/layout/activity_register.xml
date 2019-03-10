@@ -177,19 +177,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/img_upload"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="74dp"
-                android:background="#fff"/>
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="200dp"-->
+                <!--android:layout_marginTop="74dp"-->
+                <!--android:background="#fff"/>-->
 
-            <ImageView
-                android:layout_width="167dp"
-                android:layout_height="164dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="14dp"
-                android:background="#fff"/>
+            <!--<ImageView-->
+                <!--android:layout_width="167dp"-->
+                <!--android:layout_height="164dp"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:layout_marginLeft="14dp"-->
+                <!--android:background="#fff"/>-->
 
             <RelativeLayout
                 android:layout_width="163dp"
@@ -197,25 +196,25 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="18dp">
 
-                <ImageView
-                    android:id="@+id/imgfotoprofile"
-                    android:layout_width="163dp"
-                    android:layout_height="163dp"
-                    android:scaleType="centerCrop"
-                    android:background="@drawable/profile"/>
+                <!--<ImageView-->
+                    <!--android:id="@+id/imgfotoprofile"-->
+                    <!--android:layout_width="163dp"-->
+                    <!--android:layout_height="163dp"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--android:background="@drawable/profile"/>-->
 
-                <Button
-                    android:id="@+id/btn_upload"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/imgfotoprofile"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/tombolhijaumuda"
-                    android:fontFamily="@font/open_sans"
-                    android:text="Upload foto profil"
-                    android:textAllCaps="false"
-                    android:textColor="#fff" />
+                <!--<Button-->
+                    <!--android:id="@+id/btn_upload"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@id/imgfotoprofile"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginTop="12dp"-->
+                    <!--android:background="@drawable/tombolhijaumuda"-->
+                    <!--android:fontFamily="@font/open_sans"-->
+                    <!--android:text="Upload foto profil"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="#fff" />-->
 
             </RelativeLayout>
 

@@ -20,7 +20,6 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 
@@ -31,8 +30,8 @@ public interface ApiService {
 
 
     //Insert siswa pelanggar
-//    @FormUrlEncoded
-    @Multipart
+    @FormUrlEncoded
+//    @Multipart
     @POST("api/register")
     Call<ResponseRegister> postRegister(@Part("nama") String nama,
                                         @Part("username") String username,

@@ -28,12 +28,15 @@ import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 import com.squareup.picasso.Picasso;
 
+import net.gotev.uploadservice.MultipartUploadRequest;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,8 +85,13 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     private ApiService apiService;
 
-    String part_image;
-    final int REQUEST_GALLERY = 9544;
+    private Uri filepath;
+    private String mediapath;
+    private Bitmap mPhoto;
+    public final int REQ_CHOOSE_FILE_REGISTER = 100;
+    public static final String UPLOAD_REGISTER_URL = "http://192.168.60.24/server_sekolah/index.php/api/register";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_upload:
-                ChooseGallerOrCamera();
+                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
                 break;
             case R.id.btn_register:
                 registerUser();
@@ -129,68 +137,79 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void registerUser() {
-        File imagefile = new File(part_image);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form_file"), imagefile);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("foto", imagefile.getName(), requestBody);
-
-        apiService = ConfigRetrofit.getClient().create(ApiService.class);
-        Call<ResponseRegister> call = apiService.postRegister(edtNamaRegister.getText().toString(), edtUsernameRegister.getText().toString(), edtNotelpRegister.getText().toString(), edtAlamatRegister.getText().toString(), edtEmailRegister.getText().toString(), spinnerKelaminRegister.toString(), edtPasswordRegister.getText().toString(), part, spinnerLevel.toString());
-        call.enqueue(new Callback<ResponseRegister>() {
-            @Override
-            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-                if (response.isSuccessful()) {
-                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    Toasty.success(RegisterActivity.this, "Daftar Sukses!!!", Toasty.LENGTH_LONG).show();
-                } else {
-                    Toasty.error(RegisterActivity.this, "Gagal Register", Toasty.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ResponseRegister> call, Throwable t) {
-                Toasty.error(RegisterActivity.this, "Gagal Register", Toasty.LENGTH_LONG).show();
-
-            }
-        });
-
+    private void registerUser(){
+        try{
+            mediapath = getPath(filepath);
+            Toasty.success(this,"Succes to Send", Toasty.LENGTH_SHORT).show();
+        }catch (Exception e){
+            Toasty.error(this, "Image terlalu besar, silahkan pilih image lain",Toasty.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+        try {
+            new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
+                    .addFileToUpload(mediapath, "foto")
+                    .addParameter("nama", edtNamaRegister.getText().toString())
+                    .addParameter("username", edtUsernameRegister.getText().toString())
+                    .addParameter("no_telp", edtNotelpRegister.getText().toString())
+                    .addParameter("alamat", edtAlamatRegister.getText().toString())
+                    .addParameter("email", edtEmailRegister.getText().toString())
+                    .addParameter("jenis_kelamin", spinnerKelaminRegister.toString())
+                    .addParameter("password", edtPasswordRegister.toString())
+                    .addParameter("level", spinnerLevel.toString())
+                    .setMaxRetries(2)
+                    .startUpload();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void ChooseGallerOrCamera() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Open Gallery"), REQUEST_GALLERY);
-
+    private void ChooseImage(int requestCode){
+        Intent toGalery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(toGalery, requestCode);
+        Log.i("Gallery", "Masuk Gallery");
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_GALLERY) {
-                Uri dataimage = data.getData();
-                String[] imageprojection = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(dataimage, imageprojection, null, null, null);
+        if (resultCode == RESULT_OK){
+            if (requestCode == REQ_CHOOSE_FILE_REGISTER){
+                if (data != null){
+                    filepath = data.getData();
+                }
+                try {
+                    mPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
+                    imgfotoprofile.setImageBitmap(mPhoto);
 
-                if (cursor != null) {
-                    cursor.moveToFirst();
-                    int indexImage = cursor.getColumnIndex(imageprojection[0]);
-                    part_image = cursor.getString(indexImage);
-
-                    if (part_image != null) {
-                        File image = new File(part_image);
-                        imgfotoprofile.setImageBitmap(BitmapFactory.decodeFile(image.getAbsolutePath()));
-                    }
+                }catch (IOException e){
+                    e.printStackTrace();
                 }
             }
         }
-
-
-//
     }
+    private String getPath(Uri filepath){
+        Cursor cursor = getContentResolver().query(filepath, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
+        cursor.close();
+
+        cursor = getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images
+                .Media._ID +  " = ? ", new String[]{document_id}, null);
+
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+
+        return path;
+
+    }
+    //
+
 
     ///----------------//////----------////
     //encodefilebase64

@@ -36,13 +36,13 @@ public interface ApiService {
     @POST("api/register")
     Call<ResponseRegister> postRegister(@Part("nama") String nama,
                                         @Part("username") String username,
-                                        @Field("no_telp") String no_telp,
-                                        @Field("alamat") String alamat,
-                                        @Field("email") String email,
-                                        @Field("jenis_kelamin") String jenis_kelamin,
-                                        @Field("password") String password,
+                                        @Part("no_telp") String no_telp,
+                                        @Part("alamat") String alamat,
+                                        @Part("email") String email,
+                                        @Part("jenis_kelamin") String jenis_kelamin,
+                                        @Part("password") String password,
                                         @Part MultipartBody.Part foto,
-                                        @Field("level") String level);
+                                        @Part("level") String level);
     //getdata laporan
     @GET("api/get_laporan")
     Call<ResponseLaporan> getLaporan();

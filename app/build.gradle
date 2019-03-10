@@ -60,5 +60,8 @@ dependencies {
     implementation 'id.zelory:compressor:1.0.4'
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
 
+    //
+    implementation 'net.gotev:uploadservice:2.1'
+
 
 }

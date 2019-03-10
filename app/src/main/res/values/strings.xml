@@ -85,6 +85,8 @@
         completions."
     </string>
     <string name="title_activity_detail_">Detail_Activity</string>
+    <string name="schoolreport">School\nReport</string>
+    <string name="noteabout">Hello! we are a school report developer, we created this application to help teachers record students who break the rules,  InsyaAllah this application can help teachers,  this application also has other interesting features</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

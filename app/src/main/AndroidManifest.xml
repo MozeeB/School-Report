@@ -16,34 +16,52 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".user.UserAboutActivity"></activity>
-        <activity android:name=".user.peraturan.DetailPeraturan" />
-        <activity android:name=".user.UserProfilActivity" android:parentActivityName=".MainActivity" />
-        <activity android:name=".user.kegiatan.UserTambahKegiatan" />
-        <activity android:name=".user.kegiatan.DetailKegiatan" />
-        <activity android:name=".user.tabDaftar.guru.DetailGuru" />
-        <activity android:name=".user.tabDaftar.siswa.DetailSiswa" />
-        <activity android:name=".user.tabDaftar.guru.InsertGuru" />
-        <activity android:name=".user.berita.UserTambahBerita" />
-        <activity android:name=".user.tabDaftar.siswa.InsertSiswa" />
-        <activity android:name=".user.laporan.UserDetailsLaporan" />
+        <activity android:name=".user.UserAboutActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".user.peraturan.DetailPeraturan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.UserProfilActivity" android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.kegiatan.UserTambahKegiatan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.kegiatan.DetailKegiatan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.tabDaftar.guru.DetailGuru"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.tabDaftar.siswa.DetailSiswa"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.tabDaftar.guru.InsertGuru"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.berita.UserTambahBerita"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.tabDaftar.siswa.InsertSiswa"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.laporan.UserDetailsLaporan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".user.berita.UserDetailNewsActivity"
             android:label="@string/title_activity_detail_"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".user.Splashscreen" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RegisterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".user.Splashscreen"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" />
-        <activity android:name=".user.laporan.UserTambahActivity" />
-        <activity android:name=".LoginActivity">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".user.laporan.UserTambahActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait">
 
             <meta-data
                 android:name="android.app.searchable"

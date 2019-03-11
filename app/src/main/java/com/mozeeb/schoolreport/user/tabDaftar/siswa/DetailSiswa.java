@@ -8,17 +8,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.siswa.read.DataItemSiswa;
-import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
-import com.mozeeb.schoolreport.network.ConfigRetrofit;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DetailSiswa extends AppCompatActivity {
 
@@ -44,9 +36,9 @@ public class DetailSiswa extends AppCompatActivity {
 
         Log.e("img", getIntent().getStringExtra("img"));
 
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
 
-
-        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgSiswaDetails);
+        Glide.with(this).load(URL +getIntent().getStringExtra("img")).into(imgSiswaDetails);
         tvNamaSiswaDetail.setText(getIntent().getStringExtra("nama"));
         tvKelasDetails.setText(getIntent().getStringExtra("kelas"));
         tvDetailAlamatSiswa.setText(getIntent().getStringExtra("alamat"));

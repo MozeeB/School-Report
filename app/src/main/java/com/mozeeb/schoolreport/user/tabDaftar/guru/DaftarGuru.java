@@ -13,8 +13,8 @@ import android.widget.ProgressBar;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterTabGuru;
 import com.mozeeb.schoolreport.adapter.TabLayoutAdapter;
-import com.mozeeb.schoolreport.model.guru.read.DataItemGuru;
-import com.mozeeb.schoolreport.model.guru.read.ResponseDaftarGuru;
+import com.mozeeb.schoolreport.model.guru.read.GuruItem;
+import com.mozeeb.schoolreport.model.guru.read.ResponseGuru;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,7 +37,7 @@ public class DaftarGuru extends Fragment {
     private ProgressBar progressBar;
     private TabLayoutAdapter adapter;
 
-    private List<DataItemGuru> dataItemGurus;
+    private List<GuruItem> dataItemGurus;
     private AdapterTabGuru adapterTabGuru;
 
     public void setFragmentManager(FragmentManager fragmentManager) {
@@ -68,25 +69,27 @@ public class DaftarGuru extends Fragment {
     }
 
     public void getDataGuru() {
-        ConfigRetrofit.getInstance().getGuru().enqueue(new Callback<ResponseDaftarGuru>() {
+        ConfigRetrofit.getInstance().getGuru().enqueue(new Callback<ResponseGuru>() {
             @Override
-            public void onResponse(Call<ResponseDaftarGuru> call, Response<ResponseDaftarGuru> response) {
+            public void onResponse(Call<ResponseGuru> call, Response<ResponseGuru> response) {
                 if (response.isSuccessful()) {
-                    ResponseDaftarGuru responseDaftarGuru = response.body();
-                    dataItemGurus = responseDaftarGuru.getData();
+                    ResponseGuru responseDaftarGuru = response.body();
+                    dataItemGurus = responseDaftarGuru.getGuru();
                     setUplist2(dataItemGurus);
 
+                }else {
+                    Toasty.error(getActivity(), response.message(), Toasty.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseDaftarGuru> call, Throwable t) {
+            public void onFailure(Call<ResponseGuru> call, Throwable t) {
 
             }
         });
     }
 
-    private void setUplist2(List<DataItemGuru> dataItemGurus) {
+    private void setUplist2(List<GuruItem> dataItemGurus) {
         rvTabGuru.setHasFixedSize(true);
         rvTabGuru.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterTabGuru = new AdapterTabGuru(getActivity(), dataItemGurus);

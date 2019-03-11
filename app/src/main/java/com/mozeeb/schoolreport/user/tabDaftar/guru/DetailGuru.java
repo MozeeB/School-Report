@@ -32,7 +32,9 @@ public class DetailGuru extends AppCompatActivity {
         setContentView(R.layout.activity_detail_guru);
         ButterKnife.bind(this);
 
-        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgDetailGuru);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+
+        Glide.with(this).load(URL + getIntent().getStringExtra("img")).into(imgDetailGuru);
         tvNamaGuruDetail.setText(getIntent().getStringExtra("nama"));
         tvDetailUmur.setText(getIntent().getStringExtra("umur"));
         tvTglLahirDetail.setText(getIntent().getStringExtra("tgl"));

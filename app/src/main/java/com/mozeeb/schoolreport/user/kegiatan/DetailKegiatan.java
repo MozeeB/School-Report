@@ -32,7 +32,9 @@ public class DetailKegiatan extends AppCompatActivity {
         setContentView(R.layout.activity_detail_kegiatan);
         ButterKnife.bind(this);
 
-        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgKegiatanDetail);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+
+        Glide.with(this).load(URL + getIntent().getStringExtra("img")).into(imgKegiatanDetail);
         tvNamaKegiatan.setText(getIntent().getStringExtra("judul"));
         tvTujuan.setText(getIntent().getStringExtra("tujuan"));
         tvJamKegiatanDetail.setText(getIntent().getStringExtra("jam"));

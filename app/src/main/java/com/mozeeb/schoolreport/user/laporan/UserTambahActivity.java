@@ -1,8 +1,15 @@
 package com.mozeeb.schoolreport.user.laporan;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +22,12 @@ import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
+import net.gotev.uploadservice.MultipartUploadRequest;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +35,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import es.dmoral.toasty.Toasty;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,8 +68,21 @@ public class UserTambahActivity extends AppCompatActivity {
     DatePickerDialog datePickerDialog;
     @BindView(R.id.edt_jenis_pelanggarannya)
     Spinner edtJenisPelanggarannya;
+    @BindView(R.id.edt_keterangan_pelanggar)
+    EditText edtKeteranganPelanggar;
     private String namaSiswa, kelas, pelanggaran, namaGuru, tanggal;
     private String poin;
+
+
+    private Uri filepath;
+    private String mediapath;
+    private Bitmap mPhoto;
+    String part_image;
+
+    public final int REQ_CHOOSE_FILE_REGISTER = 100;
+    public static final String UPLOAD_REGISTER_URL = "https://lombaidn.000webhostapp.com/apisekolah/user/register.php";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +108,7 @@ public class UserTambahActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKelasPelanggar.setAdapter(dataAdapter);
     }
+
     public void spinnerJenis() {
 
         List<String> adapter = new ArrayList<>();
@@ -94,6 +125,7 @@ public class UserTambahActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_pilih_foto_pelanggar:
+                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
                 break;
             case R.id.btn_kirim_lporan:
                 sendData();
@@ -102,30 +134,115 @@ public class UserTambahActivity extends AppCompatActivity {
     }
 
     private void sendData() {
-        ConfigRetrofit.getInstance().postLaporan(null, null, null, null, null, null, null)
-                .enqueue(new Callback<ResponseLaporan>() {
-                    @Override
-                    public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
+        try{
+            mediapath = getPath(filepath);
+            Toasty.success(this,"Succes to Send", Toasty.LENGTH_SHORT).show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
+                    .addParameter("nama", edtNamaPelanggar.getText().toString())
+                    .addParameter("kelas", spinnerKelasPelanggar.toString())
+                    .addParameter("wali", edtWaliMuridPelanggar.getText().toString())
+                    .addParameter("poin", edtPoinPelanggar.getText().toString())
+                    .addParameter("melanggar", edtJenisPelanggarannya.toString())
+                    .addParameter("keterangan", edtKeteranganPelanggar.toString())
+                    .addParameter("tgl_lapor", edtTanggalPelanggar.toString())
+                    .addParameter("pelapor", edtPelapor.getText().toString())
+                    .addFileToUpload(mediapath, "foto")
+                    .setMaxRetries(2)
+                    .startUpload();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
 
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseLaporan> call, Throwable t) {
-
-                    }
-                });
+//        part_image = getPath(filepath);
+////
+//        File imagefile = new File(part_image);
+//        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"),imagefile);
+//        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(),reqBody);
+//
+//        ConfigRetrofit.getInstance().postLaporan(edtNamaPelanggar.getText().toString(),
+//                kelas.toString(), edtWaliMuridPelanggar.getText().toString(),
+//                edtPoinPelanggar.getText().toString(), edtJenisPelanggarannya.toString(), edtKeteranganPelanggar.getText().toString(),
+//                edtTanggalPelanggar.getText().toString(), edtPelapor.getText().toString(),partImage)
+//                .enqueue(new Callback<ResponseLaporan>() {
+//            @Override
+//            public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
+//                if (response.body().isStatus()){
+//                    Toasty.success(UserTambahActivity.this, response.message(), Toasty.LENGTH_SHORT).show();
+//                }else {
+//                    Toasty.error(UserTambahActivity.this, response.message(), Toasty.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseLaporan> call, Throwable t) {
+//
+//            }
+//        });
     }
 
-    public void postData() {
-        edtNamaPelanggar.getText().toString();
-        kelas.toString();
-        edtWaliMuridPelanggar.getText().toString();
-        edtPoinPelanggar.getText().toString();
-        edtJenisPelanggarannya.toString();
-        edtTanggalPelanggar.getText().toString();
-        edtPelapor.getText().toString();
-        ivLaporanTambah.toString();
+    private void ChooseImage(int requestCode){
+        Intent toGalery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(toGalery, requestCode);
+        Log.i("Gallery", "Masuk Gallery");
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == REQ_CHOOSE_FILE_REGISTER){
+                if (data.getData() != null){
+                    filepath = data.getData();
+//                    Uri seletedImage = data.getData();
+                    Log.i("datanya disini",filepath.toString());
+                }
+                try {
+                    mPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
+                    ivLaporanTambah.setImageBitmap(mPhoto);
+
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    private String getPath(Uri filepath){
+        Cursor cursor = getContentResolver().query(filepath, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
+        cursor.close();
+
+        cursor = getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images
+                        .Media._ID +  " = ? ", new String[]{document_id}, null);
+//        String provider = "com.android.providers.media.MediaProvider";
+//
+//        Uri uri = Uri.parse("content://media/external/images/media");
+//
+//        grantUriPermission(provider, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        grantUriPermission(provider, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//        grantUriPermission(provider, uri, Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+
+
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+
+        return path;
+
+
+    }
+
 
     @OnClick(R.id.edt_tanggal_pelanggar)
     public void onViewClicked() {

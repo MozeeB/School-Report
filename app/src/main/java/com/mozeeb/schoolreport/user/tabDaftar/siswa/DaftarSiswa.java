@@ -13,8 +13,8 @@ import android.widget.ProgressBar;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterTabSiswa;
 import com.mozeeb.schoolreport.adapter.TabLayoutAdapter;
-import com.mozeeb.schoolreport.model.siswa.read.DataItemSiswa;
 import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
+import com.mozeeb.schoolreport.model.siswa.read.SiswaItem;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class DaftarSiswa extends Fragment {
     private View view;
     private ProgressBar progressBar;
     private TabLayoutAdapter adapter;
-    private List<DataItemSiswa> dataItemSiswa;
+    private List<SiswaItem> dataItemSiswa;
     private AdapterTabSiswa adapterTabSiswa;
 
     public void setFragmentManager(FragmentManager fragmentManager) {
@@ -75,9 +75,11 @@ public class DaftarSiswa extends Fragment {
                 if (response.isSuccessful()) {
                     Toasty.success(getActivity(), "Silahkan lihat", Toasty.LENGTH_LONG).show();
                     ResponseSiswa responseSiswa = response.body();
-                    dataItemSiswa = responseSiswa.getData();
+                    dataItemSiswa = responseSiswa.getSiswa();
                     setUplist2(dataItemSiswa);
 
+                }else{
+                    Toasty.error(getActivity(), response.message(), Toasty.LENGTH_SHORT).show();
                 }
             }
 
@@ -89,7 +91,7 @@ public class DaftarSiswa extends Fragment {
         });
     }
 
-    private void setUplist2(List<DataItemSiswa> dataItemSiswa) {
+    private void setUplist2(List<SiswaItem> dataItemSiswa) {
         rvTabSiswa.setHasFixedSize(true);
         rvTabSiswa.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterTabSiswa = new AdapterTabSiswa(getActivity(), dataItemSiswa);

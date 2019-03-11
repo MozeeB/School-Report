@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseRegister{
 
-	@SerializedName("pesan")
-	private String pesan;
+	@SerializedName("result")
+	private String result;
 
-	@SerializedName("sukses")
-	private boolean sukses;
+	@SerializedName("msg")
+	private String msg;
 
-	public void setPesan(String pesan){
-		this.pesan = pesan;
+	public void setResult(String result){
+		this.result = result;
 	}
 
-	public String getPesan(){
-		return pesan;
+	public String getResult(){
+		return result;
 	}
 
-	public void setSukses(boolean sukses){
-		this.sukses = sukses;
+	public void setMsg(String msg){
+		this.msg = msg;
 	}
 
-	public boolean isSukses(){
-		return sukses;
+	public String getMsg(){
+		return msg;
 	}
 }

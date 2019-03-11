@@ -7,30 +7,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.guru.read.DataItemGuru;
+import com.mozeeb.schoolreport.model.guru.read.GuruItem;
 import com.mozeeb.schoolreport.user.tabDaftar.guru.DetailGuru;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHolder> {
 
 
 
     private Context context;
-    private List<DataItemGuru> dataItemGurus;
+    private List<GuruItem> dataItemGurus;
 
-    public AdapterTabGuru(Context context, List<DataItemGuru> dataItemGurus) {
+    public AdapterTabGuru(Context context, List<GuruItem> dataItemGurus) {
         this.context = context;
         this.dataItemGurus = dataItemGurus;
     }
@@ -43,7 +40,8 @@ public class AdapterTabGuru extends RecyclerView.Adapter<AdapterTabGuru.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder,final int i) {
-        Glide.with(context).load(dataItemGurus.get(i).getFoto()).into(myViewHolder.ivDaftarguru);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+        Glide.with(context).load(URL + dataItemGurus.get(i).getFoto()).into(myViewHolder.ivDaftarguru);
         myViewHolder.tvNamaGuru.setText(dataItemGurus.get(i).getNama());
         myViewHolder.tvNotelpGuru.setText(dataItemGurus.get(i).getNoTelp());
         myViewHolder.tvAlamatGuru.setText(dataItemGurus.get(i).getAlamat());

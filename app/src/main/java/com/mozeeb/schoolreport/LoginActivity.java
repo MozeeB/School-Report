@@ -13,13 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mozeeb.schoolreport.SPreferenced.SPereference;
-import com.mozeeb.schoolreport.model.login.Data;
 import com.mozeeb.schoolreport.model.login.ResponseLogin;
+import com.mozeeb.schoolreport.model.login.User;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 import com.mozeeb.schoolreport.user.Splashscreen;
 import com.mozeeb.schoolreport.utils.Validate;
-import com.pixplicity.easyprefs.library.Prefs;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -45,9 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     //TODO 1 Membuat vaiabel yang dibutuhkan
     //membuat variable untuk animasi loading menggunkan progress dialog
     private ProgressDialog progressDialog;
-    private Data loginBody;
+    private User loginBody;
     private ApiService apiInterface;
-    private Data dataUser;
+    private User dataUser;
     private Context mContext;
 
     SPereference sharedPrefManager;
@@ -90,22 +89,24 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     //menampilkan response api berupa pesan ke dalam toast
                     Toasty.success(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                    dataUser=response.body().getData();
-//                    SPereference sPereference = new SPereference(LoginActivity.this);
-////                    sPereference.setIdUser(dataUser.getId());
-////                    Log.d("errnya diinsi",dataUser.getId());
-//                    sPereference.set_telp(dataUser.getNoTelp());
-//                    sPereference.setAlamatPref(dataUser.getAlamat());
-//                    sPereference.setEmailPref(dataUser.getEmail());
-//                    sPereference.setKelamin(dataUser.getJenisKelamin());
-//                    sPereference.setFotoPref(dataUser.getFoto());
-//                    sPereference.storeLogin(dataUser.getUsername());
-                    //berpindah halaman ke mainactivity
-                    startActivity(new Intent(LoginActivity.this, Splashscreen.class));
-                    finish();
+                    dataUser=response.body().getUser();
+//                    if (dataUser != null) {
+//                        SPereference sPereference = new SPereference(LoginActivity.this);
+//                        sPereference.setIdUser(dataUser.getId());
+//                        Log.i("errnya diinsi", dataUser.getId());
+//                        sPereference.set_telp(dataUser.getNoTelp());
+//                        sPereference.setAlamatPref(dataUser.getAlamat());
+//                        sPereference.setEmailPref(dataUser.getEmail());
+//                        sPereference.setKelamin(dataUser.getJenisKelamin());
+////                        sPereference.setFotoPref(dataUser.getFoto());
+//                        sPereference.storeLogin(dataUser.getUsername());
+                        //berpindah halaman ke mainactivity
+                        startActivity(new Intent(LoginActivity.this, Splashscreen.class));
+                        finish();
+//                    }
                 }else {
                     //menampilkan response api berupa pesan ke dalam toast
-                    Toasty.success(LoginActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+                    Toasty.success(LoginActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -118,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void getData() {
         //membuat object LoginBody
-        loginBody = new Data();
+        loginBody = new User();
         //mengisi LoginBody
         loginBody.setUsername(edtUsername.getText().toString());
         loginBody.setPassword(edtPasswordLogin.getText().toString());
@@ -133,16 +134,4 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
     }
-//    private void setPreference(Data du){
-//        Prefs.putInt(SPref.getId(), Integer.parseInt(du.getId()));
-//        Prefs.putString(SPref.getNama(),du.getNama());
-//        Prefs.putString(SPref.getUsername(),du.getUsername());
-//        Prefs.putInt(SPref.getNo_telp(), Integer.parseInt(du.getNoTelp()));
-//        Prefs.putString(SPref.getAlamat(),du.getAlamat());
-//        Prefs.putString(SPref.getEmail(), du.getEmail());
-//        Prefs.putString(SPref.getJenis_kelamin(), du.getJenisKelamin().toString());
-//        Prefs.putString(SPref.getPassword(), du.getPassword().toString());
-//        Prefs.putString(SPref.getFoto(), du.getFoto());
-//        Prefs.putString(SPref.getLevel(), du.getLevel());
-//    }
 }

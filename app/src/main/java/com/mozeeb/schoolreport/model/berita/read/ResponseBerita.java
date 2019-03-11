@@ -1,41 +1,29 @@
 package com.mozeeb.schoolreport.model.berita.read;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class ResponseBerita{
 
-	@SerializedName("pesan")
-	private String pesan;
+	@SerializedName("berita")
+	private List<BeritaItem> berita;
 
-	@SerializedName("data")
-	private List<DataItemBerita> data;
+	@SerializedName("status")
+	private boolean status;
 
-	@SerializedName("sukses")
-	private boolean sukses;
-
-	public void setPesan(String pesan){
-		this.pesan = pesan;
+	public void setBerita(List<BeritaItem> berita){
+		this.berita = berita;
 	}
 
-	public String getPesan(){
-		return pesan;
+	public List<BeritaItem> getBerita(){
+		return berita;
 	}
 
-	public void setData(List<DataItemBerita> data){
-		this.data = data;
+	public void setStatus(boolean status){
+		this.status = status;
 	}
 
-	public List<DataItemBerita> getData(){
-		return data;
-	}
-
-	public void setSukses(boolean sukses){
-		this.sukses = sukses;
-	}
-
-	public boolean isSukses(){
-		return sukses;
+	public boolean isStatus(){
+		return status;
 	}
 }

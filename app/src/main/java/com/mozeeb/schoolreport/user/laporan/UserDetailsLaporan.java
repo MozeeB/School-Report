@@ -40,7 +40,9 @@ public class UserDetailsLaporan extends AppCompatActivity {
         setContentView(R.layout.activity_user_details_laporan);
         ButterKnife.bind(this);
 
-        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgLapor);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+
+        Glide.with(this).load(URL + getIntent().getStringExtra("img")).into(imgLapor);
         tvNamaLapor.setText(getIntent().getStringExtra("nama"));
         tvKelasLapor.setText(getIntent().getStringExtra("kelas"));
         tvWaliLapor.setText(getIntent().getStringExtra("wali"));

@@ -15,7 +15,7 @@ public class SPereference {
     private static final String KEY_ALAMAT = "alamat";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_JENIS_KELAMIN = "jenis_kelamin";
-    private static final String KEY_FOTO = "foto";
+//    private static final String KEY_FOTO = "foto";
     private static final String is_login = "loginstatus";
     private final String SHARED_NAME = "loginsesion";
     private final int MODE_PRIVATE = 0;
@@ -78,14 +78,14 @@ public class SPereference {
         return sp.getString(KEY_JENIS_KELAMIN, "");
     }
 
-    public void setFotoPref(String fotoPref){
-        editor.putBoolean(is_login, true);
-        editor.putString(KEY_FOTO, fotoPref);
-        editor.commit();
-    }
-    public String getFotoPref(){
-        return sp.getString(KEY_FOTO,"");
-    }
+//    public void setFotoPref(String fotoPref){
+//        editor.putBoolean(is_login, true);
+//        editor.putString(KEY_FOTO, fotoPref);
+//        editor.commit();
+//    }
+//    public String getFotoPref(){
+//        return sp.getString(KEY_FOTO,"");
+//    }
 
 
 }

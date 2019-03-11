@@ -1,41 +1,29 @@
 package com.mozeeb.schoolreport.model.laporan.read;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+public class ResponseLaporan{
 
-public class ResponseLaporan {
+	@SerializedName("laporan")
+	private List<LaporanItem> laporan;
 
-	@SerializedName("pesan")
-	private String pesan;
+	@SerializedName("status")
+	private boolean status;
 
-	@SerializedName("data")
-	private List<DataItemLapor> data;
-
-	@SerializedName("sukses")
-	private boolean sukses;
-
-	public void setPesan(String pesan){
-		this.pesan = pesan;
+	public void setLaporan(List<LaporanItem> laporan){
+		this.laporan = laporan;
 	}
 
-	public String getPesan(){
-		return pesan;
+	public List<LaporanItem> getLaporan(){
+		return laporan;
 	}
 
-	public void setData(List<DataItemLapor> data){
-		this.data = data;
+	public void setStatus(boolean status){
+		this.status = status;
 	}
 
-	public List<DataItemLapor> getData(){
-		return data;
-	}
-
-	public void setSukses(boolean sukses){
-		this.sukses = sukses;
-	}
-
-	public boolean isSukses(){
-		return sukses;
+	public boolean isStatus(){
+		return status;
 	}
 }

@@ -1,41 +1,29 @@
 package com.mozeeb.schoolreport.model.kegiatan.read;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class ResponseKegiatan{
 
-	@SerializedName("pesan")
-	private String pesan;
+	@SerializedName("kegiatan")
+	private List<KegiatanItem> kegiatan;
 
-	@SerializedName("data")
-	private List<DataItemKegiatan> data;
+	@SerializedName("status")
+	private boolean status;
 
-	@SerializedName("sukses")
-	private boolean sukses;
-
-	public void setPesan(String pesan){
-		this.pesan = pesan;
+	public void setKegiatan(List<KegiatanItem> kegiatan){
+		this.kegiatan = kegiatan;
 	}
 
-	public String getPesan(){
-		return pesan;
+	public List<KegiatanItem> getKegiatan(){
+		return kegiatan;
 	}
 
-	public void setData(List<DataItemKegiatan> data){
-		this.data = data;
+	public void setStatus(boolean status){
+		this.status = status;
 	}
 
-	public List<DataItemKegiatan> getData(){
-		return data;
-	}
-
-	public void setSukses(boolean sukses){
-		this.sukses = sukses;
-	}
-
-	public boolean isSukses(){
-		return sukses;
+	public boolean isStatus(){
+		return status;
 	}
 }

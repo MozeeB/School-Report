@@ -7,29 +7,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.laporan.read.DataItemLapor;
+import com.mozeeb.schoolreport.model.laporan.read.LaporanItem;
 import com.mozeeb.schoolreport.user.laporan.UserDetailsLaporan;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder> {
 
 
 
-    private List<DataItemLapor> dataLaporan;
+    private List<LaporanItem> dataLaporan;
     private Context context;
 
-    public AdapterLapor(List<DataItemLapor> dataLaporan, Context context) {
+    public AdapterLapor(List<LaporanItem> dataLaporan, Context context) {
         this.dataLaporan = dataLaporan;
         this.context = context;
     }
@@ -43,7 +41,8 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 
-        Glide.with(context).load(dataLaporan.get(i).getFoto()).into(myViewHolder.ivLapor);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+        Glide.with(context).load(URL + dataLaporan.get(i).getFoto()).into(myViewHolder.ivLapor);
         myViewHolder.tvNamaSiswa.setText(dataLaporan.get(i).getNama());
         myViewHolder.tvKelas.setText(dataLaporan.get(i).getKelas());
         myViewHolder.tv_melanggar.setText(dataLaporan.get(i).getMelanggar());

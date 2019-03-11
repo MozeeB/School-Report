@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.guru.insert.ResponseGuru;
+import com.mozeeb.schoolreport.model.guru.insert.ResponseGuruTambah;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
 import butterknife.BindView;
@@ -41,24 +41,8 @@ public class InsertGuru extends AppCompatActivity {
         setContentView(R.layout.activity_insert_guru);
         ButterKnife.bind(this);
 
-        insetDataGuru();
-
     }
 
-    private void insetDataGuru() {
-        ConfigRetrofit.getInstance().postDaftarGuru(edtNamaGuru.getText().toString(),edtUmurGuru.getText().toString(),edtTglLahirGuru.getText().toString(),edtNotlpGuru.getText().toString(),edtAlamatGuru.getText().toString(),ivUploadGuru.toString())
-                .enqueue(new Callback<ResponseGuru>() {
-                    @Override
-                    public void onResponse(Call<ResponseGuru> call, Response<ResponseGuru> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseGuru> call, Throwable t) {
-
-                    }
-                });
-    }
 
     @OnClick({R.id.iv_upload_guru, R.id.btn_simpan_guru})
     public void onViewClicked(View view) {

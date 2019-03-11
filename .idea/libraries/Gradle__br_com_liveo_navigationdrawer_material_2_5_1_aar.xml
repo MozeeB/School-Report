@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: br.com.liveo:navigationdrawer-material:2.5.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/navigationdrawer-material-2.5.1.aar/bf09ccb0da16254be39234373d105e0f/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/navigationdrawer-material-2.5.1.aar/bf09ccb0da16254be39234373d105e0f/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/navigationdrawer-material-2.5.1.aar/5b5cbcea15e32709bb13e244eed795c7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/navigationdrawer-material-2.5.1.aar/5b5cbcea15e32709bb13e244eed795c7/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

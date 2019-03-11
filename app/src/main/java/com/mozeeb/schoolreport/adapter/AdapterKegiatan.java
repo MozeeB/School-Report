@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.kegiatan.read.DataItemKegiatan;
+import com.mozeeb.schoolreport.model.kegiatan.read.KegiatanItem;
 import com.mozeeb.schoolreport.user.kegiatan.DetailKegiatan;
 
 import java.util.List;
@@ -24,9 +24,9 @@ public class AdapterKegiatan extends RecyclerView.Adapter<AdapterKegiatan.MyView
 
 
     private Context context;
-    private List<DataItemKegiatan> dataItemKegiatans;
+    private List<KegiatanItem> dataItemKegiatans;
 
-    public AdapterKegiatan(Context context, List<DataItemKegiatan> dataItemKegiatans) {
+    public AdapterKegiatan(Context context, List<KegiatanItem> dataItemKegiatans) {
         this.context = context;
         this.dataItemKegiatans = dataItemKegiatans;
     }
@@ -40,8 +40,8 @@ public class AdapterKegiatan extends RecyclerView.Adapter<AdapterKegiatan.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
 
-
-        Glide.with(context).load(dataItemKegiatans.get(i).getFoto()).into(myViewHolder.ivKegiatan);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+        Glide.with(context).load(URL + dataItemKegiatans.get(i).getFoto()).into(myViewHolder.ivKegiatan);
         myViewHolder.tvJudulKegiatan.setText(dataItemKegiatans.get(i).getNamaKegiatan());
         myViewHolder.tvJamKegiatan.setText(dataItemKegiatans.get(i).getJam());
         myViewHolder.tvLokasiKegiatan.setText(dataItemKegiatans.get(i).getLokasi());

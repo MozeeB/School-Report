@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,10 +22,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.mozeeb.schoolreport.model.register.ResponseRegister;
-import com.mozeeb.schoolreport.network.ApiService;
-import com.mozeeb.schoolreport.network.ConfigRetrofit;
-import com.squareup.picasso.Picasso;
+import net.gotev.uploadservice.MultipartUploadRequest;
 
 import org.apache.commons.io.FileUtils;
 
@@ -34,6 +30,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,13 +38,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
-import id.zelory.compressor.Compressor;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -72,18 +62,23 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner spinnerKelaminRegister;
     @BindView(R.id.spinner_level)
     Spinner spinnerLevel;
-    @BindView(R.id.img_upload)
-    ImageView imgUpload;
     @BindView(R.id.imgfotoprofile)
     ImageView imgfotoprofile;
     @BindView(R.id.btn_upload)
     Button btnUpload;
     @BindView(R.id.btn_register)
     Button btnRegister;
-    private ApiService apiService;
 
+    private Uri filepath;
+    private String mediapath;
+    private Bitmap mPhoto;
+    private Context context;
     String part_image;
     final int REQUEST_GALLERY = 9544;
+    public final int REQ_CHOOSE_FILE_REGISTER = 100;
+    public static final String UPLOAD_REGISTER_URL = "https://lombaidn.000webhostapp.com/apisekolah/user/register.php";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
         spinnerLevel();
     }
 
-    @OnClick({R.id.btn_upload, R.id.btn_register})
+    @OnClick({ R.id.btn_upload,R.id.btn_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_upload:
-                ChooseGallerOrCamera();
+                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
                 break;
             case R.id.btn_register:
                 registerUser();
@@ -129,39 +124,70 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void registerUser() {
-        File imagefile = new File(part_image);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form_file"), imagefile);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("foto", imagefile.getName(), requestBody);
+    private void registerUser(){
+//        String sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+//
+//        part_image = getPath(filepath);
+//
+//        File imagefile = new File(part_image);
+//        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"),imagefile);
+//        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(),reqBody);
+//
+//        ConfigRetrofit.getInstance().postRegister(edtNamaRegister.getText().toString(),
+//                edtUsernameRegister.getText().toString(),
+//                edtNotelpRegister.getText().toString(),
+//                edtAlamatRegister.getText().toString(),edtEmailRegister.getText().toString(),
+//                spinnerKelaminRegister.toString(),edtPasswordRegister.getText().toString(),partImage,spinnerLevel.toString()).enqueue(new Callback<ResponseRegister>() {
+//            @Override
+//            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+//                Log.d("RETRO", "ON RESPONSE  : " + response.body().toString());
+//
+//                if(response.body().isSukses()) {
+//                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseRegister> call, Throwable t) {
+//                Log.d("RETRO", "ON FAILURE : " + t.getMessage());
+//            }
+//        });
 
-        apiService = ConfigRetrofit.getClient().create(ApiService.class);
-        Call<ResponseRegister> call = apiService.postRegister(edtNamaRegister.getText().toString(), edtUsernameRegister.getText().toString(), edtNotelpRegister.getText().toString(), edtAlamatRegister.getText().toString(), edtEmailRegister.getText().toString(), spinnerKelaminRegister.toString(), edtPasswordRegister.getText().toString(), part, spinnerLevel.toString());
-        call.enqueue(new Callback<ResponseRegister>() {
-            @Override
-            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-                if (response.isSuccessful()) {
-                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    Toasty.success(RegisterActivity.this, "Daftar Sukses!!!", Toasty.LENGTH_LONG).show();
-                } else {
-                    Toasty.error(RegisterActivity.this, "Gagal Register", Toasty.LENGTH_LONG).show();
-                }
 
-            }
 
-            @Override
-            public void onFailure(Call<ResponseRegister> call, Throwable t) {
-                Toasty.error(RegisterActivity.this, "Gagal Register", Toasty.LENGTH_LONG).show();
 
-            }
-        });
-
+        try{
+            mediapath = getPath(filepath);
+            Toasty.success(this,"Succes to Send", Toasty.LENGTH_SHORT).show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
+                    .addParameter("nama", edtNamaRegister.getText().toString())
+                    .addParameter("username", edtUsernameRegister.getText().toString())
+                    .addParameter("no_telp", edtNotelpRegister.getText().toString())
+                    .addParameter("alamat", edtAlamatRegister.getText().toString())
+                    .addParameter("email", edtEmailRegister.getText().toString())
+                    .addParameter("jenis_kelamin", spinnerKelaminRegister.toString())
+                    .addParameter("password", edtPasswordRegister.toString())
+                    .addFileToUpload(mediapath, "foto")
+                    .setMaxRetries(2)
+                    .startUpload();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void ChooseGallerOrCamera() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Open Gallery"), REQUEST_GALLERY);
+    private void ChooseImage(int requestCode){
+        Intent toGalery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(toGalery, requestCode);
+        Log.i("Gallery", "Masuk Gallery");
 
     }
 
@@ -169,28 +195,52 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_GALLERY) {
-                Uri dataimage = data.getData();
-                String[] imageprojection = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(dataimage, imageprojection, null, null, null);
+        if (resultCode == RESULT_OK){
+            if (requestCode == REQ_CHOOSE_FILE_REGISTER){
+                if (data.getData() != null){
+                    filepath = data.getData();
+//                    Uri seletedImage = data.getData();
+                    Log.i("datanya disini",filepath.toString());
+                }
+                try {
+                    mPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
+                    imgfotoprofile.setImageBitmap(mPhoto);
 
-                if (cursor != null) {
-                    cursor.moveToFirst();
-                    int indexImage = cursor.getColumnIndex(imageprojection[0]);
-                    part_image = cursor.getString(indexImage);
-
-                    if (part_image != null) {
-                        File image = new File(part_image);
-                        imgfotoprofile.setImageBitmap(BitmapFactory.decodeFile(image.getAbsolutePath()));
-                    }
+                }catch (IOException e){
+                    e.printStackTrace();
                 }
             }
         }
-
-
-//
     }
+    private String getPath(Uri filepath){
+        Cursor cursor = getContentResolver().query(filepath, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
+        cursor.close();
+
+        cursor = getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, MediaStore.Images
+                .Media._ID +  " = ? ", new String[]{document_id}, null);
+//        String provider = "com.android.providers.media.MediaProvider";
+//
+//        Uri uri = Uri.parse("content://media/external/images/media");
+//
+//        grantUriPermission(provider, uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        grantUriPermission(provider, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//        grantUriPermission(provider, uri, Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION);
+
+
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+
+        return path;
+
+
+    }
+
+
 
     ///----------------//////----------////
     //encodefilebase64

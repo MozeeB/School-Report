@@ -2,11 +2,9 @@ package com.mozeeb.schoolreport.user;
 
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,12 +14,10 @@ import android.view.ViewGroup;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterNews;
-import com.mozeeb.schoolreport.model.berita.read.DataItemBerita;
+import com.mozeeb.schoolreport.model.berita.read.BeritaItem;
 import com.mozeeb.schoolreport.model.berita.read.ResponseBerita;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
-import com.mozeeb.schoolreport.user.berita.UserTambahBerita;
-import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +41,7 @@ public class NewsFragment extends Fragment {
 
     private ApiService apiService;
     private AdapterNews adapterNews;
-    private List<DataItemBerita> dataItemsNewBeritas;
+    private List<BeritaItem> dataItemsNewBeritas;
 
 
     public NewsFragment() {
@@ -68,13 +64,13 @@ public class NewsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         dataItemsNewBeritas = new ArrayList<>();
 
-        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_berita);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity().getApplication(), UserTambahBerita.class));
-            }
-        });
+//        FloatingActionButton fab = view.findViewById(R.id.fabMain_tambah_berita);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity().getApplication(), UserTambahBerita.class));
+//            }
+//        });
 
 
     }
@@ -93,8 +89,10 @@ public class NewsFragment extends Fragment {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
                     ResponseBerita responseNews = response.body();
-                    dataItemsNewBeritas = responseNews.getData();
+                    dataItemsNewBeritas = responseNews.getBerita();
                     setUplist2(dataItemsNewBeritas);
+                }else {
+                    Toasty.error(getActivity(), response.message(), Toasty.LENGTH_SHORT).show();
                 }
 
             }
@@ -108,7 +106,7 @@ public class NewsFragment extends Fragment {
 
     }
 
-    private void setUplist2(List<DataItemBerita> dataItemsNewBeritas) {
+    private void setUplist2(List<BeritaItem> dataItemsNewBeritas) {
         rvNews.setHasFixedSize(true);
         rvNews.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterNews = new AdapterNews(getActivity(), dataItemsNewBeritas);

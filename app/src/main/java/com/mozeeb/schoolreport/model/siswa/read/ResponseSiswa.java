@@ -1,41 +1,29 @@
 package com.mozeeb.schoolreport.model.siswa.read;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 public class ResponseSiswa{
 
-	@SerializedName("pesan")
-	private String pesan;
+	@SerializedName("siswa")
+	private List<SiswaItem> siswa;
 
-	@SerializedName("data")
-	private List<DataItemSiswa> data;
+	@SerializedName("status")
+	private boolean status;
 
-	@SerializedName("sukses")
-	private boolean sukses;
-
-	public void setPesan(String pesan){
-		this.pesan = pesan;
+	public void setSiswa(List<SiswaItem> siswa){
+		this.siswa = siswa;
 	}
 
-	public String getPesan(){
-		return pesan;
+	public List<SiswaItem> getSiswa(){
+		return siswa;
 	}
 
-	public void setData(List<DataItemSiswa> data){
-		this.data = data;
+	public void setStatus(boolean status){
+		this.status = status;
 	}
 
-	public List<DataItemSiswa> getData(){
-		return data;
-	}
-
-	public void setSukses(boolean sukses){
-		this.sukses = sukses;
-	}
-
-	public boolean isSukses(){
-		return sukses;
+	public boolean isStatus(){
+		return status;
 	}
 }

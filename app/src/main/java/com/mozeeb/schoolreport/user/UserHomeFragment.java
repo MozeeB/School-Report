@@ -2,8 +2,6 @@ package com.mozeeb.schoolreport.user;
 
 
 import android.app.ProgressDialog;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,10 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -23,7 +18,7 @@ import android.widget.FrameLayout;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterLapor;
 import com.mozeeb.schoolreport.helper.MovableFloatingActionButton;
-import com.mozeeb.schoolreport.model.laporan.read.DataItemLapor;
+import com.mozeeb.schoolreport.model.laporan.read.LaporanItem;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
@@ -59,7 +54,7 @@ public class UserHomeFragment extends Fragment {
 
     private AdapterLapor adapter;
 
-    private List<DataItemLapor> dataItemsLaporanLapor;
+    private List<LaporanItem> dataItemsLaporanLapor;
 
     public UserHomeFragment() {
         // Required empty public constructor
@@ -91,6 +86,7 @@ public class UserHomeFragment extends Fragment {
                 startActivity(new Intent(getActivity().getApplication(), UserTambahActivity.class));
             }
         });
+        getData();
 
     }
 
@@ -102,14 +98,14 @@ public class UserHomeFragment extends Fragment {
         progressDialog.show();
 
         apiService = ConfigRetrofit.getClient().create(ApiService.class);
-        Call<ResponseLaporan> call = apiService.getLaporan();
+        Call<ResponseLaporan>  call = apiService.getLaporan();
         call.enqueue(new Callback<ResponseLaporan>() {
             @Override
             public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
                     ResponseLaporan responseNews = response.body();
-                    dataItemsLaporanLapor = responseNews.getData();
+                    dataItemsLaporanLapor = responseNews.getLaporan();
 //                    setUpList(dataItemsLaporanLapor);
                     rvMain.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true));
                     adapter = new AdapterLapor(dataItemsLaporanLapor, getActivity());
@@ -141,7 +137,7 @@ public class UserHomeFragment extends Fragment {
         super.onResume();
 
 
-        getData();
+
     }
 
     @Override

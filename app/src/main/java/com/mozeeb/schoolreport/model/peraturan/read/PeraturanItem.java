@@ -2,7 +2,7 @@ package com.mozeeb.schoolreport.model.peraturan.read;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemPeraturan {
+public class PeraturanItem{
 
 	@SerializedName("penulis")
 	private String penulis;

@@ -2,38 +2,34 @@ package com.mozeeb.schoolreport.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.siswa.read.DataItemSiswa;
+import com.mozeeb.schoolreport.model.siswa.read.SiswaItem;
 import com.mozeeb.schoolreport.user.tabDaftar.siswa.DetailSiswa;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyViewHolder> {
 
 
 
     private Context context;
-    private List<DataItemSiswa> dataItemSiswas;
+    private List<SiswaItem> dataItemSiswas;
 
 
-    public AdapterTabSiswa(Context context, List<DataItemSiswa> dataItemSiswas) {
+    public AdapterTabSiswa(Context context, List<SiswaItem> dataItemSiswas) {
         this.context = context;
         this.dataItemSiswas = dataItemSiswas;
     }
@@ -46,13 +42,14 @@ public class AdapterTabSiswa extends RecyclerView.Adapter<AdapterTabSiswa.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
 
-        DataItemSiswa dataItemSiswa = dataItemSiswas.get(i);
 
+        SiswaItem dataItemSiswa = dataItemSiswas.get(i);
         myViewHolder.tvDaftarnamaSiswa.setText(dataItemSiswa.getNama());
         myViewHolder.tvDaftarkelas.setText(dataItemSiswa.getKelas());
         myViewHolder.tvDaftaralamat.setText(dataItemSiswa.getAlamat());
-        Glide.with(context).load(dataItemSiswa.getFoto()).into(myViewHolder.ivDaftarsiswa);
+        Glide.with(context).load(URL + dataItemSiswa.getFoto()).into(myViewHolder.ivDaftarsiswa);
 
         Log.e("foto", dataItemSiswa.getFoto());
 

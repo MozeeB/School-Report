@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.berita.read.DataItemBerita;
+import com.mozeeb.schoolreport.model.berita.read.BeritaItem;
 import com.mozeeb.schoolreport.user.berita.UserDetailNewsActivity;
 
 import java.util.List;
@@ -24,9 +24,9 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.MyViewHolder> 
 
 
     private Context context;
-    private List<DataItemBerita> dataItemsNewBeritas;
+    private List<BeritaItem> dataItemsNewBeritas;
 
-    public AdapterNews(Context context, List<DataItemBerita> dataItemsNewBeritas) {
+    public AdapterNews(Context context, List<BeritaItem> dataItemsNewBeritas) {
         this.context = context;
         this.dataItemsNewBeritas = dataItemsNewBeritas;
     }
@@ -39,8 +39,9 @@ public class AdapterNews extends RecyclerView.Adapter<AdapterNews.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
-        DataItemBerita dataItemBerita = dataItemsNewBeritas.get(i);
-        Glide.with(context).load(dataItemBerita.getGambar()).into(myViewHolder.ivNews);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+        BeritaItem dataItemBerita = dataItemsNewBeritas.get(i);
+        Glide.with(context).load(URL + dataItemBerita.getGambar()).into(myViewHolder.ivNews);
         myViewHolder.tvJudul.setText(dataItemBerita.getJudul());
         myViewHolder.tvTglTerbit.setText(dataItemBerita.getTglTerbit());
         myViewHolder.tvPenerbit.setText(dataItemBerita.getPenerbit());

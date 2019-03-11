@@ -5,36 +5,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponsePeraturan{
 
-	@SerializedName("pesan")
-	private String pesan;
+	@SerializedName("peraturan")
+	private List<PeraturanItem> peraturan;
 
-	@SerializedName("data")
-	private List<DataItemPeraturan> data;
+	@SerializedName("status")
+	private boolean status;
 
-	@SerializedName("sukses")
-	private boolean sukses;
-
-	public void setPesan(String pesan){
-		this.pesan = pesan;
+	public void setPeraturan(List<PeraturanItem> peraturan){
+		this.peraturan = peraturan;
 	}
 
-	public String getPesan(){
-		return pesan;
+	public List<PeraturanItem> getPeraturan(){
+		return peraturan;
 	}
 
-	public void setData(List<DataItemPeraturan> data){
-		this.data = data;
+	public void setStatus(boolean status){
+		this.status = status;
 	}
 
-	public List<DataItemPeraturan> getData(){
-		return data;
-	}
-
-	public void setSukses(boolean sukses){
-		this.sukses = sukses;
-	}
-
-	public boolean isSukses(){
-		return sukses;
+	public boolean isStatus(){
+		return status;
 	}
 }

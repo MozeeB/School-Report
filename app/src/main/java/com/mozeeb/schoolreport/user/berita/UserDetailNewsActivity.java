@@ -33,8 +33,8 @@ public class UserDetailNewsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        Glide.with(this).load(getIntent().getStringExtra("img")).into(imgDetailberita);
+        final String URL = "https://lombaidn.000webhostapp.com/apisekolah/foto/";
+        Glide.with(this).load(URL + getIntent().getStringExtra("img")).into(imgDetailberita);
         kontenBerita.setText(getIntent().getStringExtra("konten"));
         tglDetailberita.setText(getIntent().getStringExtra("tgl"));
         tvDetailberitaPenertbit.setText(getIntent().getStringExtra("penerbit"));

@@ -1,8 +1,8 @@
-package com.mozeeb.schoolreport.model.guru.read;
+package com.mozeeb.schoolreport.model.siswa.read;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemGuru {
+public class SiswaItem{
 
 	@SerializedName("umur")
 	private String umur;
@@ -13,11 +13,11 @@ public class DataItemGuru {
 	@SerializedName("foto")
 	private String foto;
 
+	@SerializedName("kelas")
+	private String kelas;
+
 	@SerializedName("id")
 	private String id;
-
-	@SerializedName("no_telp")
-	private String noTelp;
 
 	@SerializedName("tgl_lahir")
 	private String tglLahir;
@@ -49,20 +49,20 @@ public class DataItemGuru {
 		return foto;
 	}
 
+	public void setKelas(String kelas){
+		this.kelas = kelas;
+	}
+
+	public String getKelas(){
+		return kelas;
+	}
+
 	public void setId(String id){
 		this.id = id;
 	}
 
 	public String getId(){
 		return id;
-	}
-
-	public void setNoTelp(String noTelp){
-		this.noTelp = noTelp;
-	}
-
-	public String getNoTelp(){
-		return noTelp;
 	}
 
 	public void setTglLahir(String tglLahir){

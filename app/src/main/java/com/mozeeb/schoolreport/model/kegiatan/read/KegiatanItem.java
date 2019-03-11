@@ -2,7 +2,10 @@ package com.mozeeb.schoolreport.model.kegiatan.read;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemKegiatan {
+public class KegiatanItem{
+
+	@SerializedName("keterangan")
+	private String keterangan;
 
 	@SerializedName("foto")
 	private String foto;
@@ -24,6 +27,14 @@ public class DataItemKegiatan {
 
 	@SerializedName("tujuan")
 	private String tujuan;
+
+	public void setKeterangan(String keterangan){
+		this.keterangan = keterangan;
+	}
+
+	public String getKeterangan(){
+		return keterangan;
+	}
 
 	public void setFoto(String foto){
 		this.foto = foto;

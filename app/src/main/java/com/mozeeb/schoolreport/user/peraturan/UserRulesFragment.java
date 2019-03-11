@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterPeratuan;
-import com.mozeeb.schoolreport.model.peraturan.read.DataItemPeraturan;
+import com.mozeeb.schoolreport.model.peraturan.read.PeraturanItem;
 import com.mozeeb.schoolreport.model.peraturan.read.ResponsePeraturan;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
@@ -30,7 +30,7 @@ import retrofit2.Response;
  */
 public class UserRulesFragment extends Fragment {
 
-    List<DataItemPeraturan> dataItemPeraturanList;
+    List<PeraturanItem> dataItemPeraturanList;
     AdapterPeratuan adapterPeratuan;
     @BindView(R.id.rv_peraturan)
     RecyclerView rvPeraturan;
@@ -57,7 +57,7 @@ public class UserRulesFragment extends Fragment {
             public void onResponse(Call<ResponsePeraturan> call, Response<ResponsePeraturan> response) {
                 if (response.isSuccessful()) {
                     ResponsePeraturan responsePeraturan = response.body();
-                    dataItemPeraturanList = responsePeraturan.getData();
+                    dataItemPeraturanList = responsePeraturan.getPeraturan();
                     setUpList(dataItemPeraturanList);
 
                 }
@@ -70,7 +70,7 @@ public class UserRulesFragment extends Fragment {
         });
     }
 
-    private void setUpList(List<DataItemPeraturan> dataItemPeraturans) {
+    private void setUpList(List<PeraturanItem> dataItemPeraturans) {
         rvPeraturan.setHasFixedSize(true);
         rvPeraturan.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterPeratuan = new AdapterPeratuan(getActivity(), dataItemPeraturans);

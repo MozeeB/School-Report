@@ -1,8 +1,8 @@
-package com.mozeeb.schoolreport.model.siswa.read;
+package com.mozeeb.schoolreport.model.guru.read;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemSiswa {
+public class GuruItem{
 
 	@SerializedName("umur")
 	private String umur;
@@ -10,28 +10,20 @@ public class DataItemSiswa {
 	@SerializedName("nama")
 	private String nama;
 
-	@SerializedName("kelas")
-	private String kelas;
+	@SerializedName("foto")
+	private String foto;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
+
+	@SerializedName("no_telp")
+	private String noTelp;
 
 	@SerializedName("tgl_lahir")
 	private String tglLahir;
 
 	@SerializedName("alamat")
 	private String alamat;
-
-	@SerializedName("foto")
-	private String foto;
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
 
 	public void setUmur(String umur){
 		this.umur = umur;
@@ -49,20 +41,28 @@ public class DataItemSiswa {
 		return nama;
 	}
 
-	public void setKelas(String kelas){
-		this.kelas = kelas;
+	public void setFoto(String foto){
+		this.foto = foto;
 	}
 
-	public String getKelas(){
-		return kelas;
+	public String getFoto(){
+		return foto;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
+	}
+
+	public void setNoTelp(String noTelp){
+		this.noTelp = noTelp;
+	}
+
+	public String getNoTelp(){
+		return noTelp;
 	}
 
 	public void setTglLahir(String tglLahir){
@@ -80,4 +80,6 @@ public class DataItemSiswa {
 	public String getAlamat(){
 		return alamat;
 	}
+
+
 }

@@ -2,7 +2,7 @@ package com.mozeeb.schoolreport.model.laporan.read;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemLapor {
+public class LaporanItem{
 
 	@SerializedName("wali")
 	private String wali;
@@ -12,6 +12,9 @@ public class DataItemLapor {
 
 	@SerializedName("tgl_lapor")
 	private String tglLapor;
+
+	@SerializedName("keterangan")
+	private String keterangan;
 
 	@SerializedName("nama")
 	private String nama;
@@ -30,17 +33,6 @@ public class DataItemLapor {
 
 	@SerializedName("melanggar")
 	private String melanggar;
-
-	@SerializedName("keterangan")
-	private String keterangan;
-
-	public String getKeterangan() {
-		return keterangan;
-	}
-
-	public void setKeterangan(String keterangan) {
-		this.keterangan = keterangan;
-	}
 
 	public void setWali(String wali){
 		this.wali = wali;
@@ -64,6 +56,14 @@ public class DataItemLapor {
 
 	public String getTglLapor(){
 		return tglLapor;
+	}
+
+	public void setKeterangan(String keterangan){
+		this.keterangan = keterangan;
+	}
+
+	public String getKeterangan(){
+		return keterangan;
 	}
 
 	public void setNama(String nama){

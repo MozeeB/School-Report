@@ -2,7 +2,7 @@ package com.mozeeb.schoolreport.model.login;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Data{
+public class User{
 
 	@SerializedName("password")
 	private String password;

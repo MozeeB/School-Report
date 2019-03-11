@@ -2,11 +2,9 @@ package com.mozeeb.schoolreport.user.kegiatan;
 
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,10 +14,9 @@ import android.view.ViewGroup;
 
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterKegiatan;
-import com.mozeeb.schoolreport.model.kegiatan.read.DataItemKegiatan;
+import com.mozeeb.schoolreport.model.kegiatan.read.KegiatanItem;
 import com.mozeeb.schoolreport.model.kegiatan.read.ResponseKegiatan;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
-import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +40,7 @@ public class UserAgendaFragment extends Fragment {
     Unbinder unbinder;
 
     private AdapterKegiatan adapterKegiatan;
-    private List<DataItemKegiatan> dataItemKegiatans;
+    private List<KegiatanItem> dataItemKegiatans;
 
     public UserAgendaFragment() {
         // Required empty public constructor
@@ -88,7 +85,7 @@ public class UserAgendaFragment extends Fragment {
                     Toasty.success(getActivity(), response.message(), Toasty.LENGTH_LONG).show();
 
                     ResponseKegiatan responseKegiatan = response.body();
-                    dataItemKegiatans = responseKegiatan.getData();
+                    dataItemKegiatans = responseKegiatan.getKegiatan();
                     setUplist(dataItemKegiatans);
                 }
             }
@@ -102,7 +99,7 @@ public class UserAgendaFragment extends Fragment {
 
     }
 
-    private void setUplist(List<DataItemKegiatan> dataItemKegiatans) {
+    private void setUplist(List<KegiatanItem> dataItemKegiatans) {
         rvKegiatan.setHasFixedSize(true);
         rvKegiatan.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterKegiatan = new AdapterKegiatan(getActivity(), dataItemKegiatans);

@@ -2,7 +2,7 @@ package com.mozeeb.schoolreport.model.berita.read;
 
 import com.google.gson.annotations.SerializedName;
 
-public class DataItemBerita {
+public class BeritaItem{
 
 	@SerializedName("konten")
 	private String konten;
@@ -14,7 +14,7 @@ public class DataItemBerita {
 	private String tglTerbit;
 
 	@SerializedName("id")
-	private int id;
+	private String id;
 
 	@SerializedName("judul")
 	private String judul;
@@ -46,11 +46,11 @@ public class DataItemBerita {
 		return tglTerbit;
 	}
 
-	public void setId(int id){
+	public void setId(String id){
 		this.id = id;
 	}
 
-	public int getId(){
+	public String getId(){
 		return id;
 	}
 

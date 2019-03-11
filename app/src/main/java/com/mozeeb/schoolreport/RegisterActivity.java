@@ -21,11 +21,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.mozeeb.schoolreport.model.register.ResponseRegister;
-import com.mozeeb.schoolreport.network.ApiService;
-import com.mozeeb.schoolreport.network.ConfigRetrofit;
+import net.gotev.uploadservice.MultipartUploadRequest;
 
 import org.apache.commons.io.FileUtils;
 
@@ -33,21 +30,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -72,10 +62,10 @@ public class RegisterActivity extends AppCompatActivity {
     Spinner spinnerKelaminRegister;
     @BindView(R.id.spinner_level)
     Spinner spinnerLevel;
-//    @BindView(R.id.imgfotoprofile)
-//    ImageView imgfotoprofile;
-//    @BindView(R.id.btn_upload)
-//    Button btnUpload;
+    @BindView(R.id.imgfotoprofile)
+    ImageView imgfotoprofile;
+    @BindView(R.id.btn_upload)
+    Button btnUpload;
     @BindView(R.id.btn_register)
     Button btnRegister;
 
@@ -86,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
     String part_image;
     final int REQUEST_GALLERY = 9544;
     public final int REQ_CHOOSE_FILE_REGISTER = 100;
-    public static final String UPLOAD_REGISTER_URL = "http://192.168.60.24/server_sekolah/index.php/api/register";
+    public static final String UPLOAD_REGISTER_URL = "https://lombaidn.000webhostapp.com/apisekolah/user/register.php";
 
 
 
@@ -100,12 +90,12 @@ public class RegisterActivity extends AppCompatActivity {
         spinnerLevel();
     }
 
-    @OnClick({ R.id.btn_register})
+    @OnClick({ R.id.btn_upload,R.id.btn_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-//            case R.id.btn_upload:
-//                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
-//                break;
+            case R.id.btn_upload:
+                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
+                break;
             case R.id.btn_register:
                 registerUser();
                 break;
@@ -135,68 +125,63 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private void registerUser(){
-        String sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-
-        part_image = getPath(filepath);
-
-        File imagefile = new File(part_image);
-        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"),imagefile);
-        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(),reqBody);
-
-        ApiService api = ConfigRetrofit.getInstance();
-        Call<ResponseRegister> upload = api.postRegister(edtNamaRegister.getText().toString(),
-                edtUsernameRegister.getText().toString(),
-                edtNotelpRegister.getText().toString(),
-                edtAlamatRegister.getText().toString(),edtEmailRegister.getText().toString(),
-                spinnerKelaminRegister.toString(),edtPasswordRegister.getText().toString(),partImage,spinnerLevel.toString());
-        upload.enqueue(new Callback<ResponseRegister>() {
-            @Override
-            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-                Log.d("RETRO", "ON RESPONSE  : " + response.body().toString());
-
-                if(response.body().isSukses() == true)
-                {
-                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-                }else
-                {
-                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseRegister> call, Throwable t) {
-                Log.d("RETRO", "ON FAILURE : " + t.getMessage());
-            }
-        });
+//        String sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+//
+//        part_image = getPath(filepath);
+//
+//        File imagefile = new File(part_image);
+//        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"),imagefile);
+//        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(),reqBody);
+//
+//        ConfigRetrofit.getInstance().postRegister(edtNamaRegister.getText().toString(),
+//                edtUsernameRegister.getText().toString(),
+//                edtNotelpRegister.getText().toString(),
+//                edtAlamatRegister.getText().toString(),edtEmailRegister.getText().toString(),
+//                spinnerKelaminRegister.toString(),edtPasswordRegister.getText().toString(),partImage,spinnerLevel.toString()).enqueue(new Callback<ResponseRegister>() {
+//            @Override
+//            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+//                Log.d("RETRO", "ON RESPONSE  : " + response.body().toString());
+//
+//                if(response.body().isSukses()) {
+//                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseRegister> call, Throwable t) {
+//                Log.d("RETRO", "ON FAILURE : " + t.getMessage());
+//            }
+//        });
 
 
 
 
-//        try{
-//            mediapath = getPath(filepath);
-//            Toasty.success(this,"Succes to Send", Toasty.LENGTH_SHORT).show();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        try {
-//            new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
-//                    .addFileToUpload(mediapath, "foto")
-//                    .addParameter("nama", edtNamaRegister.getText().toString())
-//                    .addParameter("username", edtUsernameRegister.getText().toString())
-//                    .addParameter("no_telp", edtNotelpRegister.getText().toString())
-//                    .addParameter("alamat", edtAlamatRegister.getText().toString())
-//                    .addParameter("email", edtEmailRegister.getText().toString())
-//                    .addParameter("jenis_kelamin", spinnerKelaminRegister.toString())
-//                    .addParameter("password", edtPasswordRegister.toString())
-//                    .addParameter("level", spinnerLevel.toString())
-//                    .setMaxRetries(2)
-//                    .startUpload();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (MalformedURLException e) {
-//            e.printStackTrace();
-//        }
+        try{
+            mediapath = getPath(filepath);
+            Toasty.success(this,"Succes to Send", Toasty.LENGTH_SHORT).show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
+                    .addParameter("nama", edtNamaRegister.getText().toString())
+                    .addParameter("username", edtUsernameRegister.getText().toString())
+                    .addParameter("no_telp", edtNotelpRegister.getText().toString())
+                    .addParameter("alamat", edtAlamatRegister.getText().toString())
+                    .addParameter("email", edtEmailRegister.getText().toString())
+                    .addParameter("jenis_kelamin", spinnerKelaminRegister.toString())
+                    .addParameter("password", edtPasswordRegister.toString())
+                    .addFileToUpload(mediapath, "foto")
+                    .setMaxRetries(2)
+                    .startUpload();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void ChooseImage(int requestCode){
@@ -206,27 +191,27 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (resultCode == RESULT_OK){
-//            if (requestCode == REQ_CHOOSE_FILE_REGISTER){
-//                if (data.getData() != null){
-//                    filepath = data.getData();
-////                    Uri seletedImage = data.getData();
-//                    Log.i("datanya disini",filepath.toString());
-//                }
-//                try {
-//                    mPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
-//                    imgfotoprofile.setImageBitmap(mPhoto);
-//
-//                }catch (IOException e){
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == REQ_CHOOSE_FILE_REGISTER){
+                if (data.getData() != null){
+                    filepath = data.getData();
+//                    Uri seletedImage = data.getData();
+                    Log.i("datanya disini",filepath.toString());
+                }
+                try {
+                    mPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
+                    imgfotoprofile.setImageBitmap(mPhoto);
+
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
     private String getPath(Uri filepath){
         Cursor cursor = getContentResolver().query(filepath, null, null, null, null);
         cursor.moveToFirst();

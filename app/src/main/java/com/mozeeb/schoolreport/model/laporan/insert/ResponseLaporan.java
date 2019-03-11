@@ -1,8 +1,8 @@
-package com.mozeeb.schoolreport.model.register;
+package com.mozeeb.schoolreport.model.laporan.insert;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseRegister{
+public class ResponseLaporan{
 
 	@SerializedName("result")
 	private String result;

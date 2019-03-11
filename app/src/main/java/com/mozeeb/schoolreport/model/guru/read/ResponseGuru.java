@@ -1,22 +1,22 @@
-package com.mozeeb.schoolreport.model.siswa.read;
+package com.mozeeb.schoolreport.model.guru.read;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseSiswa{
+public class ResponseGuru{
 
-	@SerializedName("siswa")
-	private List<SiswaItem> siswa;
+	@SerializedName("guru")
+	private List<GuruItem> guru;
 
 	@SerializedName("status")
 	private boolean status;
 
-	public void setSiswa(List<SiswaItem> siswa){
-		this.siswa = siswa;
+	public void setGuru(List<GuruItem> guru){
+		this.guru = guru;
 	}
 
-	public List<SiswaItem> getSiswa(){
-		return siswa;
+	public List<GuruItem> getGuru(){
+		return guru;
 	}
 
 	public void setStatus(boolean status){
@@ -26,4 +26,6 @@ public class ResponseSiswa{
 	public boolean isStatus(){
 		return status;
 	}
+
+
 }

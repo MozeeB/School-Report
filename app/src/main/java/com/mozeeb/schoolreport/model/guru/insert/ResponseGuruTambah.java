@@ -1,16 +1,11 @@
-package com.mozeeb.schoolreport.model.guru.read;
+package com.mozeeb.schoolreport.model.guru.insert;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class ResponseDaftarGuru{
+public class ResponseGuruTambah {
 
 	@SerializedName("pesan")
 	private String pesan;
-
-	@SerializedName("data")
-	private List<DataItemGuru> data;
 
 	@SerializedName("sukses")
 	private boolean sukses;
@@ -21,14 +16,6 @@ public class ResponseDaftarGuru{
 
 	public String getPesan(){
 		return pesan;
-	}
-
-	public void setData(List<DataItemGuru> data){
-		this.data = data;
-	}
-
-	public List<DataItemGuru> getData(){
-		return data;
 	}
 
 	public void setSukses(boolean sukses){

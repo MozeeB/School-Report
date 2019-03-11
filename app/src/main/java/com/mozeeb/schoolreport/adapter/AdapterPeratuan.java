@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mozeeb.schoolreport.R;
-import com.mozeeb.schoolreport.model.peraturan.read.DataItemPeraturan;
+import com.mozeeb.schoolreport.model.peraturan.read.PeraturanItem;
 import com.mozeeb.schoolreport.user.peraturan.DetailPeraturan;
 
 import java.util.List;
@@ -22,9 +22,9 @@ public class AdapterPeratuan extends RecyclerView.Adapter<AdapterPeratuan.MyView
 
 
     private Context context;
-    private List<DataItemPeraturan> dataItemPeraturanList;
+    private List<PeraturanItem> dataItemPeraturanList;
 
-    public AdapterPeratuan(Context context, List<DataItemPeraturan> dataItemPeraturanList) {
+    public AdapterPeratuan(Context context, List<PeraturanItem> dataItemPeraturanList) {
         this.context = context;
         this.dataItemPeraturanList = dataItemPeraturanList;
     }

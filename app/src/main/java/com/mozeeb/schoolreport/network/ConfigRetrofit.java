@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ConfigRetrofit {
 
         private static Retrofit retrofit = null;
-        private static final String BASE_URL = "http://192.168.60.24/server_sekolah/index.php/";
+        private static final String BASE_URL = "https://lombaidn.000webhostapp.com/apisekolah/";
 
         //membuat metdod return getClient
         public static Retrofit getClient() {

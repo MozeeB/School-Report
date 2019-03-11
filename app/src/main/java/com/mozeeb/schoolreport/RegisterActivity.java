@@ -1,15 +1,22 @@
 package com.mozeeb.schoolreport;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -21,6 +28,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.mozeeb.schoolreport.model.register.ResponseRegister;
+import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
 import net.gotev.uploadservice.MultipartUploadRequest;
 
@@ -38,6 +49,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -77,6 +94,11 @@ public class RegisterActivity extends AppCompatActivity {
     final int REQUEST_GALLERY = 9544;
     public final int REQ_CHOOSE_FILE_REGISTER = 100;
     public static final String UPLOAD_REGISTER_URL = "https://lombaidn.000webhostapp.com/apisekolah/user/register.php";
+//public static final String UPLOAD_REGISTER_URL = "http://192.168.71.53/apisekolah/user/register.php";
+
+    //permission granted
+    private int STORAGE_PERMISSION_CODE = 1;
+
 
 
 
@@ -124,28 +146,28 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void registerUser(){
+    private void registerUser() {
 //        String sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 //
 //        part_image = getPath(filepath);
 //
 //        File imagefile = new File(part_image);
-//        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"),imagefile);
-//        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(),reqBody);
+//        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
+//        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(), reqBody);
 //
 //        ConfigRetrofit.getInstance().postRegister(edtNamaRegister.getText().toString(),
 //                edtUsernameRegister.getText().toString(),
 //                edtNotelpRegister.getText().toString(),
-//                edtAlamatRegister.getText().toString(),edtEmailRegister.getText().toString(),
-//                spinnerKelaminRegister.toString(),edtPasswordRegister.getText().toString(),partImage,spinnerLevel.toString()).enqueue(new Callback<ResponseRegister>() {
+//                edtAlamatRegister.getText().toString(), edtEmailRegister.getText().toString(),
+//                spinnerKelaminRegister.toString(), edtPasswordRegister.getText().toString(), partImage).enqueue(new Callback<ResponseRegister>() {
 //            @Override
 //            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
 //                Log.d("RETRO", "ON RESPONSE  : " + response.body().toString());
 //
-//                if(response.body().isSukses()) {
-//                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
-//                }else {
-//                    Toast.makeText(RegisterActivity.this, response.body().getPesan(), Toast.LENGTH_SHORT).show();
+//                if (response.isSuccessful()) {
+//                    Toast.makeText(RegisterActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(RegisterActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 //
 //                }
 //            }
@@ -155,7 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
 //                Log.d("RETRO", "ON FAILURE : " + t.getMessage());
 //            }
 //        });
-
+//    }
 
 
 
@@ -167,6 +189,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         try {
             new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
+                    .addFileToUpload(mediapath, "foto")
                     .addParameter("nama", edtNamaRegister.getText().toString())
                     .addParameter("username", edtUsernameRegister.getText().toString())
                     .addParameter("no_telp", edtNotelpRegister.getText().toString())
@@ -174,7 +197,6 @@ public class RegisterActivity extends AppCompatActivity {
                     .addParameter("email", edtEmailRegister.getText().toString())
                     .addParameter("jenis_kelamin", spinnerKelaminRegister.toString())
                     .addParameter("password", edtPasswordRegister.toString())
-                    .addFileToUpload(mediapath, "foto")
                     .setMaxRetries(2)
                     .startUpload();
         } catch (FileNotFoundException e) {
@@ -184,10 +206,56 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
+
     private void ChooseImage(int requestCode){
         Intent toGalery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(toGalery, requestCode);
         Log.i("Gallery", "Masuk Gallery");
+
+        if (ContextCompat.checkSelfPermission(RegisterActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Toasty.success(RegisterActivity.this, "You have already granted this permission!", Toasty.LENGTH_SHORT).show();
+        } else {
+            requestStoragePermission();
+        }
+    }
+
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)){
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission needed")
+                    .setMessage("This permission is needed because of this and that")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(RegisterActivity.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }else {
+            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == STORAGE_PERMISSION_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toasty.success(RegisterActivity.this, "Permission GRANTED", Toasty.LENGTH_SHORT).show();
+
+            }else {
+                Toasty.error(RegisterActivity.this, "Permission DENIED", Toasty.LENGTH_SHORT).show();
+            }
+        }
+
 
     }
 

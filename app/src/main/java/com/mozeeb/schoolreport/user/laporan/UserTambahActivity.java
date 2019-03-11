@@ -1,13 +1,19 @@
 package com.mozeeb.schoolreport.user.laporan;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.mozeeb.schoolreport.R;
+import com.mozeeb.schoolreport.RegisterActivity;
 import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 
@@ -78,6 +85,9 @@ public class UserTambahActivity extends AppCompatActivity {
     private String mediapath;
     private Bitmap mPhoto;
     String part_image;
+
+    //permission granted
+    private int STORAGE_PERMISSION_CODE = 1;
 
     public final int REQ_CHOOSE_FILE_REGISTER = 100;
     public static final String UPLOAD_REGISTER_URL = "https://lombaidn.000webhostapp.com/apisekolah/user/register.php";
@@ -192,7 +202,39 @@ public class UserTambahActivity extends AppCompatActivity {
         startActivityForResult(toGalery, requestCode);
         Log.i("Gallery", "Masuk Gallery");
 
+        if (ContextCompat.checkSelfPermission(UserTambahActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            Toasty.success(UserTambahActivity.this, "You have already granted this permission!", Toasty.LENGTH_SHORT).show();
+        } else {
+            requestStoragePermission();
+        }
     }
+
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)){
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission needed")
+                    .setMessage("This permission is needed because of this and that")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(UserTambahActivity.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }else {
+            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+        }
+    }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

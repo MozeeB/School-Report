@@ -10,25 +10,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.mozeeb.schoolreport.helper.MovableFloatingActionButton
-            android:id="@+id/fabMain"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_add_black_24dp"
-            android:tint="@android:color/white"
-            app:useCompatPadding="true" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.mozeeb.schoolreport.helper.MovableFloatingActionButton
+                android:id="@+id/fabMain"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_add_black_24dp"
+                android:tint="@android:color/white"
+                app:useCompatPadding="true" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </android.support.v7.widget.RecyclerView>
 
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -76,6 +76,7 @@ public class UserAgendaFragment extends Fragment {
     public void getKeiatanData() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         ConfigRetrofit.getInstance().getKegiatan().enqueue(new Callback<ResponseKegiatan>() {

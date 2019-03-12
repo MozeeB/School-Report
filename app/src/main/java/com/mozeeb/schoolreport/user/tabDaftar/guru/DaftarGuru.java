@@ -72,6 +72,7 @@ public class DaftarGuru extends Fragment {
     public void getDataGuru() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         ConfigRetrofit.getInstance().getGuru().enqueue(new Callback<ResponseGuru>() {

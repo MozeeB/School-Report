@@ -95,6 +95,7 @@ public class UserHomeFragment extends Fragment {
     private void getData() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
         apiService = ConfigRetrofit.getClient().create(ApiService.class);

@@ -19,6 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import es.dmoral.toasty.Toasty;
 
 public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder> {
 
@@ -66,6 +67,7 @@ public class AdapterLapor extends RecyclerView.Adapter<AdapterLapor.MyViewHolder
     }
     @Override
     public int getItemCount() {
+
         return dataLaporan.size();
     }
 

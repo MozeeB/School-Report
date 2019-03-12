@@ -10,12 +10,6 @@ public class User{
 	@SerializedName("nama")
 	private String nama;
 
-	@SerializedName("foto")
-	private String foto;
-
-	@SerializedName("level")
-	private String level;
-
 	@SerializedName("id")
 	private String id;
 
@@ -48,22 +42,6 @@ public class User{
 
 	public String getNama(){
 		return nama;
-	}
-
-	public void setFoto(String foto){
-		this.foto = foto;
-	}
-
-	public String getFoto(){
-		return foto;
-	}
-
-	public void setLevel(String level){
-		this.level = level;
-	}
-
-	public String getLevel(){
-		return level;
 	}
 
 	public void setId(String id){

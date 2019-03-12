@@ -5,20 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mozeeb.schoolreport.SPreferenced.SPereference;
+import com.mozeeb.schoolreport.SPreferenced.Spereferen;
+import com.mozeeb.schoolreport.SPreferenced.SharedPref;
 import com.mozeeb.schoolreport.model.login.ResponseLogin;
 import com.mozeeb.schoolreport.model.login.User;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 import com.mozeeb.schoolreport.user.Splashscreen;
 import com.mozeeb.schoolreport.utils.Validate;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     private User dataUser;
     private Context mContext;
 
-    SPereference sharedPrefManager;
+    Spereferen sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-
+        sharedPrefManager = new Spereferen(this);
+        sharedPrefManager.checkLogin();
 
     }
 
@@ -66,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_login:
                 showProgress();
-                getData();
+                LoginUser();
                 if (validateLogin())
                 LoginUser();
                 break;
@@ -81,32 +83,27 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginUser() {
         apiInterface = ConfigRetrofit.getClient().create(ApiService.class);
-        Call<ResponseLogin> call = apiInterface.postLogin(loginBody);
+        Call<ResponseLogin> call = apiInterface.postLogin(edtUsername.getText().toString(),edtPasswordLogin.getText().toString());
         call.enqueue(new Callback<ResponseLogin>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                 progressDialog.dismiss();
-                if (response.isSuccessful()){
-                    //menampilkan response api berupa pesan ke dalam toast
-                    Toasty.success(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
-                    dataUser=response.body().getUser();
-//                    if (dataUser != null) {
-//                        SPereference sPereference = new SPereference(LoginActivity.this);
-//                        sPereference.setIdUser(dataUser.getId());
-//                        Log.i("errnya diinsi", dataUser.getId());
-//                        sPereference.set_telp(dataUser.getNoTelp());
-//                        sPereference.setAlamatPref(dataUser.getAlamat());
-//                        sPereference.setEmailPref(dataUser.getEmail());
-//                        sPereference.setKelamin(dataUser.getJenisKelamin());
-////                        sPereference.setFotoPref(dataUser.getFoto());
-//                        sPereference.storeLogin(dataUser.getUsername());
-                        //berpindah halaman ke mainactivity
-                        startActivity(new Intent(LoginActivity.this, Splashscreen.class));
-                        finish();
-//                    }
+                if (response.body().getResult().equals("1")){
+                    dataUser = response.body().getUser();
+                    Toasty.success(LoginActivity.this,"login berhasil",Toast.LENGTH_LONG).show();
+                    Spereferen sPereference = new Spereferen(LoginActivity.this);
+                    sPereference.setUsernama(response.body().getUser().getNama());
+                    sPereference.setUsername(response.body().getUser().getUsername());
+                    sPereference.set_telp(response.body().getUser().getNoTelp());
+                    sPereference.setAlamatPref(response.body().getUser().getAlamat());
+                    sPereference.setEmailPref(response.body().getUser().getEmail());
+                    sPereference.setKelamin(response.body().getUser().getJenisKelamin());
+                    sPereference.setPassword(response.body().getUser().getPassword());
+//                    setPref(dataUser);
+                    startActivity(new Intent(LoginActivity.this, Splashscreen.class));
                 }else {
                     //menampilkan response api berupa pesan ke dalam toast
-                    Toasty.success(LoginActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    Toasty.error(LoginActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -117,21 +114,26 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-    private void getData() {
-        //membuat object LoginBody
-        loginBody = new User();
-        //mengisi LoginBody
-        loginBody.setUsername(edtUsername.getText().toString());
-        loginBody.setPassword(edtPasswordLogin.getText().toString());
-    }
+
 
     private void showProgress() {
         //membuat object progress dialog
         progressDialog = new ProgressDialog(LoginActivity.this);
         //menambahkan message pada loading
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         //menampilkan progress dialog
         progressDialog.show();
 
+    }
+    private void setPref(User dataUser){
+        Prefs.putString(SharedPref.getID(), dataUser.getId());
+        Prefs.putString(SharedPref.getNAMA(), dataUser.getNama());
+        Prefs.putString(SharedPref.getUSERNAME(), dataUser.getUsername());
+        Prefs.putString(SharedPref.getNoTelp(), dataUser.getNoTelp());
+        Prefs.putString(SharedPref.getALAMAT(), dataUser.getAlamat());
+        Prefs.putString(SharedPref.getEMAIL(), dataUser.getEmail());
+        Prefs.putString(SharedPref.getJenisKelamin(), dataUser.getJenisKelamin());
+        Prefs.putString(SharedPref.getPASSWORD(), dataUser.getPassword());
     }
 }

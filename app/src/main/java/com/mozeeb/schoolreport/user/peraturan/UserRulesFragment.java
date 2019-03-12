@@ -61,6 +61,7 @@ public class UserRulesFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         //menambahkan message pada loading
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         //menampilkan progress dialog
         progressDialog.show();
         ConfigRetrofit.getInstance().getPeraturan().enqueue(new Callback<ResponsePeraturan>() {

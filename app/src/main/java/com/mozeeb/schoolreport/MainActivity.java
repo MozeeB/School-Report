@@ -15,7 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.mozeeb.schoolreport.helper.ForceCloseDebugger;
+import com.mozeeb.schoolreport.SPreferenced.Spereferen;
 import com.mozeeb.schoolreport.user.NewsFragment;
 import com.mozeeb.schoolreport.user.UserAboutActivity;
 import com.mozeeb.schoolreport.user.UserProfilActivity;
@@ -26,6 +26,8 @@ import com.mozeeb.schoolreport.user.peraturan.UserRulesFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Spereferen spereferen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //handle error
-        ForceCloseDebugger.handle(this);
+//        ForceCloseDebugger.handle(this);
 
         getSupportActionBar().setTitle("School Report");
+
+        spereferen = new Spereferen(this);
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
@@ -84,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        spereferen.Logout();
+
+
                     }
                 });
         AlertDialog buil = builder.create();

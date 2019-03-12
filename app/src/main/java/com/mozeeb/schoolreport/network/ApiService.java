@@ -27,8 +27,10 @@ import retrofit2.http.Part;
 
 public interface ApiService {
 
+    @FormUrlEncoded
     @POST("user/login.php")
-    Call<ResponseLogin> postLogin(@Body User loginBody);
+    Call<ResponseLogin> postLogin(@Field("username") String username,
+                                  @Field("password") String password);
 
 
     //Insert siswa pelanggar

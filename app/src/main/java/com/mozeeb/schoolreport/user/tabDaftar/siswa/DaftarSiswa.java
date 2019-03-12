@@ -72,13 +72,13 @@ public class DaftarSiswa extends Fragment {
     public void getDataSiswa() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         progressDialog.show();
         ConfigRetrofit.getInstance().getDaftarSiswa().enqueue(new Callback<ResponseSiswa>() {
             @Override
             public void onResponse(Call<ResponseSiswa> call, Response<ResponseSiswa> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
-                    Toasty.success(getActivity(), "Silahkan lihat", Toasty.LENGTH_LONG).show();
                     ResponseSiswa responseSiswa = response.body();
                     dataItemSiswa = responseSiswa.getSiswa();
                     setUplist2(dataItemSiswa);

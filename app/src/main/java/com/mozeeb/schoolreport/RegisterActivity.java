@@ -171,7 +171,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         progressDialog.show();
+
         String nama = edtNamaRegister.getText().toString();
         String username = edtUsernameRegister.getText().toString();
         String no_telp = edtNotelpRegister.getText().toString();
@@ -179,13 +181,15 @@ public class RegisterActivity extends AppCompatActivity {
         String email = edtEmailRegister.getText().toString();
         String pasword = edtPasswordRegister.getText().toString();
         String confirm_password = edtConfirmPassword.getText().toString();
+
+
         ConfigRetrofit.getInstance().postRegister(nama, username, no_telp, alamat, email, isiKelamin, pasword, confirm_password)
                 .enqueue(new Callback<ResponseRegister>() {
                     @Override
                     public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
                         progressDialog.dismiss();
                         if (response.body().getSuccess() == 1){
-                            Toasty.success(RegisterActivity.this, response.message(),Toasty.LENGTH_LONG).show();
+                            Toasty.success(RegisterActivity.this, "register berhasil",Toasty.LENGTH_LONG).show();
                             startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
                         }else {
                             Log.i("ini error mas", response.message());

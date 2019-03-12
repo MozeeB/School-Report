@@ -202,6 +202,7 @@ public class UserTambahActivity extends AppCompatActivity {
     private void sendData() {
         final ProgressDialog progressDialog = new ProgressDialog(UserTambahActivity.this);
         progressDialog.setMessage("Loading.....");
+        progressDialog.setCancelable(false);
         progressDialog.show();
 
 

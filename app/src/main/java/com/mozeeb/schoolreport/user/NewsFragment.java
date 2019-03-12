@@ -71,14 +71,13 @@ public class NewsFragment extends Fragment {
 //                startActivity(new Intent(getActivity().getApplication(), UserTambahBerita.class));
 //            }
 //        });
-
+        getData2();
 
     }
 
     private void getData2() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("Loading..");
-        progressDialog.setMessage("Get data");
+        progressDialog.setMessage("Loading.....");
         progressDialog.show();
 
         apiService = ConfigRetrofit.getClient().create(ApiService.class);
@@ -92,7 +91,7 @@ public class NewsFragment extends Fragment {
                     dataItemsNewBeritas = responseNews.getBerita();
                     setUplist2(dataItemsNewBeritas);
                 }else {
-                    Toasty.error(getActivity(), response.message(), Toasty.LENGTH_SHORT).show();
+                    Toasty.error(getActivity(), "Failed", Toasty.LENGTH_SHORT).show();
                 }
 
             }
@@ -120,7 +119,6 @@ public class NewsFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        getData2();
     }
 
     @Override

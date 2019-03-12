@@ -2,6 +2,7 @@ package com.mozeeb.schoolreport;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,17 +19,18 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mozeeb.schoolreport.model.register.ResponseRegister;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
@@ -49,9 +51,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.dmoral.toasty.Toasty;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,12 +76,12 @@ public class RegisterActivity extends AppCompatActivity {
     EditText edtNotelpRegister;
     @BindView(R.id.spinner_kelamin_register)
     Spinner spinnerKelaminRegister;
-    @BindView(R.id.spinner_level)
-    Spinner spinnerLevel;
-    @BindView(R.id.imgfotoprofile)
-    ImageView imgfotoprofile;
-    @BindView(R.id.btn_upload)
-    Button btnUpload;
+//    @BindView(R.id.spinner_level)
+//    Spinner spinnerLevel;
+//    @BindView(R.id.imgfotoprofile)
+//    ImageView imgfotoprofile;
+//    @BindView(R.id.btn_upload)
+//    Button btnUpload;
     @BindView(R.id.btn_register)
     Button btnRegister;
 
@@ -98,8 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     //permission granted
     private int STORAGE_PERMISSION_CODE = 1;
-
-
+    private String isiKelamin;
 
 
     @Override
@@ -109,15 +107,15 @@ public class RegisterActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         spinnerKelamin();
-        spinnerLevel();
+//        spinnerLevel();
     }
 
-    @OnClick({ R.id.btn_upload,R.id.btn_register})
+    @OnClick({R.id.btn_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.btn_upload:
-                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
-                break;
+//            case R.id.btn_upload:
+//                ChooseImage(REQ_CHOOSE_FILE_REGISTER);
+//                break;
             case R.id.btn_register:
                 registerUser();
                 break;
@@ -133,77 +131,76 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adapter);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerKelaminRegister.setAdapter(dataAdapter);
+
+        spinnerKelaminRegister.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selection = (String) parent.getItemAtPosition(position);
+                if (!TextUtils.isEmpty(selection)){
+                    if (selection.equals("Laki - Laki")){
+                        isiKelamin = "Laki - Laki";
+                    }else if (selection.equals("Perempuan")){
+                        isiKelamin = "Perempuan";
+                    }else if (selection.equals("Lainnya")){
+                        isiKelamin = "Lainnya";
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
     }
 
-    public void spinnerLevel() {
-
-        List<String> adapter = new ArrayList<>();
-        adapter.add("Guru");
-        adapter.add("Wali murid");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adapter);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLevel.setAdapter(dataAdapter);
-    }
-
-
-    private void registerUser() {
-//        String sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+//    public void spinnerLevel() {
 //
-//        part_image = getPath(filepath);
-//
-//        File imagefile = new File(part_image);
-//        RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
-//        MultipartBody.Part partImage = MultipartBody.Part.createFormData("foto", imagefile.getName(), reqBody);
-//
-//        ConfigRetrofit.getInstance().postRegister(edtNamaRegister.getText().toString(),
-//                edtUsernameRegister.getText().toString(),
-//                edtNotelpRegister.getText().toString(),
-//                edtAlamatRegister.getText().toString(), edtEmailRegister.getText().toString(),
-//                spinnerKelaminRegister.toString(), edtPasswordRegister.getText().toString(), partImage).enqueue(new Callback<ResponseRegister>() {
-//            @Override
-//            public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
-//                Log.d("RETRO", "ON RESPONSE  : " + response.body().toString());
-//
-//                if (response.isSuccessful()) {
-//                    Toast.makeText(RegisterActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(RegisterActivity.this, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseRegister> call, Throwable t) {
-//                Log.d("RETRO", "ON FAILURE : " + t.getMessage());
-//            }
-//        });
+//        List<String> adapter = new ArrayList<>();
+//        adapter.add("Guru");
+//        adapter.add("Wali murid");
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, adapter);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerLevel.setAdapter(dataAdapter);
 //    }
 
 
+    private void registerUser() {
 
-        try{
-            mediapath = getPath(filepath);
-            Toasty.success(this,"Succes to Send", Toasty.LENGTH_SHORT).show();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try {
-            new MultipartUploadRequest(this, UPLOAD_REGISTER_URL )
-                    .addFileToUpload(mediapath, "foto")
-                    .addParameter("nama", edtNamaRegister.getText().toString())
-                    .addParameter("username", edtUsernameRegister.getText().toString())
-                    .addParameter("no_telp", edtNotelpRegister.getText().toString())
-                    .addParameter("alamat", edtAlamatRegister.getText().toString())
-                    .addParameter("email", edtEmailRegister.getText().toString())
-                    .addParameter("jenis_kelamin", spinnerKelaminRegister.toString())
-                    .addParameter("password", edtPasswordRegister.toString())
-                    .setMaxRetries(2)
-                    .startUpload();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+        progressDialog.setMessage("Loading.....");
+        progressDialog.show();
+        String nama = edtNamaRegister.getText().toString();
+        String username = edtUsernameRegister.getText().toString();
+        String no_telp = edtNotelpRegister.getText().toString();
+        String alamat = edtAlamatRegister.getText().toString();
+        String email = edtEmailRegister.getText().toString();
+        String pasword = edtPasswordRegister.getText().toString();
+        String confirm_password = edtConfirmPassword.getText().toString();
+        ConfigRetrofit.getInstance().postRegister(nama, username, no_telp, alamat, email, isiKelamin, pasword, confirm_password)
+                .enqueue(new Callback<ResponseRegister>() {
+                    @Override
+                    public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+                        progressDialog.dismiss();
+                        if (response.body().getSuccess() == 1){
+                            Toasty.success(RegisterActivity.this, response.message(),Toasty.LENGTH_LONG).show();
+                            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                        }else {
+                            Log.i("ini error mas", response.message());
+                            Toasty.error(RegisterActivity.this, response.message(), Toasty.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                        Log.i("errornya disni ua", t.getMessage());
+
+                    }
+                });
+
+
     }
 
 
@@ -272,7 +269,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 try {
                     mPhoto = MediaStore.Images.Media.getBitmap(getContentResolver(), filepath);
-                    imgfotoprofile.setImageBitmap(mPhoto);
+//                    imgfotoprofile.setImageBitmap(mPhoto);
 
                 }catch (IOException e){
                     e.printStackTrace();

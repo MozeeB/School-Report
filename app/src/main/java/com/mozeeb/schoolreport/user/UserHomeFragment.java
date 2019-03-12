@@ -19,7 +19,7 @@ import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterLapor;
 import com.mozeeb.schoolreport.helper.MovableFloatingActionButton;
 import com.mozeeb.schoolreport.model.laporan.read.LaporanItem;
-import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
+import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporanRead;
 import com.mozeeb.schoolreport.network.ApiService;
 import com.mozeeb.schoolreport.network.ConfigRetrofit;
 import com.mozeeb.schoolreport.user.laporan.UserTambahActivity;
@@ -86,6 +86,7 @@ public class UserHomeFragment extends Fragment {
                 startActivity(new Intent(getActivity().getApplication(), UserTambahActivity.class));
             }
         });
+
         getData();
 
     }
@@ -93,18 +94,17 @@ public class UserHomeFragment extends Fragment {
 
     private void getData() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("Loading..");
-        progressDialog.setMessage("Get data");
+        progressDialog.setMessage("Loading.....");
         progressDialog.show();
 
         apiService = ConfigRetrofit.getClient().create(ApiService.class);
-        Call<ResponseLaporan>  call = apiService.getLaporan();
-        call.enqueue(new Callback<ResponseLaporan>() {
+        Call<ResponseLaporanRead>  call = apiService.getLaporan();
+        call.enqueue(new Callback<ResponseLaporanRead>() {
             @Override
-            public void onResponse(Call<ResponseLaporan> call, Response<ResponseLaporan> response) {
+            public void onResponse(Call<ResponseLaporanRead> call, Response<ResponseLaporanRead> response) {
                 progressDialog.dismiss();
                 if (response.isSuccessful()) {
-                    ResponseLaporan responseNews = response.body();
+                    ResponseLaporanRead responseNews = response.body();
                     dataItemsLaporanLapor = responseNews.getLaporan();
 //                    setUpList(dataItemsLaporanLapor);
                     rvMain.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, true));
@@ -116,7 +116,7 @@ public class UserHomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ResponseLaporan> call, Throwable t) {
+            public void onFailure(Call<ResponseLaporanRead> call, Throwable t) {
                 Toasty.error(getActivity(), t.getMessage(), Toasty.LENGTH_LONG).show();
 
             }
@@ -135,7 +135,6 @@ public class UserHomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
 
 
     }

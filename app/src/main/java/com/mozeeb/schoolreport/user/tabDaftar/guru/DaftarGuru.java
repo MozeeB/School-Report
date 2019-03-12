@@ -1,5 +1,6 @@
 package com.mozeeb.schoolreport.user.tabDaftar.guru;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -40,6 +41,9 @@ public class DaftarGuru extends Fragment {
     private List<GuruItem> dataItemGurus;
     private AdapterTabGuru adapterTabGuru;
 
+    private ProgressDialog progressDialog;
+
+
     public void setFragmentManager(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
     }
@@ -64,15 +68,17 @@ public class DaftarGuru extends Fragment {
     }
 
 
-    private void updateProgressBar(int progress) {
-        progressBar.setProgress(progress);
-    }
 
     public void getDataGuru() {
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading.....");
+        progressDialog.show();
+
         ConfigRetrofit.getInstance().getGuru().enqueue(new Callback<ResponseGuru>() {
             @Override
             public void onResponse(Call<ResponseGuru> call, Response<ResponseGuru> response) {
-                if (response.isSuccessful()) {
+                progressDialog.dismiss();
+                if (response.body().isStatus()) {
                     ResponseGuru responseDaftarGuru = response.body();
                     dataItemGurus = responseDaftarGuru.getGuru();
                     setUplist2(dataItemGurus);

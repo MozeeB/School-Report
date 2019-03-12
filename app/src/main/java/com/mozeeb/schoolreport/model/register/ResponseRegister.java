@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class ResponseRegister{
 
-	@SerializedName("result")
-	private String result;
+	@SerializedName("success")
+	private int success;
 
-	@SerializedName("msg")
-	private String msg;
+	@SerializedName("message")
+	private String message;
 
-	public void setResult(String result){
-		this.result = result;
+	public void setSuccess(int success){
+		this.success = success;
 	}
 
-	public String getResult(){
-		return result;
+	public int getSuccess(){
+		return success;
 	}
 
-	public void setMsg(String msg){
-		this.msg = msg;
+	public void setMessage(String message){
+		this.message = message;
 	}
 
-	public String getMsg(){
-		return msg;
+	public String getMessage(){
+		return message;
 	}
 }

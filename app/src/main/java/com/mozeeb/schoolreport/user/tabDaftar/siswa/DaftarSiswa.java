@@ -1,5 +1,6 @@
 package com.mozeeb.schoolreport.user.tabDaftar.siswa;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -69,9 +70,13 @@ public class DaftarSiswa extends Fragment {
     }
 
     public void getDataSiswa() {
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading.....");
+        progressDialog.show();
         ConfigRetrofit.getInstance().getDaftarSiswa().enqueue(new Callback<ResponseSiswa>() {
             @Override
             public void onResponse(Call<ResponseSiswa> call, Response<ResponseSiswa> response) {
+                progressDialog.dismiss();
                 if (response.isSuccessful()) {
                     Toasty.success(getActivity(), "Silahkan lihat", Toasty.LENGTH_LONG).show();
                     ResponseSiswa responseSiswa = response.body();

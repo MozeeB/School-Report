@@ -69,12 +69,13 @@ public class UserAgendaFragment extends Fragment {
 //                startActivity(new Intent(getActivity().getApplication(), UserTambahKegiatan.class));
 //            }
 //        });
+        getKeiatanData();
+
     }
 
     public void getKeiatanData() {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("Loading..");
-        progressDialog.setMessage("Get data");
+        progressDialog.setMessage("Loading.....");
         progressDialog.show();
 
         ConfigRetrofit.getInstance().getKegiatan().enqueue(new Callback<ResponseKegiatan>() {
@@ -87,6 +88,8 @@ public class UserAgendaFragment extends Fragment {
                     ResponseKegiatan responseKegiatan = response.body();
                     dataItemKegiatans = responseKegiatan.getKegiatan();
                     setUplist(dataItemKegiatans);
+                }else {
+                    Toasty.error(getActivity(), response.message(), Toasty.LENGTH_LONG).show();
                 }
             }
 
@@ -110,7 +113,6 @@ public class UserAgendaFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        getKeiatanData();
     }
 
     @Override

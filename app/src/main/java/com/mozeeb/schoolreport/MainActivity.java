@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.mozeeb.schoolreport.helper.ForceCloseDebugger;
 import com.mozeeb.schoolreport.user.NewsFragment;
 import com.mozeeb.schoolreport.user.UserAboutActivity;
 import com.mozeeb.schoolreport.user.UserProfilActivity;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar_semua);
         setSupportActionBar(toolbar);
+
+        //handle error
+        ForceCloseDebugger.handle(this);
 
         getSupportActionBar().setTitle("School Report");
 

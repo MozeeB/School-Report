@@ -1,6 +1,7 @@
 package com.mozeeb.schoolreport.user.peraturan;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mozeeb.schoolreport.LoginActivity;
 import com.mozeeb.schoolreport.R;
 import com.mozeeb.schoolreport.adapter.AdapterPeratuan;
 import com.mozeeb.schoolreport.model.peraturan.read.PeraturanItem;
@@ -20,6 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +38,8 @@ public class UserRulesFragment extends Fragment {
     @BindView(R.id.rv_peraturan)
     RecyclerView rvPeraturan;
     Unbinder unbinder;
+
+    private ProgressDialog progressDialog;
 
 
     public UserRulesFragment() {
@@ -52,14 +57,23 @@ public class UserRulesFragment extends Fragment {
     }
 
     public void getPeratutan() {
+        //membuat object progress dialog
+        progressDialog = new ProgressDialog(getActivity());
+        //menambahkan message pada loading
+        progressDialog.setMessage("Loading.....");
+        //menampilkan progress dialog
+        progressDialog.show();
         ConfigRetrofit.getInstance().getPeraturan().enqueue(new Callback<ResponsePeraturan>() {
             @Override
             public void onResponse(Call<ResponsePeraturan> call, Response<ResponsePeraturan> response) {
+                progressDialog.dismiss();
                 if (response.isSuccessful()) {
                     ResponsePeraturan responsePeraturan = response.body();
                     dataItemPeraturanList = responsePeraturan.getPeraturan();
                     setUpList(dataItemPeraturanList);
 
+                }else {
+                    Toasty.error(getActivity(), response.message(), Toasty.LENGTH_LONG).show();
                 }
             }
 

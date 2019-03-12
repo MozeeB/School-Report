@@ -1,11 +1,11 @@
 package com.mozeeb.schoolreport.network;
 
 import com.mozeeb.schoolreport.model.berita.read.ResponseBerita;
-import com.mozeeb.schoolreport.model.guru.insert.ResponseGuruTambah;
 import com.mozeeb.schoolreport.model.guru.read.ResponseGuru;
 import com.mozeeb.schoolreport.model.kegiatan.read.ResponseKegiatan;
 import com.mozeeb.schoolreport.model.laporan.delete.ResponseLapor;
-import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporan;
+import com.mozeeb.schoolreport.model.laporan.insert.ResponseLaporan;
+import com.mozeeb.schoolreport.model.laporan.read.ResponseLaporanRead;
 import com.mozeeb.schoolreport.model.login.ResponseLogin;
 import com.mozeeb.schoolreport.model.login.User;
 import com.mozeeb.schoolreport.model.peraturan.read.ResponsePeraturan;
@@ -14,6 +14,7 @@ import com.mozeeb.schoolreport.model.siswa.insert.ResponseDataSiswa;
 import com.mozeeb.schoolreport.model.siswa.read.ResponseSiswa;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -31,32 +32,32 @@ public interface ApiService {
 
 
     //Insert siswa pelanggar
-//    @FormUrlEncoded
-    @Multipart
-    @POST("api/register")
-    Call<ResponseRegister> postRegister(@Part("nama") String nama,
-                                        @Part("username") String username,
-                                        @Part("no_telp") String no_telp,
-                                        @Part("alamat") String alamat,
-                                        @Part("email") String email,
-                                        @Part("jenis_kelamin") String jenis_kelamin,
-                                        @Part("password") String password,
-                                        @Part MultipartBody.Part foto);
+    @FormUrlEncoded
+    @POST("user/register.php")
+    Call<ResponseRegister> postRegister(@Field("nama") String nama,
+                                        @Field("username") String username,
+                                        @Field("no_telp") String no_telp,
+                                        @Field("alamat") String alamat,
+                                        @Field("email") String email,
+                                        @Field("jenis_kelamin") String jenis_kelamin,
+                                        @Field("password") String password,
+                                        @Field("confirm_password") String confirm_password);
+//                                        @Part MultipartBody.Part foto);
 //                                        @Part("level") String level);
     //getdata laporan
     @GET("laporan/read.php")
-    Call<ResponseLaporan> getLaporan();
+    Call<ResponseLaporanRead> getLaporan();
 
     @Multipart
-    @POST("api/post_laporan")
-    Call<ResponseLaporan> postLaporan(@Part("nama") String nama,
-                                      @Part("kelas") String kelas,
-                                      @Part("wali") String wali,
-                                      @Part("poin") String poin,
-                                      @Part("melanggar") String melanggar,
-                                      @Part("keterangan")String keterangan,
-                                      @Part("tgl_lapor") String tgl_laporan,
-                                      @Part("perlapor") String pelapor,
+    @POST("laporan/create.php")
+    Call<ResponseLaporan> postLaporan(@Part("nama") RequestBody nama,
+                                      @Part("kelas") RequestBody kelas,
+                                      @Part("wali") RequestBody wali,
+                                      @Part("poin") RequestBody poin,
+                                      @Part("melanggar") RequestBody melanggar,
+                                      @Part("keterangan")RequestBody keterangan,
+                                      @Part("tgl_lapor") RequestBody tgl_laporan,
+                                      @Part("pelapor") RequestBody pelapor,
                                       @Part MultipartBody.Part  foto);
     @DELETE("api/hapus_laporan")
     Call<ResponseLapor> delLapo(@Field("id") Integer id);

@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void alertDialogShow() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setMessage("Tutup aplikasi ini ?")
+                .setMessage("Keluar dari akun ini ?")
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

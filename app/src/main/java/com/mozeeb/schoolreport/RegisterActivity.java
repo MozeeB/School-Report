@@ -137,8 +137,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)){
-                    if (selection.equals("Laki - Laki")){
-                        isiKelamin = "Laki - Laki";
+                    if (selection.equals("Laki - laki")){
+                        isiKelamin = "Laki - laki";
                     }else if (selection.equals("Perempuan")){
                         isiKelamin = "Perempuan";
                     }else if (selection.equals("Lainnya")){
